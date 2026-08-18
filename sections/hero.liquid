@@ -31,8 +31,8 @@
             <polyline points="12 5 19 12 12 19"></polyline>
           </svg>
         </a>
-        <a href="{{ section.settings.secondary_btn_url | default: '/pages/offers' }}" class="btn-secondary" id="heroLookbookBtn">
-          <span>{{ section.settings.secondary_btn_text | default: "Explore Offers" }}</span>
+        <a href="{{ section.settings.secondary_btn_url | default: '/pages/lookbook' }}" class="btn-secondary" id="heroLookbookBtn">
+          <span>{{ section.settings.secondary_btn_text | default: "Explore Lookbook" }}</span>
         </a>
       </div>
 
@@ -53,7 +53,7 @@
           <span>Slow Crafted</span>
         </div>
         <div class="meta-stamp-pill">
-          Handcrafted • {{ 'now' | date: '%Y' }}
+          Handcrafted • 2026
         </div>
       </div>
     </section>
@@ -99,13 +99,12 @@
 
       <!-- Frame 3: Accent Circular Frame -->
       {%- assign link_3 = section.settings.frame_link_3 | default: routes.all_products_collection_url -%}
-      <a href="{{ link_3 }}" class="editorial-frame frame-model-accent" title="{{ section.settings.frame_label_3 | default: 'Look 03 • Brass Jewellery' }}">
+      <a href="{{ link_3 }}" class="editorial-frame frame-model-accent" title="{{ section.settings.frame_label_3 | default: 'Artisanal Knitwear' }}">
         {%- if section.settings.frame_image_3 != blank -%}
           <img src="{{ section.settings.frame_image_3 | image_url: width: 400 }}" alt="Editorial look 3" loading="eager" width="200" height="200">
         {%- else -%}
-          <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=600&q=85" alt="Hammered Brass Jewellery Detail" loading="eager" width="200" height="200">
+          <img src="https://images.unsplash.com/photo-1558769132-cb1aea458c5e?auto=format&fit=crop&w=500&q=85" alt="Artisanal knitwear texture on rack" loading="eager" width="200" height="200">
         {%- endif -%}
-        <div class="frame-label">{{ section.settings.frame_label_3 | default: "Look 03 • Brass Objects" }}</div>
       </a>
     </section>
   </div>
