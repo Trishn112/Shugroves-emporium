@@ -1,0 +1,135 @@
+{% comment %}
+  Shugroves Emporium - Master Footer Section
+{% endcomment %}
+
+<footer class="site-footer" id="siteFooter">
+  <div class="footer-container">
+    <div class="footer-top-grid">
+      
+      <!-- Brand & Mission Column -->
+      <div class="footer-col footer-col-brand">
+        <a href="{{ routes.root_url }}" class="footer-brand-logo">{{ settings.brand_name | default: shop.name }}</a>
+        <p class="footer-brand-tagline">
+          {{ section.settings.tagline | default: "Conscious slow-fashion creations crafted with raw Belgian linen, vegetal botanical dyes, and timeless unstructured silhouettes." }}
+        </p>
+
+        <!-- Social Media Icons -->
+        <div class="footer-social-links">
+          {%- if settings.social_instagram != blank -%}
+            <a href="{{ settings.social_instagram }}" target="_blank" rel="noopener noreferrer" class="footer-social-icon" title="Instagram" aria-label="Instagram">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+            </a>
+          {%- endif -%}
+
+          {%- if settings.social_facebook != blank -%}
+            <a href="{{ settings.social_facebook }}" target="_blank" rel="noopener noreferrer" class="footer-social-icon" title="Facebook" aria-label="Facebook">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+            </a>
+          {%- endif -%}
+
+          {%- if settings.social_twitter != blank -%}
+            <a href="{{ settings.social_twitter }}" target="_blank" rel="noopener noreferrer" class="footer-social-icon" title="Twitter / X" aria-label="Twitter / X">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4l11.733 16h4.267l-11.733 -16z"></path><path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"></path></svg>
+            </a>
+          {%- endif -%}
+        </div>
+      </div>
+
+      <!-- Column 2: Collections Links -->
+      <div class="footer-col">
+        <h4 class="footer-col-title">Collections</h4>
+        <ul class="footer-links-list">
+          {%- assign footer_menu = linklists[section.settings.menu_1] -%}
+          {%- if footer_menu != blank and footer_menu.links.size > 0 -%}
+            {%- for link in footer_menu.links -%}
+              <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+            {%- endfor -%}
+          {%- else -%}
+            <li><a href="{{ routes.collections_url }}">All Creations</a></li>
+            {%- for col in collections limit: 4 -%}
+              <li><a href="{{ col.url }}">{{ col.title }}</a></li>
+            {%- endfor -%}
+          {%- endif -%}
+        </ul>
+      </div>
+
+      <!-- Column 3: Atelier & Client Care -->
+      <div class="footer-col">
+        <h4 class="footer-col-title">Client Care</h4>
+        <ul class="footer-links-list">
+          {%- assign menu_2 = linklists[section.settings.menu_2] -%}
+          {%- if menu_2 != blank and menu_2.links.size > 0 -%}
+            {%- for link in menu_2.links -%}
+              <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+            {%- endfor -%}
+          {%- else -%}
+            <li><a href="/pages/help">Help & Contact</a></li>
+            <li><a href="/pages/about-us">Atelier Story</a></li>
+            <li><a href="{% if customer %}{{ routes.account_url }}{% else %}{{ routes.account_login_url }}{% endif %}">Client Ledger</a></li>
+            <li><a href="/pages/wishlist">Saved Wishlist</a></li>
+          {%- endif -%}
+        </ul>
+      </div>
+
+      <!-- Column 4: Newsletter -->
+      <div class="footer-col footer-col-newsletter">
+        <h4 class="footer-col-title">Private Gazette</h4>
+        <p class="footer-newsletter-desc">Subscribe to receive early access to seasonal capsule releases and private privileges.</p>
+        
+        {%- form 'customer', class: 'footer-newsletter-form' -%}
+          <input type="hidden" name="contact[tags]" value="newsletter">
+          <div class="newsletter-input-group">
+            <input 
+              type="email" 
+              name="contact[email]" 
+              class="newsletter-input" 
+              placeholder="Your email address" 
+              required
+            >
+            <button type="submit" class="newsletter-submit-btn" aria-label="Subscribe">
+              &rarr;
+            </button>
+          </div>
+          {%- if form.posted_successfully? -%}
+            <span style="font-size:0.78rem; color:var(--accent-sage-dark); margin-top:0.4rem; display:block;">Thank you for joining our private gazette.</span>
+          {%- endif -%}
+        {%- endform -%}
+      </div>
+    </div>
+
+    <!-- Footer Bottom Row -->
+    <div class="footer-bottom-row">
+      <p class="footer-copyright">&copy; {{ 'now' | date: '%Y' }} {{ settings.brand_name | default: shop.name }}. All rights reserved.</p>
+      <div class="footer-meta-links">
+        <a href="/policies/privacy-policy">Privacy Policy</a>
+        <a href="/policies/terms-of-service">Terms of Service</a>
+        <a href="/policies/shipping-policy">Shipping & Returns</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Footer",
+  "settings": [
+    {
+      "type": "textarea",
+      "id": "tagline",
+      "label": "Brand Tagline",
+      "default": "Conscious slow-fashion creations crafted with raw Belgian linen, vegetal botanical dyes, and timeless unstructured silhouettes."
+    },
+    {
+      "type": "link_list",
+      "id": "menu_1",
+      "label": "Menu 1 (Collections)",
+      "default": "footer"
+    },
+    {
+      "type": "link_list",
+      "id": "menu_2",
+      "label": "Menu 2 (Client Care)"
+    }
+  ]
+}
+{% endschema %}

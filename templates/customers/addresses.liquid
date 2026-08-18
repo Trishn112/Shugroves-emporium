@@ -1,0 +1,32 @@
+{% comment %}
+  Shugroves Emporium - Customer Saved Delivery Addresses
+{% endcomment %}
+
+<div class="customer-account-page" style="padding-top: 8.5rem; padding-bottom: 7rem; min-height: 80vh;">
+  <div class="section-container" style="max-width: 960px; margin: 0 auto; padding: 2rem;">
+    <a href="{{ routes.account_url }}" style="font-size:0.85rem; color:var(--text-charcoal-muted); text-decoration:none; margin-bottom:1rem; display:inline-block;">&larr; Back to Client Ledger</a>
+    
+    <header style="border-bottom:1px solid var(--border-subtle); padding-bottom:1.5rem; margin-bottom:2.5rem;">
+      <h1 class="collections-title" style="font-size:2.2rem; margin:0 0 0.4rem;">Saved Delivery Addresses</h1>
+      <p style="color:var(--text-charcoal-muted); font-size:0.88rem;">Manage your recipient delivery addresses for express dispatch.</p>
+    </header>
+
+    <div style="display:grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap:1.5rem;">
+      {%- for address in customer.addresses -%}
+        <div style="background:var(--bg-cream-tint); border:1px solid var(--border-subtle); border-radius:14px; padding:1.5rem; position:relative;">
+          {%- if address == customer.default_address -%}
+            <span style="font-size:0.68rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; background:var(--text-charcoal); color:var(--bg-cream); padding:0.2rem 0.6rem; border-radius:12px; display:inline-block; margin-bottom:0.8rem;">Primary Address</span>
+          {%- endif -%}
+          <p style="color:var(--text-charcoal); line-height:1.6; font-size:0.9rem; font-weight:500;">
+            {{ address.name }}<br>
+            {{ address.address1 }}<br>
+            {% if address.address2 != blank %}{{ address.address2 }}<br>{% endif %}
+            {{ address.city }}, {{ address.province_code }} {{ address.zip }}<br>
+            {{ address.country }}<br>
+            {{ address.phone }}
+          </p>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</div>

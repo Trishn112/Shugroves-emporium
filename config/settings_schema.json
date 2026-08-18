@@ -12,15 +12,27 @@
     "settings": [
       {
         "type": "color",
-        "id": "bg_color",
+        "id": "bg_cream",
         "label": "Background Warm Cream",
         "default": "#F6F4EE"
       },
       {
         "type": "color",
-        "id": "text_color",
-        "label": "Primary Charcoal",
+        "id": "bg_cream_tint",
+        "label": "Background Card Tint",
+        "default": "#F0EDE4"
+      },
+      {
+        "type": "color",
+        "id": "text_charcoal",
+        "label": "Text Charcoal",
         "default": "#2B2620"
+      },
+      {
+        "type": "color",
+        "id": "text_charcoal_muted",
+        "label": "Text Charcoal Muted",
+        "default": "#6E685E"
       },
       {
         "type": "color",
@@ -30,26 +42,116 @@
       },
       {
         "type": "color",
+        "id": "accent_terracotta_dark",
+        "label": "Accent Terracotta Dark",
+        "default": "#A66359"
+      },
+      {
+        "type": "color",
         "id": "accent_sage",
         "label": "Accent Sage",
         "default": "#A8AD8E"
+      },
+      {
+        "type": "color",
+        "id": "accent_sage_dark",
+        "label": "Accent Sage Dark",
+        "default": "#60664B"
+      },
+      {
+        "type": "color",
+        "id": "accent_mustard",
+        "label": "Accent Mustard Gold",
+        "default": "#E4BB66"
       }
     ]
   },
   {
-    "name": "Typography",
+    "name": "Brand Identity & Contact",
     "settings": [
       {
-        "type": "font_picker",
-        "id": "heading_font",
-        "label": "Heading font",
-        "default": "cormorant_garamond_n4"
+        "type": "text",
+        "id": "brand_name",
+        "label": "Brand Display Name",
+        "default": "Shugroves Emporium"
       },
       {
-        "type": "font_picker",
-        "id": "body_font",
-        "label": "Body font",
-        "default": "sans-serif"
+        "type": "text",
+        "id": "contact_phone",
+        "label": "Phone Number",
+        "default": "+91 98201 45678"
+      },
+      {
+        "type": "text",
+        "id": "contact_phone_tel",
+        "label": "Phone Tel Link (digits only)",
+        "default": "+919820145678"
+      },
+      {
+        "type": "text",
+        "id": "contact_whatsapp",
+        "label": "WhatsApp Display Number",
+        "default": "+91 98201 45678"
+      },
+      {
+        "type": "text",
+        "id": "contact_whatsapp_url",
+        "label": "WhatsApp Link (e.g. https://wa.me/...)",
+        "default": "https://wa.me/919820145678"
+      },
+      {
+        "type": "text",
+        "id": "contact_email",
+        "label": "Contact Email",
+        "default": "concierge@shugroves.com"
+      },
+      {
+        "type": "text",
+        "id": "business_hours",
+        "label": "Business Hours",
+        "default": "Mon – Sat: 10:00 AM – 7:00 PM IST"
+      },
+      {
+        "type": "textarea",
+        "id": "atelier_address",
+        "label": "Atelier Physical Address",
+        "default": "42 Altamount Road, Cumballa Hill, Mumbai, Maharashtra 400026, India"
+      }
+    ]
+  },
+  {
+    "name": "Social Media Links",
+    "settings": [
+      {
+        "type": "url",
+        "id": "social_instagram",
+        "label": "Instagram URL"
+      },
+      {
+        "type": "url",
+        "id": "social_facebook",
+        "label": "Facebook URL"
+      },
+      {
+        "type": "url",
+        "id": "social_twitter",
+        "label": "Twitter / X URL"
+      },
+      {
+        "type": "url",
+        "id": "social_pinterest",
+        "label": "Pinterest URL"
+      }
+    ]
+  },
+  {
+    "name": "Shopping Bag & Shipping",
+    "settings": [
+      {
+        "type": "number",
+        "id": "free_shipping_threshold",
+        "label": "Free Shipping Threshold (in store currency, e.g. 5000)",
+        "default": 5000
       }
     ]
   }

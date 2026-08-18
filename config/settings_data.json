@@ -1,9 +1,26 @@
 {
   "current": {
-    "bg_color": "#F6F4EE",
-    "text_color": "#2B2620",
+    "bg_cream": "#F6F4EE",
+    "bg_cream_tint": "#F0EDE4",
+    "text_charcoal": "#2B2620",
+    "text_charcoal_muted": "#6E685E",
     "accent_terracotta": "#D89C94",
+    "accent_terracotta_dark": "#A66359",
     "accent_sage": "#A8AD8E",
+    "accent_sage_dark": "#60664B",
+    "accent_mustard": "#E4BB66",
+    "brand_name": "Shugroves Emporium",
+    "contact_phone": "+91 98201 45678",
+    "contact_phone_tel": "+919820145678",
+    "contact_whatsapp": "+91 98201 45678",
+    "contact_whatsapp_url": "https://wa.me/919820145678",
+    "contact_email": "concierge@shugroves.com",
+    "business_hours": "Mon – Sat: 10:00 AM – 7:00 PM IST",
+    "atelier_address": "42 Altamount Road, Cumballa Hill, Mumbai, Maharashtra 400026, India",
+    "social_instagram": "https://instagram.com/shugroves_emporium",
+    "social_facebook": "https://facebook.com/shugrovesemporium",
+    "social_twitter": "https://x.com/shugroves",
+    "free_shipping_threshold": 5000,
     "sections": {}
   }
 }

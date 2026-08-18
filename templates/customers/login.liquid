@@ -1,0 +1,36 @@
+{% comment %}
+  Shugroves Emporium - Customer Sign In
+{% endcomment %}
+
+<div class="customer-account-page" style="padding-top: 9rem; padding-bottom: 7rem; min-height: 80vh;">
+  <div class="section-container" style="max-width: 480px; margin: 0 auto; padding: 2.5rem; background: var(--bg-cream-tint); border: 1px solid var(--border-subtle); border-radius: 18px;">
+    <span class="collections-eyebrow" style="text-align:center; display:block;">Client Portal</span>
+    <h1 class="collections-title" style="text-align:center; font-size: 2.4rem; margin-bottom: 2rem;">Sign In</h1>
+
+    {%- form 'customer_login', class: 'customer-auth-form' -%}
+      {%- if form.errors -%}
+        <div style="background:#FDE8E8; color:#9B1C1C; padding:0.9rem; border-radius:8px; margin-bottom:1.2rem; font-size:0.85rem;">
+          {{ form.errors | default_errors }}
+        </div>
+      {%- endif -%}
+
+      <div class="form-group" style="margin-bottom: 1.2rem;">
+        <label for="CustomerEmail" class="form-label" style="font-size:0.8rem; font-weight:600; text-transform:uppercase; letter-spacing:0.08em; display:block; margin-bottom:0.4rem;">Email Address</label>
+        <input type="email" name="customer[email]" id="CustomerEmail" class="form-input" style="width:100%; padding:0.8rem; border-radius:8px; border:1px solid var(--border-subtle); background:var(--bg-cream);" placeholder="eleanor@atelier.com" required>
+      </div>
+
+      <div class="form-group" style="margin-bottom: 1.5rem;">
+        <label for="CustomerPassword" class="form-label" style="font-size:0.8rem; font-weight:600; text-transform:uppercase; letter-spacing:0.08em; display:block; margin-bottom:0.4rem;">Password</label>
+        <input type="password" name="customer[password]" id="CustomerPassword" class="form-input" style="width:100%; padding:0.8rem; border-radius:8px; border:1px solid var(--border-subtle); background:var(--bg-cream);" placeholder="••••••••" required>
+      </div>
+
+      <button type="submit" class="btn-primary" style="width:100%; justify-content:center; padding:0.9rem; margin-bottom:1.2rem;">
+        <span>Access Client Ledger &rarr;</span>
+      </button>
+
+      <div style="text-align:center; font-size:0.85rem; color:var(--text-charcoal-muted);">
+        <p>New to the Atelier? <a href="{{ routes.account_register_url }}" style="color:var(--accent-terracotta-dark); font-weight:600;">Create an Account</a></p>
+      </div>
+    {%- endform -%}
+  </div>
+</div>

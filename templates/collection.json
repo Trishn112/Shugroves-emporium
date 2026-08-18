@@ -1,0 +1,13 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-collection",
+      "settings": {
+        "eyebrow": "Autumn / Winter '26 Collection"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

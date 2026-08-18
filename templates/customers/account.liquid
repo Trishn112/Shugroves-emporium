@@ -1,0 +1,82 @@
+{% comment %}
+  Shugroves Emporium - Customer Account Ledger
+{% endcomment %}
+
+<div class="customer-account-page" style="padding-top: 8.5rem; padding-bottom: 7rem; min-height: 80vh;">
+  <div class="section-container" style="max-width: 1100px; margin: 0 auto; padding: 2rem;">
+    
+    <header style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--border-subtle); padding-bottom:1.5rem; margin-bottom:2.5rem; flex-wrap:wrap; gap:1rem;">
+      <div>
+        <span class="collections-eyebrow">Client Ledger</span>
+        <h1 class="collections-title" style="font-size:2.2rem; margin:0;">Welcome, {{ customer.first_name }}</h1>
+        <p style="color:var(--text-charcoal-muted); font-size:0.88rem; margin-top:0.2rem;">{{ customer.email }}</p>
+      </div>
+      <div>
+        <a href="{{ routes.account_logout_url }}" class="btn-secondary" style="padding:0.6rem 1.4rem; font-size:0.8rem;">
+          <span>Sign Out</span>
+        </a>
+      </div>
+    </header>
+
+    <div style="display:grid; grid-template-columns: 2fr 1fr; gap:3rem;">
+      <!-- Order History -->
+      <div>
+        <h3 style="font-family:var(--font-serif); font-size:1.5rem; margin-bottom:1.2rem;">Order History & Tracking</h3>
+        {%- if customer.orders.size > 0 -%}
+          <div style="background:var(--bg-cream-tint); border:1px solid var(--border-subtle); border-radius:14px; overflow:hidden;">
+            <table style="width:100%; border-collapse:collapse; font-size:0.88rem;">
+              <thead>
+                <tr style="border-bottom:1px solid var(--border-subtle); text-align:left; background:rgba(43,38,32,0.03);">
+                  <th style="padding:1rem;">Order</th>
+                  <th style="padding:1rem;">Date</th>
+                  <th style="padding:1rem;">Payment</th>
+                  <th style="padding:1rem;">Fulfillment</th>
+                  <th style="padding:1rem; text-align:right;">Total</th>
+                </tr>
+              </thead>
+              <tbody>
+                {%- for order in customer.orders -%}
+                  <tr style="border-bottom:1px solid var(--border-subtle);">
+                    <td style="padding:1rem;"><a href="{{ order.customer_url }}" style="font-weight:600; color:var(--accent-terracotta-dark);">{{ order.name }}</a></td>
+                    <td style="padding:1rem; color:var(--text-charcoal-muted);">{{ order.created_at | date: "%d %b %Y" }}</td>
+                    <td style="padding:1rem;">{{ order.financial_status_label }}</td>
+                    <td style="padding:1rem;">{{ order.fulfillment_status_label }}</td>
+                    <td style="padding:1rem; text-align:right; font-weight:600;">{{ order.total_price | money }}</td>
+                  </tr>
+                {%- endfor -%}
+              </tbody>
+            </table>
+          </div>
+        {%- else -%}
+          <div style="padding:3rem 2rem; text-align:center; background:var(--bg-cream-tint); border:1px solid var(--border-subtle); border-radius:14px;">
+            <p style="color:var(--text-charcoal-muted); margin-bottom:1.2rem;">You have not placed any atelier orders yet.</p>
+            <a href="{{ routes.all_products_collection_url }}" class="btn-primary" style="display:inline-block; padding:0.7rem 1.6rem; border-radius:20px;">Explore Collections</a>
+          </div>
+        {%- endif -%}
+      </div>
+
+      <!-- Account Details & Saved Address -->
+      <div>
+        <h3 style="font-family:var(--font-serif); font-size:1.5rem; margin-bottom:1.2rem;">Account Details</h3>
+        <div style="background:var(--bg-cream-tint); border:1px solid var(--border-subtle); border-radius:14px; padding:1.5rem;">
+          <h4 style="font-size:0.95rem; font-weight:600; margin-bottom:0.6rem;">Primary Delivery Address</h4>
+          {%- if customer.default_address -%}
+            <p style="color:var(--text-charcoal-muted); line-height:1.6; font-size:0.88rem;">
+              {{ customer.default_address.name }}<br>
+              {{ customer.default_address.address1 }}<br>
+              {% if customer.default_address.address2 != blank %}{{ customer.default_address.address2 }}<br>{% endif %}
+              {{ customer.default_address.city }}, {{ customer.default_address.province_code }} {{ customer.default_address.zip }}<br>
+              {{ customer.default_address.country }}<br>
+              {{ customer.default_address.phone }}
+            </p>
+          {%- else -%}
+            <p style="color:var(--text-charcoal-muted); font-size:0.88rem;">No default address registered yet.</p>
+          {%- endif -%}
+          <div style="margin-top:1.2rem;">
+            <a href="{{ routes.account_addresses_url }}" style="font-size:0.82rem; color:var(--accent-terracotta-dark); font-weight:600; text-decoration:none;">Manage Delivery Addresses &rarr;</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

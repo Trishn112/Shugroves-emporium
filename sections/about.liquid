@@ -1,0 +1,125 @@
+{% comment %}
+  Shugroves Emporium - About Us & Atelier Story Section
+{% endcomment %}
+
+<div class="about-page-wrapper">
+  <!-- Hero Banner -->
+  <section class="about-hero">
+    <div class="section-container about-hero-inner">
+      <span class="about-eyebrow">{{ section.settings.eyebrow | default: "The Atelier Story" }}</span>
+      <h1 class="about-heading">{{ section.settings.heading | default: "Conscious Craftsmanship,<br><em>Seasonless Silhouettes.</em>" }}</h1>
+      <p class="about-subheading">
+        {{ section.settings.subheading | default: "Founded on the radical premise that fashion should honor the earth, the artisan, and the wearer with equal devotion." }}
+      </p>
+    </div>
+  </section>
+
+  <!-- Editorial Split Story 1 -->
+  <section class="about-story-section">
+    <div class="section-container about-story-grid">
+      <div class="about-story-media">
+        {%- if section.settings.image_1 != blank -%}
+          <img src="{{ section.settings.image_1 | image_url: width: 900 }}" alt="Craftsmanship process" class="about-story-img" loading="lazy">
+        {%- else -%}
+          <img src="https://images.unsplash.com/photo-1544441893-675973e31985?auto=format&fit=crop&w=900&q=85" alt="Hand-weaving Belgian flax" class="about-story-img" loading="lazy">
+        {%- endif -%}
+        <div class="about-img-tag">Belgian Flax Harvest &bull; Natural Retting</div>
+      </div>
+
+      <div class="about-story-content">
+        <span class="about-section-label">Material Integrity</span>
+        <h2 class="about-story-title">From Soil to Loom</h2>
+        <p class="about-paragraph">
+          At Shugroves Emporium, every garment begins with pure raw materiality. We work exclusively with certified masters of historical spinning: non-GMO Belgian flax harvested with ancestral dew-retting, cruelty-free Ahimsa peace silks, and unbleached organic virgin wools.
+        </p>
+        <p class="about-paragraph">
+          We reject synthetic polyesters and petroleum blends entirely. When an atelier piece touches your skin, it breathes with the tactile ease of pure botanical fibers.
+        </p>
+
+        <!-- Social Media Channels -->
+        <div class="about-social-block">
+          <span class="social-block-label">Follow Our Atelier Journal:</span>
+          <div class="about-social-links">
+            {%- if settings.social_instagram != blank -%}
+              <a href="{{ settings.social_instagram }}" target="_blank" rel="noopener noreferrer" class="social-pill-btn" title="Instagram">
+                <span>Instagram</span>
+                <span class="social-pill-arrow">&nearr;</span>
+              </a>
+            {%- endif -%}
+            {%- if settings.social_facebook != blank -%}
+              <a href="{{ settings.social_facebook }}" target="_blank" rel="noopener noreferrer" class="social-pill-btn" title="Facebook">
+                <span>Facebook</span>
+                <span class="social-pill-arrow">&nearr;</span>
+              </a>
+            {%- endif -%}
+            {%- if settings.social_twitter != blank -%}
+              <a href="{{ settings.social_twitter }}" target="_blank" rel="noopener noreferrer" class="social-pill-btn" title="Twitter / X">
+                <span>Twitter / X</span>
+                <span class="social-pill-arrow">&nearr;</span>
+              </a>
+            {%- endif -%}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3 Craft Pillars -->
+  <section class="about-pillars-section">
+    <div class="section-container">
+      <div class="pillars-grid">
+        <div class="pillar-card">
+          <div class="pillar-icon">01</div>
+          <h3 class="pillar-title">Botanical Alchemy</h3>
+          <p class="pillar-desc">Our palette draws from madder root, indigo leaves, marigold petals, and pomegranate rinds, creating living hues that soften gracefully over time.</p>
+        </div>
+        <div class="pillar-card">
+          <div class="pillar-icon">02</div>
+          <h3 class="pillar-title">Zero-Waste Patterning</h3>
+          <p class="pillar-desc">Pattern cuts are engineered to utilize 98%+ of the fabric bolt. Remnants are re-spun into structural pocket bags and artisanal paper hangtags.</p>
+        </div>
+        <div class="pillar-card">
+          <div class="pillar-icon">03</div>
+          <h3 class="pillar-title">Fair Artisan Guilds</h3>
+          <p class="pillar-desc">Direct partnership with generational master weavers and tailors, guaranteeing 3x fair-living wages, health equity, and generational craft preservation.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+{% schema %}
+{
+  "name": "About Us",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow Text",
+      "default": "The Atelier Story"
+    },
+    {
+      "type": "html",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Conscious Craftsmanship,<br><em>Seasonless Silhouettes.</em>"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Founded on the radical premise that fashion should honor the earth, the artisan, and the wearer with equal devotion."
+    },
+    {
+      "type": "image_picker",
+      "id": "image_1",
+      "label": "Story Image"
+    }
+  ],
+  "presets": [
+    {
+      "name": "About Us"
+    }
+  ]
+}
+{% endschema %}

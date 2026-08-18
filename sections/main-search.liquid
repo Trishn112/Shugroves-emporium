@@ -1,0 +1,75 @@
+{% comment %}
+  Shugroves Emporium - Search Results Section
+{% endcomment %}
+
+<div class="collections-page">
+  <header class="collections-header">
+    <div class="collections-header-inner">
+      <span class="collections-eyebrow">Search Inquiries</span>
+      <h1 class="collections-title">
+        {%- if search.performed -%}
+          Results for "{{ search.terms | escape }}"
+        {%- else -%}
+          Search the Atelier
+        {%- endif -%}
+      </h1>
+      <p class="collections-description">
+        {%- if search.performed -%}
+          Displaying {{ search.results_count }} {{ search.results_count | pluralize: 'creation', 'creations' }} matching your search.
+        {%- else -%}
+          Search by silhouette, natural fiber, or collection name.
+        {%- endif -%}
+      </p>
+
+      <!-- Search Input Bar -->
+      <form action="{{ routes.search_url }}" method="get" role="search" style="max-width:560px; margin: 1.5rem auto 0; position:relative;">
+        <input type="hidden" name="type" value="product">
+        <input 
+          type="search" 
+          name="q" 
+          value="{{ search.terms | escape }}" 
+          placeholder="Search garments, knitwear, bags..." 
+          style="width:100%; padding:0.9rem 3rem 0.9rem 1.4rem; border-radius:30px; border:1px solid var(--border-subtle); background:var(--bg-cream); font-size:0.9rem; color:var(--text-charcoal);"
+        >
+        <button type="submit" style="position:absolute; right:12px; top:50%; transform:translateY(-50%); background:none; border:none; cursor:pointer; color:var(--text-charcoal);">
+          {% render 'icon-search' %}
+        </button>
+      </form>
+    </div>
+  </header>
+
+  <div class="section-container" style="max-width: 1320px; margin: 0 auto; padding: 2rem 2.5rem 6rem;">
+    {%- if search.performed -%}
+      {%- paginate search.results by 16 -%}
+        {%- if search.results.size > 0 -%}
+          <div class="product-grid product-grid-4">
+            {%- for item in search.results -%}
+              {%- if item.object_type == 'product' -%}
+                {% render 'product-card', product: item %}
+              {%- endif -%}
+            {%- endfor -%}
+          </div>
+
+          {%- if paginate.pages > 1 -%}
+            <div class="pagination-wrapper" style="margin-top:4rem; text-align:center;">
+              {{ paginate | default_pagination }}
+            </div>
+          {%- endif -%}
+        {%- else -%}
+          <div class="empty-state-card" style="text-align:center; padding:5rem 2rem; background:var(--bg-cream-tint); border:1px solid var(--border-subtle); border-radius:18px;">
+            <h3 class="empty-state-title" style="font-family:var(--font-serif); font-size:1.8rem; margin-bottom:0.6rem;">No results found</h3>
+            <p class="empty-state-desc" style="color:var(--text-charcoal-muted); max-width:480px; margin:0 auto 1.8rem; font-size:0.9rem;">We could not find any pieces matching "{{ search.terms | escape }}". Try searching for "Linen", "Knit", or "Silk".</p>
+            <a href="{{ routes.all_products_collection_url }}" class="btn-primary" style="display:inline-block; padding:0.8rem 1.8rem; border-radius:24px;">Explore All Collections</a>
+          </div>
+        {%- endif -%}
+      {%- endpaginate -%}
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Search Results",
+  "settings": []
+}
+{% endschema %}

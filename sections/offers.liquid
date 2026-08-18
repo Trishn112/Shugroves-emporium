@@ -1,0 +1,86 @@
+{% comment %}
+  Shugroves Emporium - Seasonal Offers & Promotional Archive Section
+{% endcomment %}
+
+<div class="collections-page" style="padding-top: 2rem;">
+  <!-- Offers Page Editorial Header -->
+  <header class="collections-header">
+    <div class="collections-header-inner">
+      <span class="collections-eyebrow">{{ section.settings.eyebrow | default: "Private Archive & Seasonal Privileges" }}</span>
+      <h1 class="collections-title">{{ section.settings.heading | default: "Seasonal Offers" }}</h1>
+      <p class="collections-description">
+        {{ section.settings.description | default: "Conscious slow-fashion creations and atelier archive silhouettes presented with seasonal privileges. All pieces are crafted in limited quantities with pure natural fibers." }}
+      </p>
+
+      <!-- Category Filter Tabs -->
+      <div class="category-tabs">
+        <a href="{{ routes.all_products_collection_url }}?filter.p.m.custom.sale=1" class="category-tab-btn tab-active">
+          All Privileges
+        </a>
+        {%- for col in collections limit: 5 -%}
+          <a href="{{ col.url }}" class="category-tab-btn">
+            {{ col.title }}
+          </a>
+        {%- endfor -%}
+      </div>
+    </div>
+  </header>
+
+  <div class="section-container" style="max-width: 1320px; margin: 0 auto; padding: 2rem 2.5rem 6rem;">
+    <!-- Product Grid -->
+    {%- assign sale_col = section.settings.sale_collection | default: collections.all -%}
+    
+    <div class="product-grid product-grid-3" id="offersGrid">
+      {%- assign count = 0 -%}
+      {%- for product in sale_col.products -%}
+        {%- if product.compare_at_price > product.price or section.settings.sale_collection != blank -%}
+          {%- assign count = count | plus: 1 -%}
+          {% render 'product-card', product: product %}
+        {%- endif -%}
+      {%- endfor -%}
+
+      {%- if count == 0 -%}
+        <!-- Fallback if no products currently have compare_at_price -->
+        {%- for product in collections.all.products limit: 3 -%}
+          {% render 'product-card', product: product %}
+        {%- endfor -%}
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Seasonal Offers",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Private Archive & Seasonal Privileges"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Seasonal Offers"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Conscious slow-fashion creations and atelier archive silhouettes presented with seasonal privileges. All pieces are crafted in limited quantities with pure natural fibers."
+    },
+    {
+      "type": "collection",
+      "id": "sale_collection",
+      "label": "Offers / Sale Collection (or automatically display on-sale products)"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Seasonal Offers"
+    }
+  ]
+}
+{% endschema %}

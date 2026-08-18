@@ -1,0 +1,77 @@
+{% comment %}
+  Shugroves Emporium - Customer Order Details
+{% endcomment %}
+
+<div class="customer-account-page" style="padding-top: 8.5rem; padding-bottom: 7rem; min-height: 80vh;">
+  <div class="section-container" style="max-width: 960px; margin: 0 auto; padding: 2rem;">
+    <a href="{{ routes.account_url }}" style="font-size:0.85rem; color:var(--text-charcoal-muted); text-decoration:none; margin-bottom:1rem; display:inline-block;">&larr; Back to Client Ledger</a>
+    
+    <header style="border-bottom:1px solid var(--border-subtle); padding-bottom:1.5rem; margin-bottom:2rem;">
+      <h1 class="collections-title" style="font-size:2rem; margin:0 0 0.4rem;">Order {{ order.name }}</h1>
+      <p style="color:var(--text-charcoal-muted); font-size:0.88rem;">Placed on {{ order.created_at | date: "%B %d, %Y at %I:%M %p" }}</p>
+    </header>
+
+    <div style="background:var(--bg-cream-tint); border:1px solid var(--border-subtle); border-radius:14px; padding:1.5rem; margin-bottom:2rem;">
+      <table style="width:100%; border-collapse:collapse; font-size:0.9rem;">
+        <thead>
+          <tr style="border-bottom:1px solid var(--border-subtle); text-align:left;">
+            <th style="padding:0.8rem 0;">Product</th>
+            <th style="padding:0.8rem;">SKU</th>
+            <th style="padding:0.8rem; text-align:center;">Quantity</th>
+            <th style="padding:0.8rem 0; text-align:right;">Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          {%- for line_item in order.line_items -%}
+            <tr style="border-bottom:1px solid var(--border-subtle);">
+              <td style="padding:1rem 0;">
+                <strong>{{ line_item.title }}</strong>
+                {%- if line_item.variant.title != blank -%}
+                  <div style="font-size:0.8rem; color:var(--text-charcoal-muted);">{{ line_item.variant.title }}</div>
+                {%- endif -%}
+              </td>
+              <td style="padding:1rem; color:var(--text-charcoal-muted);">{{ line_item.sku | default: '—' }}</td>
+              <td style="padding:1rem; text-align:center;">{{ line_item.quantity }}</td>
+              <td style="padding:1rem 0; text-align:right; font-weight:600;">{{ line_item.final_line_price | money }}</td>
+            </tr>
+          {%- endfor -%}
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="3" style="padding:0.8rem 0; text-align:right; color:var(--text-charcoal-muted);">Subtotal</td>
+            <td style="padding:0.8rem 0; text-align:right; font-weight:600;">{{ order.line_items_subtotal_price | money }}</td>
+          </tr>
+          <tr>
+            <td colspan="3" style="padding:0.8rem 0; text-align:right; color:var(--text-charcoal-muted);">Shipping ({{ order.shipping_methods.first.title }})</td>
+            <td style="padding:0.8rem 0; text-align:right; font-weight:600;">{{ order.shipping_price | money }}</td>
+          </tr>
+          <tr style="border-top:1px solid var(--border-subtle); font-size:1.1rem;">
+            <td colspan="3" style="padding:1rem 0; text-align:right; font-weight:700;">Total</td>
+            <td style="padding:1rem 0; text-align:right; font-weight:700; color:var(--text-charcoal);">{{ order.total_price | money }}</td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:2rem;">
+      <div style="background:var(--bg-cream-tint); border:1px solid var(--border-subtle); border-radius:14px; padding:1.5rem;">
+        <h4 style="font-size:0.95rem; font-weight:600; margin-bottom:0.6rem;">Delivery Address</h4>
+        <p style="color:var(--text-charcoal-muted); line-height:1.6; font-size:0.88rem;">
+          {{ order.shipping_address.name }}<br>
+          {{ order.shipping_address.address1 }}<br>
+          {{ order.shipping_address.city }}, {{ order.shipping_address.province_code }} {{ order.shipping_address.zip }}<br>
+          {{ order.shipping_address.country }}
+        </p>
+      </div>
+      <div style="background:var(--bg-cream-tint); border:1px solid var(--border-subtle); border-radius:14px; padding:1.5rem;">
+        <h4 style="font-size:0.95rem; font-weight:600; margin-bottom:0.6rem;">Fulfillment & Tracking</h4>
+        <p style="color:var(--text-charcoal-muted); line-height:1.6; font-size:0.88rem;">
+          Status: <strong>{{ order.fulfillment_status_label }}</strong><br>
+          {% if order.fulfillments.first.tracking_number %}
+            Tracking: <strong>{{ order.fulfillments.first.tracking_company }} - {{ order.fulfillments.first.tracking_number }}</strong>
+          {% endif %}
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

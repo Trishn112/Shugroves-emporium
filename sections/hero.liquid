@@ -1,0 +1,231 @@
+{% comment %}
+  Shugroves Emporium - Editorial Hero Section
+{% endcomment %}
+
+<div class="hero-section-wrapper" style="position:relative; width:100%; overflow:hidden;">
+  <div class="section-container hero-container" id="heroSection">
+    
+    <!-- Decorative Dots Texture -->
+    <div class="deco-dots-grid" aria-hidden="true"></div>
+
+    <!-- Left Column: Editorial Headline & Story -->
+    <section class="hero-content">
+      <div class="hero-tag-wrap">
+        <div class="hero-tag-line"></div>
+        <span class="hero-eyebrow">{{ section.settings.eyebrow | default: "Autumn / Winter '26 Collection" }}</span>
+      </div>
+
+      <h1 class="hero-heading">
+        {{ section.settings.heading | default: "Formed by nature,<br><em>tailored for ease.</em>" }}
+      </h1>
+
+      <p class="hero-description">
+        {{ section.settings.description | default: "Thoughtfully designed everyday garments crafted with raw organic linens, rich vegetal dyes, and unstructured silhouettes that move gracefully with you." }}
+      </p>
+
+      <div class="hero-actions">
+        <a href="{{ section.settings.primary_btn_url | default: routes.all_products_collection_url }}" class="btn-primary" id="heroShopBtn">
+          <span>{{ section.settings.primary_btn_text | default: "Shop Collection" }}</span>
+          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </a>
+        <a href="{{ section.settings.secondary_btn_url | default: '/pages/offers' }}" class="btn-secondary" id="heroLookbookBtn">
+          <span>{{ section.settings.secondary_btn_text | default: "Explore Offers" }}</span>
+        </a>
+      </div>
+
+      <!-- Integrated Meta Bar (No Overlapping Badges) -->
+      <div class="hero-meta-badge">
+        <div class="meta-item">
+          <span>Textiles</span>
+          <span>100% Belgian Flax</span>
+        </div>
+        <div class="meta-divider"></div>
+        <div class="meta-item">
+          <span>Dye Process</span>
+          <span>Botanical Extracts</span>
+        </div>
+        <div class="meta-divider"></div>
+        <div class="meta-item">
+          <span>Origin</span>
+          <span>Slow Crafted</span>
+        </div>
+        <div class="meta-stamp-pill">
+          Handcrafted • {{ 'now' | date: '%Y' }}
+        </div>
+      </div>
+    </section>
+
+    <!-- Right Column: Organic Blobs & Layered Editorial Frames -->
+    <section class="hero-visual-stage" aria-label="Fashion Showcase Visuals">
+      
+      <!-- Organic Colored Blobs (Sage Green, Terracotta Pink, Mustard Yellow) -->
+      <div class="organic-blob blob-sage" aria-hidden="true"></div>
+      <div class="organic-blob blob-mustard" aria-hidden="true"></div>
+      <div class="organic-blob blob-terracotta" aria-hidden="true"></div>
+      <div class="blob-ring" aria-hidden="true"></div>
+
+      <!-- Floating Limited Edition Pill -->
+      <div class="floating-card-tag">
+        <div class="dot-indicator"></div>
+        <p>{{ section.settings.floating_tag | default: "Pure Linen & Wool • 18 Limited Pieces" }}</p>
+      </div>
+
+      <!-- Layered Frames (Interactive Editorial Models) -->
+      
+      <!-- Frame 1: Left Model -->
+      {%- assign link_1 = section.settings.frame_link_1 | default: routes.all_products_collection_url -%}
+      <a href="{{ link_1 }}" class="editorial-frame frame-model-left" title="{{ section.settings.frame_label_1 | default: 'Look 01 • Sage Knit' }}">
+        {%- if section.settings.frame_image_1 != blank -%}
+          <img src="{{ section.settings.frame_image_1 | image_url: width: 800 }}" alt="Editorial look 1" loading="eager" width="400" height="550">
+        {%- else -%}
+          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=85" alt="Fashion model wearing Sage Meadow Knit" loading="eager" width="400" height="550">
+        {%- endif -%}
+        <div class="frame-label">{{ section.settings.frame_label_1 | default: "Look 01 • Sage Knit" }}</div>
+      </a>
+
+      <!-- Frame 2: Center-Right Arch Model -->
+      {%- assign link_2 = section.settings.frame_link_2 | default: routes.all_products_collection_url -%}
+      <a href="{{ link_2 }}" class="editorial-frame frame-model-center" title="{{ section.settings.frame_label_2 | default: 'Look 02 • Sienna Coat' }}">
+        {%- if section.settings.frame_image_2 != blank -%}
+          <img src="{{ section.settings.frame_image_2 | image_url: width: 800 }}" alt="Editorial look 2" loading="eager" width="400" height="550">
+        {%- else -%}
+          <img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=800&q=85" alt="Editorial model wearing Sienna Raw Linen Coat" loading="eager" width="400" height="550">
+        {%- endif -%}
+        <div class="frame-label">{{ section.settings.frame_label_2 | default: "Look 02 • Sienna Coat" }}</div>
+      </a>
+
+      <!-- Frame 3: Accent Circular Frame -->
+      {%- assign link_3 = section.settings.frame_link_3 | default: routes.all_products_collection_url -%}
+      <a href="{{ link_3 }}" class="editorial-frame frame-model-accent" title="{{ section.settings.frame_label_3 | default: 'Look 03 • Brass Jewellery' }}">
+        {%- if section.settings.frame_image_3 != blank -%}
+          <img src="{{ section.settings.frame_image_3 | image_url: width: 400 }}" alt="Editorial look 3" loading="eager" width="200" height="200">
+        {%- else -%}
+          <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=600&q=85" alt="Hammered Brass Jewellery Detail" loading="eager" width="200" height="200">
+        {%- endif -%}
+        <div class="frame-label">{{ section.settings.frame_label_3 | default: "Look 03 • Brass Objects" }}</div>
+      </a>
+    </section>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Hero Section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow Text",
+      "default": "Autumn / Winter '26 Collection"
+    },
+    {
+      "type": "html",
+      "id": "heading",
+      "label": "Heading (HTML allowed)",
+      "default": "Formed by nature,<br><em>tailored for ease.</em>"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description Paragraph",
+      "default": "Thoughtfully designed everyday garments crafted with raw organic linens, rich vegetal dyes, and unstructured silhouettes that move gracefully with you."
+    },
+    {
+      "type": "text",
+      "id": "primary_btn_text",
+      "label": "Primary Button Text",
+      "default": "Shop Collection"
+    },
+    {
+      "type": "url",
+      "id": "primary_btn_url",
+      "label": "Primary Button Link"
+    },
+    {
+      "type": "text",
+      "id": "secondary_btn_text",
+      "label": "Secondary Button Text",
+      "default": "Explore Offers"
+    },
+    {
+      "type": "url",
+      "id": "secondary_btn_url",
+      "label": "Secondary Button Link"
+    },
+    {
+      "type": "text",
+      "id": "floating_tag",
+      "label": "Floating Pill Text",
+      "default": "Pure Linen & Wool • 18 Limited Pieces"
+    },
+    {
+      "type": "header",
+      "content": "Editorial Frame 1 (Left Model)"
+    },
+    {
+      "type": "image_picker",
+      "id": "frame_image_1",
+      "label": "Image 1"
+    },
+    {
+      "type": "text",
+      "id": "frame_label_1",
+      "label": "Label 1",
+      "default": "Look 01 • Sage Knit"
+    },
+    {
+      "type": "url",
+      "id": "frame_link_1",
+      "label": "Link 1"
+    },
+    {
+      "type": "header",
+      "content": "Editorial Frame 2 (Center Arch)"
+    },
+    {
+      "type": "image_picker",
+      "id": "frame_image_2",
+      "label": "Image 2"
+    },
+    {
+      "type": "text",
+      "id": "frame_label_2",
+      "label": "Label 2",
+      "default": "Look 02 • Sienna Coat"
+    },
+    {
+      "type": "url",
+      "id": "frame_link_2",
+      "label": "Link 2"
+    },
+    {
+      "type": "header",
+      "content": "Editorial Frame 3 (Accent Circle)"
+    },
+    {
+      "type": "image_picker",
+      "id": "frame_image_3",
+      "label": "Image 3"
+    },
+    {
+      "type": "text",
+      "id": "frame_label_3",
+      "label": "Label 3",
+      "default": "Look 03 • Brass Objects"
+    },
+    {
+      "type": "url",
+      "id": "frame_link_3",
+      "label": "Link 3"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero Section"
+    }
+  ]
+}
+{% endschema %}

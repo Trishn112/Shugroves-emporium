@@ -1,0 +1,89 @@
+{% comment %}
+  Shugroves Emporium - Main Collection Catalog Section
+{% endcomment %}
+
+<div class="collections-page">
+  <!-- Collection Header -->
+  <header class="collections-header">
+    <div class="collections-header-inner">
+      <span class="collections-eyebrow">{{ section.settings.eyebrow | default: "Autumn / Winter '26 Collection" }}</span>
+      <h1 class="collections-title">{{ collection.title | default: "All Creations" }}</h1>
+      <p class="collections-description">
+        {{ collection.description | default: "Garments and objects shaped by raw materiality, conscious slow craftsmanship, and enduring ease." }}
+      </p>
+
+      <!-- Category Navigation Pills -->
+      <div class="category-tabs">
+        <a href="{{ routes.all_products_collection_url }}" class="category-tab-btn {% if collection.handle == 'all' %}tab-active{% endif %}">
+          All Pieces
+        </a>
+        {%- for col in collections -%}
+          {%- unless col.handle == 'all' -%}
+            <a href="{{ col.url }}" class="category-tab-btn {% if collection.handle == col.handle %}tab-active{% endif %}">
+              {{ col.title }}
+            </a>
+          {%- endunless -%}
+        {%- endfor -%}
+      </div>
+    </div>
+  </header>
+
+  <!-- Collection Products Grid & Layout -->
+  <div class="collections-layout section-container" style="max-width: 1320px; margin: 0 auto; padding: 2rem 2.5rem 6rem;">
+    
+    <!-- Action Controls Bar -->
+    <div class="filter-controls-bar" style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 2.5rem; border-bottom:1px solid var(--border-subtle); padding-bottom:1.2rem; flex-wrap:wrap; gap:1rem;">
+      <span class="results-count" style="font-size:0.85rem; color:var(--text-charcoal-muted); letter-spacing:0.04em;">
+        Displaying <strong>{{ collection.products_count | default: collection.products.size }}</strong> creations
+      </span>
+
+      <div class="filter-controls-right" style="display:flex; align-items:center; gap:0.6rem;">
+        <label for="sort-by" style="font-size:0.75rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--text-charcoal-muted); font-weight:600;">Sort By:</label>
+        <select id="sort-by" class="filter-select" onchange="location = this.value;" style="background:var(--bg-cream); border:1px solid var(--border-subtle); border-radius:20px; padding:0.4rem 1rem; font-size:0.8rem; color:var(--text-charcoal); cursor:pointer;">
+          <option value="{{ collection.url }}?sort_by=manual">Featured Curation</option>
+          <option value="{{ collection.url }}?sort_by=best-selling" {% if collection.sort_by == 'best-selling' %}selected{% endif %}>Best Selling</option>
+          <option value="{{ collection.url }}?sort_by=price-ascending" {% if collection.sort_by == 'price-ascending' %}selected{% endif %}>Price: Low to High</option>
+          <option value="{{ collection.url }}?sort_by=price-descending" {% if collection.sort_by == 'price-descending' %}selected{% endif %}>Price: High to Low</option>
+          <option value="{{ collection.url }}?sort_by=created-descending" {% if collection.sort_by == 'created-descending' %}selected{% endif %}>New Arrivals</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Products Grid with Pagination -->
+    {%- paginate collection.products by 16 -%}
+      {%- if collection.products.size > 0 -%}
+        <div class="product-grid product-grid-4">
+          {%- for product in collection.products -%}
+            {% render 'product-card', product: product %}
+          {%- endfor -%}
+        </div>
+
+        {%- if paginate.pages > 1 -%}
+          <div class="pagination-wrapper" style="margin-top:4rem; text-align:center;">
+            {{ paginate | default_pagination }}
+          </div>
+        {%- endif -%}
+      {%- else -%}
+        <div class="empty-state-card" style="text-align:center; padding:5rem 2rem; background:var(--bg-cream-tint); border:1px solid var(--border-subtle); border-radius:18px;">
+          <h3 class="empty-state-title" style="font-family:var(--font-serif); font-size:1.8rem; margin-bottom:0.6rem;">No creations found</h3>
+          <p class="empty-state-desc" style="color:var(--text-charcoal-muted); max-width:480px; margin:0 auto 1.8rem; font-size:0.9rem;">Check back for seasonal releases or explore our core archive.</p>
+          <a href="{{ routes.all_products_collection_url }}" class="btn-primary" style="display:inline-block; padding:0.8rem 1.8rem; border-radius:24px;">Explore All Pieces</a>
+        </div>
+      {%- endif -%}
+    {%- endpaginate -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Collection Catalog",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow Text",
+      "default": "Autumn / Winter '26 Collection"
+    }
+  ]
+}
+{% endschema %}

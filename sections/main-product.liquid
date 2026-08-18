@@ -1,0 +1,184 @@
+{% comment %}
+  Shugroves Emporium - Master Product Detail Page Section
+{% endcomment %}
+
+<div class="product-page-wrapper" data-section-id="{{ section.id }}" style="padding-top: 8.5rem; min-height: 100vh;">
+  <div class="section-container product-page-container">
+    
+    <!-- Back to Collections Breadcrumb -->
+    <nav class="product-breadcrumb" aria-label="Breadcrumb">
+      <a href="{{ routes.collections_url }}">&larr; Collections</a>
+      <span class="breadcrumb-sep">/</span>
+      {%- if product.collections.first -%}
+        <a href="{{ product.collections.first.url }}">{{ product.collections.first.title }}</a>
+        <span class="breadcrumb-sep">/</span>
+      {%- endif -%}
+      <span class="breadcrumb-current">{{ product.title }}</span>
+    </nav>
+
+    <div class="product-pdp-grid">
+      <!-- 1. Left: Product Media Gallery -->
+      <div class="product-gallery-col">
+        <div class="product-main-media" id="productMainMedia">
+          {%- assign featured_media = product.selected_or_first_available_variant.featured_media | default: product.featured_media -%}
+          <img 
+            src="{{ featured_media | image_url: width: 1200 }}" 
+            alt="{{ featured_media.alt | default: product.title | escape }}" 
+            id="mainProductImage"
+            class="main-pdp-img"
+            loading="eager"
+          >
+        </div>
+
+        {%- if product.media.size > 1 -%}
+          <div class="product-thumbnails-strip">
+            {%- for media in product.media -%}
+              <button 
+                type="button" 
+                class="gallery-thumb-btn {% if forloop.first %}thumb-active{% endif %}" 
+                data-full-src="{{ media | image_url: width: 1200 }}" 
+                data-media-id="{{ media.id }}"
+                aria-label="View image {{ forloop.index }}"
+              >
+                <img src="{{ media | image_url: width: 200 }}" alt="{{ media.alt | default: product.title | escape }}" width="80" height="100" loading="lazy">
+              </button>
+            {%- endfor -%}
+          </div>
+        {%- endif -%}
+      </div>
+
+      <!-- 2. Right: Product Details & Variant Purchasing Form -->
+      <div class="product-details-col">
+        {%- assign on_sale = false -%}
+        {%- if product.compare_at_price > product.price -%}
+          {%- assign on_sale = true -%}
+        {%- endif -%}
+        {%- assign current_variant = product.selected_or_first_available_variant -%}
+
+        <div class="product-meta-header">
+          <span class="product-eyebrow-material">{{ product.metafields.custom.material | default: product.type | default: '100% Pure Botanical Fiber' }}</span>
+          <h1 class="product-pdp-title">{{ product.title }}</h1>
+
+          <div class="product-pdp-price-row">
+            <span class="pdp-price-current" id="pdpPrice">{{ current_variant.price | money }}</span>
+            <span class="pdp-price-original" id="pdpComparePrice" {% unless on_sale %}style="display:none;"{% endunless %}>
+              {{ current_variant.compare_at_price | money }}
+            </span>
+            {%- if on_sale -%}
+              <span class="badge-tag badge-sale pdp-sale-badge">Special Privilege</span>
+            {%- endif -%}
+          </div>
+        </div>
+
+        <div class="product-short-desc">
+          {{ product.description }}
+        </div>
+
+        <!-- Real Shopify Product Form -->
+        {%- form 'product', product, id: 'productForm', class: 'product-purchasing-form' -%}
+          <input type="hidden" name="id" id="selectedVariantId" value="{{ current_variant.id }}">
+
+          <!-- Variant Options (Size & Color) -->
+          {%- unless product.has_only_default_variant -%}
+            <div class="product-variants-wrapper">
+              {%- for option in product.options_with_values -%}
+                <div class="variant-option-group" data-option-index="{{ forloop.index0 }}">
+                  <div class="option-label-row">
+                    <span class="option-title">{{ option.name }}:</span>
+                    <strong class="option-selected-val" id="selected-val-{{ option.name | handleize }}">{{ option.selected_value }}</strong>
+                  </div>
+
+                  <div class="option-values-row">
+                    {%- for value in option.values -%}
+                      <button 
+                        type="button" 
+                        class="pdp-variant-pill {% if option.selected_value == value %}pill-active{% endif %}" 
+                        data-option-name="{{ option.name }}" 
+                        data-option-value="{{ value | escape }}"
+                      >
+                        {{ value }}
+                      </button>
+                    {%- endfor -%}
+                  </div>
+                </div>
+              {%- endfor -%}
+            </div>
+          {%- endunless -%}
+
+          <!-- Quantity Selector & Actions -->
+          <div class="product-actions-row">
+            <div class="pdp-qty-wrapper">
+              <label for="Quantity" class="visually-hidden">Quantity</label>
+              <button type="button" class="pdp-qty-btn" id="pdpQtyDec">&minus;</button>
+              <input type="number" name="quantity" id="Quantity" value="1" min="1" class="pdp-qty-input">
+              <button type="button" class="pdp-qty-btn" id="pdpQtyInc">&#43;</button>
+            </div>
+
+            <!-- Add to Cart AJAX Button -->
+            <button 
+              type="submit" 
+              name="add" 
+              class="btn-primary pdp-add-cart-btn" 
+              id="addToCartBtn"
+              {% unless current_variant.available %}disabled{% endunless %}
+            >
+              <span>{% if current_variant.available %}Add to Shopping Bag &rarr;{% else %}Sold Out{% endif %}</span>
+            </button>
+          </div>
+
+          <!-- Dynamic Checkout Button (Buy It Now) -->
+          {%- if current_variant.available -%}
+            <div class="pdp-dynamic-checkout-wrap">
+              {{ form | payment_button }}
+            </div>
+          {%- endif -%}
+        {%- endform -%}
+
+        <!-- Atelier Accordion Specifications -->
+        <div class="product-accordion-wrapper">
+          <details class="pdp-accordion-item" open>
+            <summary class="pdp-accordion-title">
+              <span>Materials & Sustainable Craft</span>
+              <span class="accordion-chevron">&#43;</span>
+            </summary>
+            <div class="pdp-accordion-body">
+              <p>Crafted from 100% natural, unblended fibers. Free of synthetic plastics, chemical pesticides, and heavy-metal mordants. Designed to breathe with the body and age with refined patina.</p>
+            </div>
+          </details>
+
+          <details class="pdp-accordion-item">
+            <summary class="pdp-accordion-title">
+              <span>Care & Longevity Guide</span>
+              <span class="accordion-chevron">&#43;</span>
+            </summary>
+            <div class="pdp-accordion-body">
+              <p>Hand wash in cool water with gentle pH-neutral plant soap, or dry clean. Do not tumble dry. Reshape while damp and dry flat in shade. Iron damp on medium heat.</p>
+            </div>
+          </details>
+
+          <details class="pdp-accordion-item">
+            <summary class="pdp-accordion-title">
+              <span>Complimentary Shipping & Returns</span>
+              <span class="accordion-chevron">&#43;</span>
+            </summary>
+            <div class="pdp-accordion-body">
+              <p>Complimentary express insured courier delivery across India. Atelier orders arrive within 3–5 business days in plastic-free recycled packaging. We offer 30-day effortless returns and exchanges on unworn garments.</p>
+            </div>
+          </details>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Variant Data for JS Switching -->
+<script type="application/json" id="productVariantsJson">
+  {{ product.variants | json }}
+</script>
+
+{% schema %}
+{
+  "name": "Product Page",
+  "settings": []
+}
+{% endschema %}

@@ -1,0 +1,46 @@
+{% comment %}
+  Shugroves Emporium - Customer Registration
+{% endcomment %}
+
+<div class="customer-account-page" style="padding-top: 9rem; padding-bottom: 7rem; min-height: 80vh;">
+  <div class="section-container" style="max-width: 480px; margin: 0 auto; padding: 2.5rem; background: var(--bg-cream-tint); border: 1px solid var(--border-subtle); border-radius: 18px;">
+    <span class="collections-eyebrow" style="text-align:center; display:block;">Client Privileges</span>
+    <h1 class="collections-title" style="text-align:center; font-size: 2.4rem; margin-bottom: 2rem;">Create Account</h1>
+
+    {%- form 'create_customer', class: 'customer-auth-form' -%}
+      {%- if form.errors -%}
+        <div style="background:#FDE8E8; color:#9B1C1C; padding:0.9rem; border-radius:8px; margin-bottom:1.2rem; font-size:0.85rem;">
+          {{ form.errors | default_errors }}
+        </div>
+      {%- endif -%}
+
+      <div class="form-group" style="margin-bottom: 1.2rem;">
+        <label for="FirstName" class="form-label" style="font-size:0.8rem; font-weight:600; text-transform:uppercase; letter-spacing:0.08em; display:block; margin-bottom:0.4rem;">First Name</label>
+        <input type="text" name="customer[first_name]" id="FirstName" class="form-input" style="width:100%; padding:0.8rem; border-radius:8px; border:1px solid var(--border-subtle); background:var(--bg-cream);" placeholder="Eleanor" required>
+      </div>
+
+      <div class="form-group" style="margin-bottom: 1.2rem;">
+        <label for="LastName" class="form-label" style="font-size:0.8rem; font-weight:600; text-transform:uppercase; letter-spacing:0.08em; display:block; margin-bottom:0.4rem;">Last Name</label>
+        <input type="text" name="customer[last_name]" id="LastName" class="form-input" style="width:100%; padding:0.8rem; border-radius:8px; border:1px solid var(--border-subtle); background:var(--bg-cream);" placeholder="Vance" required>
+      </div>
+
+      <div class="form-group" style="margin-bottom: 1.2rem;">
+        <label for="RegisterEmail" class="form-label" style="font-size:0.8rem; font-weight:600; text-transform:uppercase; letter-spacing:0.08em; display:block; margin-bottom:0.4rem;">Email Address</label>
+        <input type="email" name="customer[email]" id="RegisterEmail" class="form-input" style="width:100%; padding:0.8rem; border-radius:8px; border:1px solid var(--border-subtle); background:var(--bg-cream);" placeholder="eleanor@atelier.com" required>
+      </div>
+
+      <div class="form-group" style="margin-bottom: 1.5rem;">
+        <label for="RegisterPassword" class="form-label" style="font-size:0.8rem; font-weight:600; text-transform:uppercase; letter-spacing:0.08em; display:block; margin-bottom:0.4rem;">Password</label>
+        <input type="password" name="customer[password]" id="RegisterPassword" class="form-input" style="width:100%; padding:0.8rem; border-radius:8px; border:1px solid var(--border-subtle); background:var(--bg-cream);" placeholder="••••••••" required>
+      </div>
+
+      <button type="submit" class="btn-primary" style="width:100%; justify-content:center; padding:0.9rem; margin-bottom:1.2rem;">
+        <span>Join Shugroves Atelier &rarr;</span>
+      </button>
+
+      <div style="text-align:center; font-size:0.85rem; color:var(--text-charcoal-muted);">
+        <p>Already have an account? <a href="{{ routes.account_login_url }}" style="color:var(--accent-terracotta-dark); font-weight:600;">Sign In</a></p>
+      </div>
+    {%- endform -%}
+  </div>
+</div>

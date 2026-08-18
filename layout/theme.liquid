@@ -29,39 +29,36 @@
 
   {{ content_for_header }}
 
-  <!-- Stylesheet -->
+  <!-- Theme Stylesheet -->
   {{ 'style.css' | asset_url | stylesheet_tag }}
 </head>
 
 <body class="template-{{ template.name }}">
-  <a class="skip-to-content-link visually-hidden" href="#appMain" style="position:absolute;left:-9999px;">
+  <a class="skip-to-content-link visually-hidden" href="#MainContent" style="position:absolute;left:-9999px;">
     Skip to content
   </a>
 
-  <!-- Persistent Dynamic Header -->
-  <header class="site-header" id="siteHeader"></header>
+  <!-- Master Header Section -->
+  {% section 'header' %}
 
-  <!-- Interactive Search Overlay -->
-  <div class="search-overlay" id="searchOverlay"></div>
-
-  <!-- Interactive Sliding Shopping Bag Drawer -->
-  <div class="cart-drawer" id="cartDrawer"></div>
-
-  <!-- Interactive Firebase Authentication Modal -->
-  <div class="auth-modal" id="authModal"></div>
-
-  <!-- Main Dynamic View Container -->
-  <main id="appMain" role="main">
+  <!-- Main Content Stage -->
+  <main id="MainContent" role="main" tabindex="-1">
     {{ content_for_layout }}
   </main>
 
-  <!-- Persistent Dynamic Footer -->
-  <footer class="site-footer" id="siteFooter"></footer>
+  <!-- Master Footer Section -->
+  {% section 'footer' %}
 
-  <!-- Toast Notification Container -->
-  <div class="toast-container" id="toastContainer"></div>
+  <!-- Interactive Slide-Over Shopping Bag Drawer -->
+  {% render 'cart-drawer' %}
 
-  <!-- Theme Client Modules & Storefront Engine -->
-  <script type="module" src="{{ 'script.js' | asset_url }}"></script>
+  <!-- Fullscreen Predictive Search Overlay -->
+  {% render 'search-modal' %}
+
+  <!-- Notification Toast Center -->
+  {% render 'toast' %}
+
+  <!-- Client-side Vanilla JS Theme Engine -->
+  <script src="{{ 'theme.js' | asset_url }}" defer></script>
 </body>
 </html>

@@ -1,0 +1,124 @@
+{% comment %}
+  Shugroves Emporium - Luxury Product Card Snippet
+  Accepts:
+  - product: {Object} Shopify Product object
+  - show_quick_add: {Boolean} Show slide-up size picker (default: true)
+{% endcomment %}
+
+{%- liquid
+  assign primary_image = product.featured_media | default: product.featured_image
+  assign secondary_image = product.media[1] | default: product.images[1] | default: primary_image
+  assign on_sale = false
+  if product.compare_at_price > product.price
+    assign on_sale = true
+  endif
+  assign material_tag = product.metafields.custom.material | default: product.type | default: '100% Pure Natural Fiber'
+-%}
+
+<article class="product-card" data-product-id="{{ product.id }}" data-product-handle="{{ product.handle }}">
+  <!-- Card Media Stage -->
+  <div class="product-card-media">
+    <a href="{{ product.url }}" class="product-card-img-link" aria-label="{{ product.title | escape }}">
+      {%- if primary_image != blank -%}
+        <img 
+          src="{{ primary_image | image_url: width: 600 }}" 
+          alt="{{ primary_image.alt | default: product.title | escape }}" 
+          class="product-img product-img-primary" 
+          loading="lazy"
+          width="600"
+          height="800"
+        >
+      {%- else -%}
+        {{ 'product-1' | placeholder_svg_tag: 'product-img product-img-primary placeholder-svg' }}
+      {%- endif -%}
+
+      {%- if secondary_image != blank and secondary_image != primary_image -%}
+        <img 
+          src="{{ secondary_image | image_url: width: 600 }}" 
+          alt="{{ secondary_image.alt | default: product.title | escape }}" 
+          class="product-img product-img-secondary" 
+          loading="lazy"
+          width="600"
+          height="800"
+        >
+      {%- endif -%}
+    </a>
+
+    <!-- Badges -->
+    <div class="product-badges">
+      {%- if product.tags contains 'new' or product.tags contains 'New Arrival' -%}
+        <span class="badge-tag badge-new">New Arrival</span>
+      {%- endif -%}
+      {%- if on_sale -%}
+        <span class="badge-tag badge-sale">Special Price</span>
+      {%- endif -%}
+      {%- unless product.available -%}
+        <span class="badge-tag badge-sold">Sold Out</span>
+      {%- endunless -%}
+    </div>
+
+    <!-- Wishlist Button -->
+    <button 
+      type="button"
+      class="product-wishlist-btn" 
+      data-wishlist-id="{{ product.id }}"
+      data-product-handle="{{ product.handle }}"
+      aria-label="Add to Wishlist"
+      title="Save to Wishlist"
+    >
+      {% render 'icon-wishlist' %}
+    </button>
+
+    <!-- Quick Add Drawer / Bar -->
+    {%- if product.available -%}
+      <div class="product-quick-add">
+        {%- if product.has_only_default_variant -%}
+          <button 
+            type="button" 
+            class="quick-add-trigger-btn btn-direct-add" 
+            data-variant-id="{{ product.selected_or_first_available_variant.id }}"
+          >
+            <span>+ Quick Add</span>
+          </button>
+        {%- else -%}
+          <button type="button" class="quick-add-trigger-btn" data-toggle-picker="quickSize-{{ product.id }}">
+            <span>+ Quick Add</span>
+          </button>
+          <div class="quick-size-picker" id="quickSize-{{ product.id }}">
+            <span class="quick-size-label">Select Size:</span>
+            <div class="quick-size-list">
+              {%- for variant in product.variants -%}
+                <button 
+                  type="button" 
+                  class="quick-size-btn {% unless variant.available %}size-disabled{% endunless %}" 
+                  data-variant-id="{{ variant.id }}"
+                  {% unless variant.available %}disabled title="Out of stock"{% endunless %}
+                >
+                  {{ variant.title | escape }}
+                </button>
+              {%- endfor -%}
+            </div>
+          </div>
+        {%- endif -%}
+      </div>
+    {%- else -%}
+      <div class="product-soldout-bar">
+        <span>Sold Out</span>
+      </div>
+    {%- endif -%}
+  </div>
+
+  <!-- Card Details Body -->
+  <div class="product-card-body">
+    <span class="product-card-material">{{ material_tag | escape }}</span>
+    <h3 class="product-card-title">
+      <a href="{{ product.url }}">{{ product.title | escape }}</a>
+    </h3>
+    <div class="product-card-price-row">
+      <span class="product-price-current">{{ product.price | money }}</span>
+      {%- if on_sale -%}
+        <span class="product-price-original">{{ product.compare_at_price | money }}</span>
+      {%- endif -%}
+    </div>
+  </div>
+</article>

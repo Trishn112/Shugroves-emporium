@@ -1,0 +1,116 @@
+{% comment %}
+  Shugroves Emporium - Luxury Shopping Bag Slide-Over Drawer
+{% endcomment %}
+
+<div class="cart-drawer-backdrop" id="cartDrawerBackdrop"></div>
+
+<div class="cart-drawer-panel" id="cartDrawerPanel">
+  <!-- Drawer Header -->
+  <div class="cart-drawer-header">
+    <div class="cart-drawer-title-wrap">
+      <h3 class="cart-drawer-title">Shopping Bag</h3>
+      <span class="cart-drawer-count" id="drawerItemCount">({{ cart.item_count }} {{ cart.item_count | pluralize: 'piece', 'pieces' }})</span>
+    </div>
+    <button type="button" class="cart-drawer-close" id="cartDrawerClose" aria-label="Close Shopping Bag">
+      {% render 'icon-close' %}
+    </button>
+  </div>
+
+  <!-- Free Shipping Progress Bar -->
+  <div class="cart-shipping-bar" id="cartShippingBar">
+    {%- assign threshold_cents = settings.free_shipping_threshold | default: 5000 | times: 100 -%}
+    {%- assign remaining_cents = threshold_cents | minus: cart.total_price -%}
+    <div class="shipping-bar-text" id="shippingBarText">
+      {%- if cart.total_price >= threshold_cents and cart.item_count > 0 -%}
+        <span>Complimentary Express Shipping Unlocked</span>
+      {%- elsif cart.item_count > 0 -%}
+        <span>Add <strong>{{ remaining_cents | money }}</strong> for Complimentary Shipping</span>
+      {%- else -%}
+        <span>Complimentary Shipping on orders over {{ threshold_cents | money }}</span>
+      {%- endif -%}
+    </div>
+    <div class="shipping-progress-track">
+      {%- assign progress_pct = cart.total_price | times: 100.0 | divided_by: threshold_cents | at_most: 100 -%}
+      <div class="shipping-progress-fill" id="shippingProgressFill" style="width: {{ progress_pct }}%;"></div>
+    </div>
+  </div>
+
+  <!-- Items List Container -->
+  <div class="cart-items-scroll" id="cartDrawerItemsScroll">
+    <div class="cart-items-list" id="drawerItemsList" {% if cart.item_count == 0 %}style="display:none;"{% endif %}>
+      {%- for item in cart.items -%}
+        <div class="cart-item-row" data-line-item-key="{{ item.key }}" data-line-item-index="{{ forloop.index }}">
+          <a href="{{ item.url }}" class="cart-item-img-wrap">
+            {%- if item.image -%}
+              <img src="{{ item.image | image_url: width: 200 }}" alt="{{ item.title | escape }}" width="80" height="100" loading="lazy">
+            {%- endif -%}
+          </a>
+
+          <div class="cart-item-details">
+            <div class="cart-item-top">
+              <h4 class="cart-item-name">
+                <a href="{{ item.url }}">{{ item.product.title | escape }}</a>
+              </h4>
+              <button type="button" class="cart-item-remove-btn" data-key="{{ item.key }}" aria-label="Remove item">&times;</button>
+            </div>
+
+            {%- unless item.product.has_only_default_variant -%}
+              <div class="cart-item-variant-pill">
+                <span>{{ item.variant.title | escape }}</span>
+              </div>
+            {%- endunless -%}
+
+            <div class="cart-item-bottom">
+              <!-- Quantity Controller -->
+              <div class="cart-qty-controller">
+                <button type="button" class="cart-qty-btn cart-qty-dec" data-key="{{ item.key }}" data-current-qty="{{ item.quantity }}">&minus;</button>
+                <span class="cart-qty-num">{{ item.quantity }}</span>
+                <button type="button" class="cart-qty-btn cart-qty-inc" data-key="{{ item.key }}" data-current-qty="{{ item.quantity }}">&#43;</button>
+              </div>
+
+              <div class="cart-item-price-col">
+                <span class="cart-item-price">{{ item.final_line_price | money }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      {%- endfor -%}
+    </div>
+
+    <!-- Empty State -->
+    <div class="cart-empty-state" id="drawerEmptyState" {% if cart.item_count > 0 %}style="display:none;"{% endif %}>
+      <div class="cart-empty-icon">
+        {% render 'icon-cart' %}
+      </div>
+      <h4 class="cart-empty-title">Your shopping bag is empty</h4>
+      <p class="cart-empty-desc">Discover our seasonless linen tailoring, artisanal knitwear, and conscious leather goods.</p>
+      <a href="{{ routes.all_products_collection_url | default: '/collections/all' }}" class="btn-primary cart-empty-btn">Explore Collections</a>
+    </div>
+  </div>
+
+  <!-- Drawer Footer (Checkout Gateway) -->
+  <div class="cart-drawer-footer" id="cartDrawerFooter" {% if cart.item_count == 0 %}style="display:none;"{% endif %}>
+    <div class="cart-summary-breakdown">
+      <div class="summary-row">
+        <span>Subtotal</span>
+        <span id="drawerSubtotal">{{ cart.total_price | money }}</span>
+      </div>
+      <div class="summary-row">
+        <span>Shipping</span>
+        <span id="drawerShippingStatus">
+          {%- if cart.total_price >= threshold_cents -%}Complimentary{%- else -%}Calculated at Checkout{%- endif -%}
+        </span>
+      </div>
+      <div class="summary-row summary-total-row">
+        <span>Estimated Total</span>
+        <span id="drawerTotal">{{ cart.total_price | money }}</span>
+      </div>
+    </div>
+
+    <form action="{{ routes.cart_url }}" method="post" id="cartDrawerForm">
+      <button type="submit" name="checkout" class="btn-primary cart-checkout-btn" id="drawerCheckoutBtn">
+        <span>Proceed to Checkout &rarr;</span>
+      </button>
+    </form>
+  </div>
+</div>

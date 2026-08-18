@@ -1,0 +1,14 @@
+{
+  "sections": {
+    "offers": {
+      "type": "offers",
+      "settings": {
+        "eyebrow": "Private Archive & Seasonal Privileges",
+        "heading": "Seasonal Offers"
+      }
+    }
+  },
+  "order": [
+    "offers"
+  ]
+}

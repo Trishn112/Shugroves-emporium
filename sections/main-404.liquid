@@ -1,0 +1,23 @@
+{% comment %}
+  Shugroves Emporium - 404 Not Found Page Section
+{% endcomment %}
+
+<div class="page-404-wrapper" style="padding-top: 10rem; padding-bottom: 8rem; text-align: center;">
+  <div class="section-container" style="max-width: 600px; margin: 0 auto; padding: 0 1.5rem;">
+    <span class="collections-eyebrow">404 &bull; Page Not Found</span>
+    <h1 class="collections-title" style="margin-bottom: 1rem;">This Silhouette Has Shifted</h1>
+    <p style="color: var(--text-charcoal-muted); line-height: 1.7; margin-bottom: 2rem;">
+      The page you were looking for no longer resides in our public archive. Explore our latest seasonal creations or return to the atelier homepage.
+    </p>
+    <a href="{{ routes.root_url }}" class="btn-primary" style="display: inline-block; padding: 0.85rem 2rem; border-radius: 24px;">
+      <span>Return to Homepage &rarr;</span>
+    </a>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "404 Page",
+  "settings": []
+}
+{% endschema %}

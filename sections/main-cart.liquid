@@ -1,0 +1,71 @@
+{% comment %}
+  Shugroves Emporium - Master Cart Page Section
+{% endcomment %}
+
+<div class="cart-page-wrapper" style="padding-top: 8.5rem; min-height: 80vh;">
+  <div class="section-container" style="max-width: 1000px; margin: 0 auto; padding: 2rem 2rem 6rem;">
+    <header style="text-align:center; margin-bottom: 3rem;">
+      <span class="collections-eyebrow">Your Selection</span>
+      <h1 class="collections-title">Shopping Bag</h1>
+      <p style="color:var(--text-charcoal-muted); font-size:0.95rem;">
+        {% if cart.item_count > 0 %}Review your bespoke pieces before proceeding to secure checkout.{% else %}Your shopping bag is currently empty.{% endif %}
+      </p>
+    </header>
+
+    {%- if cart.item_count > 0 -%}
+      <form action="{{ routes.cart_url }}" method="post" id="cartPageForm">
+        <div class="cart-page-items-list" style="background:var(--bg-cream-tint); border:1px solid var(--border-subtle); border-radius:16px; padding:1.5rem; margin-bottom:2rem;">
+          {%- for item in cart.items -%}
+            <div class="cart-item-row" style="display:grid; grid-template-columns: 90px 1fr auto; gap:1.5rem; padding: 1.2rem 0; border-bottom:1px solid var(--border-subtle); align-items:center;">
+              <a href="{{ item.url }}" style="border-radius:8px; overflow:hidden; display:block; aspect-ratio:3/4;">
+                <img src="{{ item.image | image_url: width: 240 }}" alt="{{ item.title | escape }}" style="width:100%; height:100%; object-fit:cover;" loading="lazy">
+              </a>
+              <div>
+                <h3 style="font-family:var(--font-serif); font-size:1.2rem; margin-bottom:0.3rem;"><a href="{{ item.url }}" style="text-decoration:none; color:inherit;">{{ item.product.title }}</a></h3>
+                {%- unless item.product.has_only_default_variant -%}
+                  <span style="font-size:0.75rem; color:var(--text-charcoal-muted); background:var(--bg-cream); padding:0.2rem 0.6rem; border-radius:12px; border:1px solid var(--border-subtle); display:inline-block; margin-bottom:0.5rem;">{{ item.variant.title }}</span>
+                {%- endunless -%}
+                <div style="font-size:0.95rem; font-weight:600; color:var(--text-charcoal);">{{ item.final_price | money }}</div>
+              </div>
+              <div style="text-align:right;">
+                <input type="number" name="updates[]" value="{{ item.quantity }}" min="0" style="width:60px; padding:0.4rem; border-radius:6px; border:1px solid var(--border-subtle); text-align:center; margin-bottom:0.5rem; background:var(--bg-cream);">
+                <div>
+                  <a href="{{ routes.cart_change_url }}?line={{ forloop.index }}&quantity=0" style="font-size:0.75rem; color:var(--accent-terracotta-dark); text-decoration:none;">Remove</a>
+                </div>
+              </div>
+            </div>
+          {%- endfor -%}
+        </div>
+
+        <!-- Checkout Summary -->
+        <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:2rem;">
+          <div style="max-width:400px;">
+            <label for="CartSpecialInstructions" style="font-size:0.8rem; font-weight:600; text-transform:uppercase; letter-spacing:0.08em; display:block; margin-bottom:0.4rem;">Special Atelier Delivery Instructions</label>
+            <textarea name="note" id="CartSpecialInstructions" rows="3" style="width:100%; background:var(--bg-cream); border:1px solid var(--border-subtle); border-radius:8px; padding:0.8rem; font-size:0.85rem;" placeholder="e.g. Ring doorbell, gift wrapping request...">{{ cart.note }}</textarea>
+          </div>
+
+          <div style="min-width:280px; text-align:right;">
+            <div style="font-size:0.85rem; color:var(--text-charcoal-muted); margin-bottom:0.3rem;">Subtotal</div>
+            <div style="font-size:1.8rem; font-weight:700; color:var(--text-charcoal); margin-bottom:1.5rem;">{{ cart.total_price | money }}</div>
+            <button type="submit" name="checkout" class="btn-primary" style="width:100%; justify-content:center; padding:1rem 2rem;">
+              <span>Proceed to Checkout &rarr;</span>
+            </button>
+          </div>
+        </div>
+      </form>
+    {%- else -%}
+      <div style="text-align:center; padding:5rem 2rem; background:var(--bg-cream-tint); border-radius:18px; border:1px solid var(--border-subtle);">
+        <h3 style="font-family:var(--font-serif); font-size:1.8rem; margin-bottom:0.6rem;">Your bag is empty</h3>
+        <p style="color:var(--text-charcoal-muted); max-width:480px; margin:0 auto 1.8rem;">Explore our conscious slow-fashion collections.</p>
+        <a href="{{ routes.all_products_collection_url }}" class="btn-primary" style="display:inline-block; padding:0.8rem 1.8rem; border-radius:24px;">Explore Collections</a>
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Cart Page",
+  "settings": []
+}
+{% endschema %}

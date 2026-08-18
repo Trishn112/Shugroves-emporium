@@ -1,0 +1,50 @@
+{% comment %}
+  Shugroves Emporium - All Collections Catalog Section
+{% endcomment %}
+
+<div class="collections-page">
+  <header class="collections-header">
+    <div class="collections-header-inner">
+      <span class="collections-eyebrow">Atelier Taxonomy</span>
+      <h1 class="collections-title">All Collections</h1>
+      <p class="collections-description">
+        Curated edits shaped by fiber, silhouette, and seasonal craftsmanship.
+      </p>
+    </div>
+  </header>
+
+  <div class="section-container" style="max-width: 1320px; margin: 0 auto; padding: 2rem 2.5rem 6rem;">
+    <div class="product-grid product-grid-3">
+      {%- for collection in collections -%}
+        {%- unless collection.handle == 'frontpage' -%}
+          <div class="collection-overview-card" style="border-radius:14px; overflow:hidden; background:var(--bg-cream-alt); border:1px solid var(--border-subtle);">
+            <a href="{{ collection.url }}" style="text-decoration:none; color:inherit; display:block;">
+              <div style="aspect-ratio: 4/3; overflow:hidden; position:relative;">
+                {%- if collection.image -%}
+                  <img src="{{ collection.image | image_url: width: 600 }}" alt="{{ collection.title | escape }}" style="width:100%; height:100%; object-fit:cover; transition:transform 0.5s ease;" loading="lazy">
+                {%- elsif collection.products.first.featured_image -%}
+                  <img src="{{ collection.products.first.featured_image | image_url: width: 600 }}" alt="{{ collection.title | escape }}" style="width:100%; height:100%; object-fit:cover; transition:transform 0.5s ease;" loading="lazy">
+                {%- else -%}
+                  {{ 'collection-1' | placeholder_svg_tag }}
+                {%- endif -%}
+              </div>
+              <div style="padding:1.4rem; text-align:center;">
+                <h3 style="font-family:var(--font-serif); font-size:1.4rem; margin-bottom:0.4rem;">{{ collection.title }}</h3>
+                <span style="font-size:0.75rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--accent-terracotta-dark); font-weight:600;">
+                  {{ collection.products_count }} {{ collection.products_count | pluralize: 'Piece', 'Pieces' }} &rarr;
+                </span>
+              </div>
+            </a>
+          </div>
+        {%- endunless -%}
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "All Collections List",
+  "settings": []
+}
+{% endschema %}
