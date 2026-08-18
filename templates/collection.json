@@ -1,8 +1,10 @@
 {
   "sections": {
     "main": {
-      "type": "main-spa",
-      "settings": {}
+      "type": "main-collection",
+      "settings": {
+        "eyebrow": "Autumn / Winter '26 Collection"
+      }
     }
   },
   "order": [

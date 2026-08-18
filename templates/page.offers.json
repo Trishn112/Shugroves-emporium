@@ -1,11 +1,14 @@
 {
   "sections": {
-    "main": {
-      "type": "main-spa",
-      "settings": {}
+    "offers": {
+      "type": "offers",
+      "settings": {
+        "eyebrow": "Private Archive & Seasonal Privileges",
+        "heading": "Seasonal Offers"
+      }
     }
   },
   "order": [
-    "main"
+    "offers"
   ]
 }

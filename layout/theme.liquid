@@ -17,7 +17,7 @@
 
   {{ content_for_header }}
 
-  <!-- External Stylesheet -->
+  <!-- Master Stylesheet -->
   {{ 'style.css' | asset_url | stylesheet_tag }}
 </head>
 <body>
@@ -25,36 +25,36 @@
   <!-- Subtle Tactile Texture Overlay -->
   <div class="noise-overlay" aria-hidden="true"></div>
 
-  <!-- Persistent / Dynamic Site Header (Mounted via JS) -->
-  <header class="site-header" id="siteHeader"></header>
+  <!-- Master Header Section -->
+  {% section 'header' %}
 
-  <!-- Dynamic Application Main Container -->
-  <main id="appMain">
+  <!-- Main Content Container -->
+  <main id="appMain" role="main">
     {{ content_for_layout }}
   </main>
 
+  <!-- Master Footer Section -->
+  {% section 'footer' %}
+
   <!-- Global Slide-Over Shopping Bag Drawer -->
-  <div class="cart-drawer" id="cartDrawer"></div>
+  {% render 'cart-drawer' %}
 
   <!-- Global Fullscreen Live Search Overlay -->
-  <div class="search-overlay" id="searchOverlay"></div>
-
-  <!-- Global Firebase Authentication Modal (Google & Email/Password) -->
-  <div class="auth-modal" id="authModal"></div>
+  {% render 'search-modal' %}
 
   <!-- Global Toast Notifications Container -->
-  <div class="toast-container" id="toastContainer"></div>
+  {% render 'toast' %}
 
   <!-- Interactive Replay Intro Transition Control (Home only) -->
   <button class="replay-control" id="replayBtn" aria-label="Replay Entrance Sequence">
-    <svg viewBox="0 0 24 24">
+    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
       <polyline points="1 4 1 10 7 10"></polyline>
       <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path>
     </svg>
     <span>Replay Entrance</span>
   </button>
 
-  <!-- External Modular JavaScript -->
-  <script type="module" src="{{ 'script.js' | asset_url }}"></script>
+  <!-- Theme JavaScript Engine -->
+  <script src="{{ 'theme.js' | asset_url }}" defer></script>
 </body>
 </html>

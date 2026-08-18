@@ -1,11 +1,14 @@
 {
   "sections": {
-    "main": {
-      "type": "main-spa",
-      "settings": {}
+    "contact_help": {
+      "type": "contact-help",
+      "settings": {
+        "eyebrow": "Client Care & Inquiries",
+        "heading": "How May We Assist You?"
+      }
     }
   },
   "order": [
-    "main"
+    "contact_help"
   ]
 }
