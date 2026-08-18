@@ -1,62 +1,11 @@
 {
   "sections": {
-    "hero": {
-      "type": "hero",
-      "settings": {
-        "eyebrow": "Autumn / Winter '26 Collection",
-        "heading": "Formed by nature,<br><em>tailored for ease.</em>",
-        "description": "Thoughtfully designed everyday garments crafted with raw organic linens, rich vegetal dyes, and unstructured silhouettes that move gracefully with you.",
-        "primary_btn_text": "Shop Collection",
-        "secondary_btn_text": "Explore Offers",
-        "floating_tag": "Pure Linen & Wool • 18 Limited Pieces"
-      }
-    },
-    "trending": {
-      "type": "trending",
-      "settings": {
-        "eyebrow": "Curated Pieces",
-        "heading": "Trending Now",
-        "products_to_show": 4
-      }
-    },
-    "the_edit": {
-      "type": "the-edit",
-      "settings": {
-        "eyebrow": "Visual Discovery",
-        "heading": "The Edit",
-        "subtitle": "Visual outfit studies, tonal harmonies & curated seasonal styling."
-      }
-    },
-    "popular": {
-      "type": "popular-products",
-      "settings": {
-        "eyebrow": "Atelier Favorites",
-        "heading": "Popular Pieces",
-        "products_to_show": 4
-      }
-    },
-    "offers": {
-      "type": "offers",
-      "settings": {
-        "eyebrow": "Private Archive & Seasonal Privileges",
-        "heading": "Seasonal Offers",
-        "description": "Conscious slow-fashion creations and atelier archive silhouettes presented with seasonal privileges. All pieces are crafted in limited quantities with pure natural fibers."
-      }
-    },
-    "about": {
-      "type": "about",
-      "settings": {
-        "eyebrow": "The Atelier Story",
-        "heading": "Conscious Craftsmanship,<br><em>Seasonless Silhouettes.</em>"
-      }
+    "main": {
+      "type": "main-spa",
+      "settings": {}
     }
   },
   "order": [
-    "hero",
-    "trending",
-    "the_edit",
-    "popular",
-    "offers",
-    "about"
+    "main"
   ]
 }

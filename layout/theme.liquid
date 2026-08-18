@@ -1,64 +1,60 @@
 <!DOCTYPE html>
-<html lang="{{ request.locale.iso_code }}">
+<html lang="{{ request.locale.iso_code | default: 'en' }}">
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#F6F4EE">
-  <link rel="canonical" href="{{ canonical_url }}">
-
-  {%- if settings.favicon != blank -%}
-    <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
+  <title>{{ page_title | default: 'Shugroves Emporium | Artisanal Fashion, Raw Linen & Slow Luxury' }}</title>
+  {%- if page_description -%}
+    <meta name="description" content="{{ page_description | escape }}">
+  {%- else -%}
+    <meta name="description" content="Shugroves Emporium - Artisanal everyday luxury garments crafted with raw Belgian linens, vegetal dyes, and organic silhouettes that flow with you.">
   {%- endif -%}
 
-  <title>
-    {{ page_title }}
-    {%- if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%}
-    {%- if current_page != 1 %} &ndash; Page {{ current_page }}{% endif -%}
-    {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
-  </title>
-
-  {% if page_description %}
-    <meta name="description" content="{{ page_description | escape }}">
-  {% endif %}
-
-  <!-- Google Fonts: Cormorant Garamond & Plus Jakarta Sans -->
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Tenor+Sans&display=swap" rel="stylesheet">
 
   {{ content_for_header }}
 
-  <!-- Theme Stylesheet -->
+  <!-- External Stylesheet -->
   {{ 'style.css' | asset_url | stylesheet_tag }}
 </head>
+<body>
 
-<body class="template-{{ template.name }}">
-  <a class="skip-to-content-link visually-hidden" href="#MainContent" style="position:absolute;left:-9999px;">
-    Skip to content
-  </a>
+  <!-- Subtle Tactile Texture Overlay -->
+  <div class="noise-overlay" aria-hidden="true"></div>
 
-  <!-- Master Header Section -->
-  {% section 'header' %}
+  <!-- Persistent / Dynamic Site Header (Mounted via JS) -->
+  <header class="site-header" id="siteHeader"></header>
 
-  <!-- Main Content Stage -->
-  <main id="MainContent" role="main" tabindex="-1">
+  <!-- Dynamic Application Main Container -->
+  <main id="appMain">
     {{ content_for_layout }}
   </main>
 
-  <!-- Master Footer Section -->
-  {% section 'footer' %}
+  <!-- Global Slide-Over Shopping Bag Drawer -->
+  <div class="cart-drawer" id="cartDrawer"></div>
 
-  <!-- Interactive Slide-Over Shopping Bag Drawer -->
-  {% render 'cart-drawer' %}
+  <!-- Global Fullscreen Live Search Overlay -->
+  <div class="search-overlay" id="searchOverlay"></div>
 
-  <!-- Fullscreen Predictive Search Overlay -->
-  {% render 'search-modal' %}
+  <!-- Global Firebase Authentication Modal (Google & Email/Password) -->
+  <div class="auth-modal" id="authModal"></div>
 
-  <!-- Notification Toast Center -->
-  {% render 'toast' %}
+  <!-- Global Toast Notifications Container -->
+  <div class="toast-container" id="toastContainer"></div>
 
-  <!-- Client-side Vanilla JS Theme Engine -->
-  <script src="{{ 'theme.js' | asset_url }}" defer></script>
+  <!-- Interactive Replay Intro Transition Control (Home only) -->
+  <button class="replay-control" id="replayBtn" aria-label="Replay Entrance Sequence">
+    <svg viewBox="0 0 24 24">
+      <polyline points="1 4 1 10 7 10"></polyline>
+      <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path>
+    </svg>
+    <span>Replay Entrance</span>
+  </button>
+
+  <!-- External Modular JavaScript -->
+  <script type="module" src="{{ 'script.js' | asset_url }}"></script>
 </body>
 </html>

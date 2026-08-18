@@ -1,14 +1,11 @@
 {
   "sections": {
-    "about": {
-      "type": "about",
-      "settings": {
-        "eyebrow": "The Atelier Story",
-        "heading": "Conscious Craftsmanship,<br><em>Seasonless Silhouettes.</em>"
-      }
+    "main": {
+      "type": "main-spa",
+      "settings": {}
     }
   },
   "order": [
-    "about"
+    "main"
   ]
 }
