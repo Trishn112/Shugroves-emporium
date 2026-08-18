@@ -1,0 +1,21 @@
+{
+  "general": {
+    "accessibility": {
+      "skip_to_content": "Skip to content",
+      "close": "Close",
+      "unit_price_separator": "per"
+    },
+    "meta": {
+      "tags": "tagged \"{{ tags }}\"",
+      "page": "Page {{ page }}"
+    }
+  },
+  "sections": {
+    "header": {
+      "cart_count": {
+        "one": "1 piece",
+        "other": "{{ count }} pieces"
+      }
+    }
+  }
+}

@@ -1,0 +1,56 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Shugroves Emporium",
+    "theme_version": "1.0.0",
+    "theme_author": "Shugroves Atelier",
+    "theme_documentation_url": "https://shugroves.com",
+    "theme_support_url": "https://shugroves.com"
+  },
+  {
+    "name": "Colors & Aesthetics",
+    "settings": [
+      {
+        "type": "color",
+        "id": "bg_color",
+        "label": "Background Warm Cream",
+        "default": "#F6F4EE"
+      },
+      {
+        "type": "color",
+        "id": "text_color",
+        "label": "Primary Charcoal",
+        "default": "#2B2620"
+      },
+      {
+        "type": "color",
+        "id": "accent_terracotta",
+        "label": "Accent Terracotta",
+        "default": "#D89C94"
+      },
+      {
+        "type": "color",
+        "id": "accent_sage",
+        "label": "Accent Sage",
+        "default": "#A8AD8E"
+      }
+    ]
+  },
+  {
+    "name": "Typography",
+    "settings": [
+      {
+        "type": "font_picker",
+        "id": "heading_font",
+        "label": "Heading font",
+        "default": "cormorant_garamond_n4"
+      },
+      {
+        "type": "font_picker",
+        "id": "body_font",
+        "label": "Body font",
+        "default": "sans-serif"
+      }
+    ]
+  }
+]
