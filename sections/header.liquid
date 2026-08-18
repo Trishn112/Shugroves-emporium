@@ -36,12 +36,21 @@
             <div class="megamenu-col" id="colListCol1">
               <span class="megamenu-heading">Apparel & Tailoring</span>
               <div class="megamenu-links-dynamic" id="dynColList1">
-                {%- for col in collections limit: 6 -%}
-                  <a href="{{ col.url }}" class="megamenu-link-item">
-                    <span>{{ col.title }}</span>
-                    <span class="megamenu-link-arrow">&rarr;</span>
-                  </a>
-                {%- endfor -%}
+                {%- if collections.size > 0 -%}
+                  {%- for col in collections limit: 6 -%}
+                    <a href="{{ col.url }}" class="megamenu-link-item">
+                      <span>{{ col.title }}</span>
+                      <span class="megamenu-link-arrow">&rarr;</span>
+                    </a>
+                  {%- endfor -%}
+                {%- else -%}
+                  <a href="{{ routes.collections_url }}" class="megamenu-link-item"><span>Women</span><span class="megamenu-link-arrow">&rarr;</span></a>
+                  <a href="{{ routes.collections_url }}" class="megamenu-link-item"><span>Men</span><span class="megamenu-link-arrow">&rarr;</span></a>
+                  <a href="{{ routes.collections_url }}" class="megamenu-link-item"><span>Dresses</span><span class="megamenu-link-arrow">&rarr;</span></a>
+                  <a href="{{ routes.collections_url }}" class="megamenu-link-item"><span>Coats & Outerwear</span><span class="megamenu-link-arrow">&rarr;</span></a>
+                  <a href="{{ routes.collections_url }}" class="megamenu-link-item"><span>Merino Knitwear</span><span class="megamenu-link-arrow">&rarr;</span></a>
+                  <a href="{{ routes.collections_url }}" class="megamenu-link-item"><span>Tops & Blouses</span><span class="megamenu-link-arrow">&rarr;</span></a>
+                {%- endif -%}
               </div>
             </div>
 
@@ -49,12 +58,21 @@
             <div class="megamenu-col" id="colListCol2">
               <span class="megamenu-heading">Objects & Archive</span>
               <div class="megamenu-links-dynamic" id="dynColList2">
-                {%- for col in collections offset: 6 limit: 6 -%}
-                  <a href="{{ col.url }}" class="megamenu-link-item">
-                    <span>{{ col.title }}</span>
-                    <span class="megamenu-link-arrow">&rarr;</span>
-                  </a>
-                {%- endfor -%}
+                {%- if collections.size > 6 -%}
+                  {%- for col in collections offset: 6 limit: 6 -%}
+                    <a href="{{ col.url }}" class="megamenu-link-item">
+                      <span>{{ col.title }}</span>
+                      <span class="megamenu-link-arrow">&rarr;</span>
+                    </a>
+                  {%- endfor -%}
+                {%- else -%}
+                  <a href="{{ routes.collections_url }}" class="megamenu-link-item"><span>Bottoms & Trousers</span><span class="megamenu-link-arrow">&rarr;</span></a>
+                  <a href="{{ routes.collections_url }}" class="megamenu-link-item"><span>Handcrafted Bags</span><span class="megamenu-link-arrow">&rarr;</span></a>
+                  <a href="{{ routes.collections_url }}" class="megamenu-link-item"><span>Woven Mules & Shoes</span><span class="megamenu-link-arrow">&rarr;</span></a>
+                  <a href="{{ routes.collections_url }}" class="megamenu-link-item"><span>Sculptural Jewellery</span><span class="megamenu-link-arrow">&rarr;</span></a>
+                  <a href="{{ routes.collections_url }}" class="megamenu-link-item"><span>New Arrivals</span><span class="megamenu-link-arrow">&rarr;</span></a>
+                  <a href="/pages/offers" class="megamenu-link-item"><span>Offers & Sale</span><span class="megamenu-link-arrow">&rarr;</span></a>
+                {%- endif -%}
               </div>
               <a href="{{ routes.collections_url }}" class="megamenu-view-all">View All Collections &rarr;</a>
             </div>
@@ -62,17 +80,17 @@
             <!-- Column 3: Featured Editorial Card -->
             <div class="megamenu-col megamenu-featured-card-col">
               {%- assign featured_col = collections[section.settings.featured_collection] | default: collections.first -%}
-              <a href="{{ featured_col.url | default: routes.all_products_collection_url }}" class="megamenu-card-preview">
+              <a href="{{ featured_col.url | default: '/pages/lookbook' }}" class="megamenu-card-preview">
                 <div class="megamenu-card-img-wrap">
                   {%- if featured_col.image != blank -%}
                     <img src="{{ featured_col.image | image_url: width: 600 }}" alt="{{ featured_col.title | escape }}">
                   {%- else -%}
-                    <img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?auto=format&fit=crop&w=600&q=85" alt="Seasonal Lookbook">
+                    <img src="https://images.unsplash.com/photo-1509967419530-da38b4704bc6?auto=format&fit=crop&w=600&q=85" alt="Seasonal Lookbook">
                   {%- endif -%}
                   <div class="megamenu-card-overlay">
                     <span class="megamenu-card-badge">Seasonal Curation</span>
                     <h4 class="megamenu-card-title">{{ featured_col.title | default: "Autumn / Winter '26" }}</h4>
-                    <span class="megamenu-card-link">Explore Collection &rarr;</span>
+                    <span class="megamenu-card-link">Explore Lookbook &rarr;</span>
                   </div>
                 </div>
               </a>

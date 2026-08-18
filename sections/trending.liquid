@@ -27,20 +27,83 @@
         {% render 'product-card', product: product %}
       {%- endfor -%}
     {%- else -%}
-      {%- for i in (1..4) -%}
-        <div class="product-card">
-          <div class="product-card-media">
-            {{ 'product-' | append: i | placeholder_svg_tag: 'product-img product-img-primary' }}
-          </div>
-          <div class="product-card-body">
-            <span class="product-card-material">Pure Belgian Linen</span>
-            <h3 class="product-card-title">Curated Atelier Piece {{ i }}</h3>
-            <div class="product-card-price-row">
-              <span class="product-price-current">{{ 4800 | money }}</span>
-            </div>
+      <!-- Default Trending Preview Pieces Matching Original Design -->
+      <div class="product-card">
+        <div class="product-card-media">
+          <img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=800&q=85" alt="Sienna Raw Linen Wrap Dress" class="product-img product-img-primary" loading="lazy" width="400" height="533">
+          <button type="button" class="product-wishlist-btn" aria-label="Add to Wishlist">
+            {% render 'icon-wishlist' %}
+          </button>
+        </div>
+        <div class="product-card-body">
+          <span class="product-card-material">Belgian Raw Linen</span>
+          <h3 class="product-card-title"><a href="{{ routes.all_products_collection_url }}">Sienna Raw Linen Wrap Dress</a></h3>
+          <div class="product-card-price-row">
+            <span class="product-price-current">Rs. 5,400</span>
           </div>
         </div>
-      {%- endfor -%}
+      </div>
+
+      <div class="product-card">
+        <div class="product-card-media">
+          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=85" alt="Sage Meadow Oversized Knit" class="product-img product-img-primary" loading="lazy" width="400" height="533">
+          <div class="product-badges">
+            <span class="badge-tag badge-new">New Arrival</span>
+            <span class="badge-tag badge-sale">Special Price</span>
+          </div>
+          <button type="button" class="product-wishlist-btn" aria-label="Add to Wishlist">
+            {% render 'icon-wishlist' %}
+          </button>
+        </div>
+        <div class="product-card-body">
+          <span class="product-card-material">Merino Wool & Silk</span>
+          <h3 class="product-card-title"><a href="{{ routes.all_products_collection_url }}">Sage Meadow Oversized Knit</a></h3>
+          <div class="product-card-price-row">
+            <span class="product-price-current">Rs. 4,800</span>
+            <span class="product-price-original">Rs. 5,600</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-card-media">
+          <img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=800&q=85" alt="Ochre Sculpted Suede Saddle Bag" class="product-img product-img-primary" loading="lazy" width="400" height="533">
+          <div class="product-badges">
+            <span class="badge-tag badge-new">New Arrival</span>
+            <span class="badge-tag badge-low">Low Stock</span>
+          </div>
+          <button type="button" class="product-wishlist-btn" aria-label="Add to Wishlist">
+            {% render 'icon-wishlist' %}
+          </button>
+        </div>
+        <div class="product-card-body">
+          <span class="product-card-material">Vegetal Tanned Leather</span>
+          <h3 class="product-card-title"><a href="{{ routes.all_products_collection_url }}">Ochre Sculpted Suede Saddle Bag</a></h3>
+          <div class="product-card-price-row">
+            <span class="product-price-current">Rs. 8,200</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-card-media">
+          <img src="https://images.unsplash.com/photo-1558769132-cb1aea458c5e?auto=format&fit=crop&w=800&q=85" alt="Botanical Olive Oversized Cardigan" class="product-img product-img-primary" loading="lazy" width="400" height="533">
+          <div class="product-badges">
+            <span class="badge-tag badge-sale">Special Price</span>
+          </div>
+          <button type="button" class="product-wishlist-btn" aria-label="Add to Wishlist">
+            {% render 'icon-wishlist' %}
+          </button>
+        </div>
+        <div class="product-card-body">
+          <span class="product-card-material">Organic Belgian Linen</span>
+          <h3 class="product-card-title"><a href="{{ routes.all_products_collection_url }}">Botanical Olive Oversized Cardigan</a></h3>
+          <div class="product-card-price-row">
+            <span class="product-price-current">Rs. 6,100</span>
+            <span class="product-price-original">Rs. 7,200</span>
+          </div>
+        </div>
+      </div>
     {%- endif -%}
   </div>
 </div>
