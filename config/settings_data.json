@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "current": {
     "bg_cream": "#F6F4EE",
@@ -20,7 +29,6 @@
     "social_instagram": "https://instagram.com/shugroves_emporium",
     "social_facebook": "https://facebook.com/shugrovesemporium",
     "social_twitter": "https://x.com/shugroves",
-    "free_shipping_threshold": 5000,
-    "sections": {}
+    "free_shipping_threshold": 5000
   }
 }

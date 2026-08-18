@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "hero": {
@@ -7,16 +16,16 @@
         "heading": "Formed by nature,<br><em>tailored for ease.</em>",
         "description": "Thoughtfully designed everyday garments crafted with raw organic linens, rich vegetal dyes, and unstructured silhouettes that move gracefully with you.",
         "primary_btn_text": "Shop Collection",
+        "primary_btn_url": "",
         "secondary_btn_text": "Explore Offers",
-        "floating_tag": "Pure Linen & Wool • 18 Limited Pieces"
-      }
-    },
-    "trending": {
-      "type": "trending",
-      "settings": {
-        "eyebrow": "Curated Pieces",
-        "heading": "Trending Now",
-        "products_to_show": 4
+        "secondary_btn_url": "",
+        "floating_tag": "Pure Linen & Wool • 18 Limited Pieces",
+        "frame_label_1": "Look 01 • Sage Knit",
+        "frame_link_1": "",
+        "frame_label_2": "Look 02 • Sienna Coat",
+        "frame_link_2": "",
+        "frame_label_3": "Look 03 • Brass Objects",
+        "frame_link_3": ""
       }
     },
     "the_edit": {
@@ -27,36 +36,18 @@
         "subtitle": "Visual outfit studies, tonal harmonies & curated seasonal styling."
       }
     },
-    "popular": {
-      "type": "popular-products",
-      "settings": {
-        "eyebrow": "Atelier Favorites",
-        "heading": "Popular Pieces",
-        "products_to_show": 4
-      }
-    },
-    "offers": {
-      "type": "offers",
-      "settings": {
-        "eyebrow": "Private Archive & Seasonal Privileges",
-        "heading": "Seasonal Offers",
-        "description": "Conscious slow-fashion creations and atelier archive silhouettes presented with seasonal privileges. All pieces are crafted in limited quantities with pure natural fibers."
-      }
-    },
     "about": {
       "type": "about",
       "settings": {
         "eyebrow": "The Atelier Story",
-        "heading": "Conscious Craftsmanship,<br><em>Seasonless Silhouettes.</em>"
+        "heading": "Conscious Craftsmanship,<br><em>Seasonless Silhouettes.</em>",
+        "subheading": "Founded on the radical premise that fashion should honor the earth, the artisan, and the wearer with equal devotion."
       }
     }
   },
   "order": [
     "hero",
-    "trending",
     "the_edit",
-    "popular",
-    "offers",
     "about"
   ]
 }
