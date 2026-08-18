@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shugroves Emporium | Artisanal Fashion, Raw Linen & Slow Luxury</title>
+  <meta name="description" content="Shugroves Emporium - Artisanal everyday luxury garments crafted with raw Belgian linens, vegetal dyes, and organic silhouettes that flow with you.">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Tenor+Sans&display=swap" rel="stylesheet">
+
+  <!-- External Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Subtle Tactile Texture Overlay -->
+  <div class="noise-overlay" aria-hidden="true"></div>
+
+  <!-- Persistent / Dynamic Site Header (Mounted via JS) -->
+  <header class="site-header" id="siteHeader"></header>
+
+  <!-- Dynamic Application Main Container -->
+  <main id="appMain"></main>
+
+  <!-- Global Slide-Over Shopping Bag Drawer -->
+  <div class="cart-drawer" id="cartDrawer"></div>
+
+  <!-- Global Fullscreen Live Search Overlay -->
+  <div class="search-overlay" id="searchOverlay"></div>
+
+  <!-- Global Firebase Authentication Modal (Google & Email/Password) -->
+  <div class="auth-modal" id="authModal"></div>
+
+  <!-- Global Toast Notifications Container -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- Interactive Replay Intro Transition Control (Home only) -->
+  <button class="replay-control" id="replayBtn" aria-label="Replay Entrance Sequence">
+    <svg viewBox="0 0 24 24">
+      <polyline points="1 4 1 10 7 10"></polyline>
+      <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path>
+    </svg>
+    <span>Replay Entrance</span>
+  </button>
+
+  <!-- External Modular JavaScript -->
+  <script type="module" src="script.js"></script>
+</body>
+</html>
