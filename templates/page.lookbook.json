@@ -1,0 +1,11 @@
+{
+  "sections": {
+    "lookbook": {
+      "type": "lookbook",
+      "settings": {}
+    }
+  },
+  "order": [
+    "lookbook"
+  ]
+}

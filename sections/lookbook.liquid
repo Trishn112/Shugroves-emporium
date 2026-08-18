@@ -1,0 +1,97 @@
+{% comment %}
+  Shugroves Emporium - Seasonal Lookbook Section
+{% endcomment %}
+
+<div class="lookbook-page" style="padding-top: 8.5rem; min-height: 100vh;">
+  <!-- Lookbook Cover Header -->
+  <header class="lookbook-header" style="padding: 4rem 2rem 3rem; text-align: center; background: radial-gradient(circle at 50% 30%, rgba(216, 156, 148, 0.08) 0%, transparent 70%);">
+    <div class="lookbook-header-inner" style="max-width: 800px; margin: 0 auto;">
+      <span class="lookbook-season" style="display:block; font-size:0.75rem; letter-spacing:0.22em; text-transform:uppercase; font-weight:700; color:var(--accent-sage-dark); margin-bottom:0.6rem;">
+        {{ section.settings.season | default: "Autumn / Winter '26 Lookbook" }}
+      </span>
+      <h1 class="lookbook-title" style="font-family:var(--font-serif); font-size:clamp(2.4rem, 5vw, 3.8rem); font-weight:400; color:var(--text-charcoal); margin-bottom:1rem; line-height:1.15;">
+        {{ section.settings.title | default: "The Natural Form" }}
+      </h1>
+      <p class="lookbook-intro" style="font-size:1rem; line-height:1.7; color:var(--text-charcoal-muted); max-width:620px; margin:0 auto;">
+        {{ section.settings.intro | default: "A study in architectural volume, raw Belgian flax, vegetal earth dyes, and the quiet dignity of slow tailoring." }}
+      </p>
+    </div>
+  </header>
+
+  <!-- Lookbook Spreads Container -->
+  <div class="lookbook-spreads-container section-container" style="max-width: 1320px; margin: 0 auto; padding: 2rem 2.5rem 6rem; display:flex; flex-direction:column; gap:6rem;">
+    <!-- Spread 1: Look 01 -->
+    <article class="lookbook-spread" style="display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:center;">
+      <div class="spread-visuals">
+        <div class="spread-hero-img-wrap" style="position:relative; aspect-ratio:3/4; border-radius:18px; overflow:hidden; box-shadow:0 16px 40px rgba(43,38,32,0.1);">
+          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=900&q=85" alt="Sage Meadow Knit Look" style="width:100%; height:100%; object-fit:cover;" loading="lazy" width="600" height="800">
+          <span class="spread-badge" style="position:absolute; top:18px; left:18px; background:rgba(246,244,238,0.92); padding:0.4rem 0.9rem; border-radius:20px; font-size:0.75rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--text-charcoal);">Look 01</span>
+        </div>
+      </div>
+      <div class="spread-story">
+        <span class="spread-eyebrow" style="font-size:0.75rem; letter-spacing:0.2em; text-transform:uppercase; font-weight:700; color:var(--accent-sage-dark); display:block; margin-bottom:0.6rem;">Autumn / Winter '26 &bull; Look 01</span>
+        <h2 class="spread-heading" style="font-family:var(--font-serif); font-size:2.6rem; font-weight:400; color:var(--text-charcoal); line-height:1.15; margin-bottom:0.4rem;">The Tactile Minimalist</h2>
+        <h3 class="spread-subtitle" style="font-size:1rem; color:var(--accent-terracotta-dark); font-weight:600; margin-bottom:1.5rem;">Sage Merino & Pleated Belgian Flax</h3>
+        <blockquote class="spread-quote" style="font-family:var(--font-serif); font-size:1.3rem; font-style:italic; line-height:1.5; color:var(--text-charcoal); border-left:2px solid var(--accent-terracotta); padding-left:1.2rem; margin-bottom:1.5rem;">
+          &ldquo;There is a quiet strength in garments that do not demand attention, but hold it effortlessly.&rdquo;
+        </blockquote>
+        <p class="spread-description" style="font-size:0.95rem; line-height:1.8; color:var(--text-charcoal-muted); margin-bottom:2rem;">
+          Designed for crisp transitional mornings. The oversized Sage Meadow Knit is spun from cruelty-free merino wool, draping naturally over high-waisted pleated flax trousers.
+        </p>
+        <a href="{{ routes.all_products_collection_url }}" class="btn-primary" style="display:inline-flex; align-items:center; gap:0.6rem; padding:0.9rem 2rem; border-radius:30px;">
+          <span>Explore Look 01 Pieces &rarr;</span>
+        </a>
+      </div>
+    </article>
+
+    <!-- Spread 2: Look 02 -->
+    <article class="lookbook-spread spread-reversed" style="display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:center;">
+      <div class="spread-story" style="order:1;">
+        <span class="spread-eyebrow" style="font-size:0.75rem; letter-spacing:0.2em; text-transform:uppercase; font-weight:700; color:var(--accent-sage-dark); display:block; margin-bottom:0.6rem;">Autumn / Winter '26 &bull; Look 02</span>
+        <h2 class="spread-heading" style="font-family:var(--font-serif); font-size:2.6rem; font-weight:400; color:var(--text-charcoal); line-height:1.15; margin-bottom:0.4rem;">The Coastal Nomad</h2>
+        <h3 class="spread-subtitle" style="font-size:1rem; color:var(--accent-terracotta-dark); font-weight:600; margin-bottom:1.5rem;">Sienna Raw Flax & Sculpted Leather</h3>
+        <blockquote class="spread-quote" style="font-family:var(--font-serif); font-size:1.3rem; font-style:italic; line-height:1.5; color:var(--text-charcoal); border-left:2px solid var(--accent-terracotta); padding-left:1.2rem; margin-bottom:1.5rem;">
+          &ldquo;Form follows movement. Every seam is placed to celebrate the drape of raw unbleached fibers.&rdquo;
+        </blockquote>
+        <p class="spread-description" style="font-size:0.95rem; line-height:1.8; color:var(--text-charcoal-muted); margin-bottom:2rem;">
+          Constructed with heavy unbleached Belgian linen dyed with Madder root botanicals. Paired seamlessly with our Ochre Sculpted Suede Saddle Bag.
+        </p>
+        <a href="{{ routes.all_products_collection_url }}" class="btn-primary" style="display:inline-flex; align-items:center; gap:0.6rem; padding:0.9rem 2rem; border-radius:30px;">
+          <span>Explore Look 02 Pieces &rarr;</span>
+        </a>
+      </div>
+      <div class="spread-visuals" style="order:2;">
+        <div class="spread-hero-img-wrap" style="position:relative; aspect-ratio:3/4; border-radius:18px; overflow:hidden; box-shadow:0 16px 40px rgba(43,38,32,0.1);">
+          <img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=900&q=85" alt="Sienna Coat Look" style="width:100%; height:100%; object-fit:cover;" loading="lazy" width="600" height="800">
+          <span class="spread-badge" style="position:absolute; top:18px; left:18px; background:rgba(246,244,238,0.92); padding:0.4rem 0.9rem; border-radius:20px; font-size:0.75rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--text-charcoal);">Look 02</span>
+        </div>
+      </div>
+    </article>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Lookbook",
+  "settings": [
+    {
+      "type": "text",
+      "id": "season",
+      "label": "Season Eyebrow",
+      "default": "Autumn / Winter '26 Lookbook"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "The Natural Form"
+    },
+    {
+      "type": "textarea",
+      "id": "intro",
+      "label": "Intro Text",
+      "default": "A study in architectural volume, raw Belgian flax, vegetal earth dyes, and the quiet dignity of slow tailoring."
+    }
+  ]
+}
+{% endschema %}
