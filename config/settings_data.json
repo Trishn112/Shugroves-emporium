@@ -29,6 +29,25 @@
     "social_instagram": "https://instagram.com/shugroves_emporium",
     "social_facebook": "https://facebook.com/shugrovesemporium",
     "social_twitter": "https://x.com/shugroves",
-    "free_shipping_threshold": 5000
+    "free_shipping_threshold": 5000,
+    "sections": {
+      "header": {
+        "type": "header",
+        "settings": {
+          "brand_text": "Shugroves Emporium",
+          "featured_collection": ""
+        }
+      },
+      "footer": {
+        "type": "footer",
+        "settings": {
+          "quote_eyebrow": "Conscious Philosophy",
+          "quote_text": "Formed by natural flax, tempered by slow vegetal dyes, tailored for perpetual ease.",
+          "quote_author": "Shugroves Emporium • Est. 2026",
+          "brand_bio": "An artisanal clothing and objects atelier dedicated to unbleached Belgian linen, vegetal extraction dyeing, and timeless everyday ease."
+        }
+      }
+    },
+    "content_for_index": []
   }
 }

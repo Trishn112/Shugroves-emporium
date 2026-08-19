@@ -11,10 +11,21 @@
   "sections": {
     "main": {
       "type": "main-404",
+      "disabled": true,
       "settings": {}
+    },
+    "about_J3QfBz": {
+      "type": "about",
+      "name": "About Us",
+      "settings": {
+        "eyebrow": "About Us",
+        "heading": "Shugroves Emporium",
+        "subheading": "<br>Shugroves Emporium is a thoughtfully curated destination for distinctive goods chosen to bring beauty, character, and everyday delight into your life.\nWe discover and offer quality pieces from makers and brands we believe in, combining timeless appeal with practical purpose.\nOur mission is to make considered shopping feel personal, inspiring, and accessible—while building a store rooted in care, craftsmanship, and lasting value."
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "about_J3QfBz"
   ]
 }
