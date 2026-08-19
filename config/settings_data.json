@@ -19,11 +19,11 @@
     "accent_sage_dark": "#60664B",
     "accent_mustard": "#E4BB66",
     "brand_name": "Shugroves Emporium",
-    "contact_phone": "",
+    "contact_phone": "+91 9935833915",
     "contact_phone_tel": "",
     "contact_whatsapp": "",
     "contact_whatsapp_url": "",
-    "contact_email": "",
+    "contact_email": "trishnshukla9011@gmail.com",
     "business_hours": "",
     "atelier_address": "",
     "social_instagram": "",
@@ -49,5 +49,8 @@
       }
     },
     "content_for_index": []
+  },
+  "platform_customizations": {
+    "custom_css": []
   }
 }
