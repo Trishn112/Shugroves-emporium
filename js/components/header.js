@@ -97,56 +97,60 @@ export function renderHeader(container) {
         <li class="nav-dropdown-parent">
           <a href="#help" class="nav-item-link">Help</a>
           <div class="nav-dropdown-menu nav-help-dropdown">
-            <div class="dropdown-header-tag">Atelier Client Concierge</div>
+            <div class="dropdown-header-tag">Get Help</div>
             
             <div class="dropdown-contacts-list">
               <!-- Phone -->
-              <a href="tel:${contactInfo.phoneTel}" class="dropdown-contact-card" title="Call Atelier">
-                <div class="contact-card-icon">
-                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-                  </svg>
-                </div>
-                <div class="contact-card-text">
-                  <span class="contact-card-lbl">Telephone Inquiries</span>
-                  <span class="contact-card-val">${contactInfo.phone}</span>
-                </div>
-              </a>
+              ${contactInfo.phone ? `
+                <a href="tel:${contactInfo.phoneTel || contactInfo.phone}" class="dropdown-contact-card" title="Contact Us">
+                  <div class="contact-card-icon">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                    </svg>
+                  </div>
+                  <div class="contact-card-details">
+                    <span class="contact-card-label">Contact Us:</span>
+                    <span class="contact-card-val">${contactInfo.phone}</span>
+                  </div>
+                </a>
+              ` : ''}
 
               <!-- WhatsApp -->
-              <a href="${contactInfo.whatsappUrl}" target="_blank" rel="noopener noreferrer" class="dropdown-contact-card" title="Chat on WhatsApp">
-                <div class="contact-card-icon contact-icon-whatsapp">
-                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
-                  </svg>
-                </div>
-                <div class="contact-card-text">
-                  <span class="contact-card-lbl">WhatsApp Concierge</span>
-                  <span class="contact-card-val">Live Instant Chat &rarr;</span>
-                </div>
-              </a>
+              ${contactInfo.whatsapp ? `
+                <a href="${contactInfo.whatsappUrl || '#'}" target="_blank" rel="noopener noreferrer" class="dropdown-contact-card" title="WhatsApp Chat">
+                  <div class="contact-card-icon contact-icon-whatsapp">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+                    </svg>
+                  </div>
+                  <div class="contact-card-details">
+                    <span class="contact-card-label">WhatsApp Us:</span>
+                    <span class="contact-card-val">${contactInfo.whatsapp}</span>
+                  </div>
+                </a>
+              ` : ''}
 
               <!-- Email -->
-              <a href="mailto:${contactInfo.email}" class="dropdown-contact-card" title="Email Concierge">
-                <div class="contact-card-icon">
-                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                    <polyline points="22,6 12,13 2,6"></polyline>
-                  </svg>
-                </div>
-                <div class="contact-card-text">
-                  <span class="contact-card-lbl">Email Atelier</span>
-                  <span class="contact-card-val">${contactInfo.email}</span>
-                </div>
-              </a>
+              ${contactInfo.email ? `
+                <a href="mailto:${contactInfo.email}" class="dropdown-contact-card" title="Email Us">
+                  <div class="contact-card-icon">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                      <polyline points="22,6 12,13 2,6"></polyline>
+                    </svg>
+                  </div>
+                  <div class="contact-card-details">
+                    <span class="contact-card-label">Email Us:</span>
+                    <span class="contact-card-val">${contactInfo.email}</span>
+                  </div>
+                </a>
+              ` : ''}
             </div>
 
-            <div class="dropdown-divider"></div>
-            <a href="#help" class="dropdown-link-item">
-              <span>Shipping, Sizing & 30-Day Returns</span>
-            </a>
-            <a href="#help" class="dropdown-link-item dropdown-contact-item">
-              <span>Open Full Help Center &rarr;</span>
+            <div class="dropdown-divider" style="height:1px; background:var(--border-subtle); margin:0.6rem 0 0.4rem;"></div>
+            <a href="#help" class="dropdown-full-link" style="display:flex; align-items:center; justify-content:space-between; font-size:0.8rem; font-weight:600; color:var(--accent-terracotta-dark); text-decoration:none; padding:0.3rem 0.2rem;">
+              <span>Full Help Center & FAQs</span>
+              <span>&rarr;</span>
             </a>
           </div>
         </li>
