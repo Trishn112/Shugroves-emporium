@@ -24,15 +24,28 @@ function initHeader() {
 
   if (mobileToggle && mobileDrawer) {
     mobileToggle.addEventListener('click', () => {
+      mobileDrawer.classList.toggle('drawer-open');
       mobileDrawer.classList.toggle('is-open');
     });
   }
 
   if (mobileClose && mobileDrawer) {
     mobileClose.addEventListener('click', () => {
+      mobileDrawer.classList.remove('drawer-open');
       mobileDrawer.classList.remove('is-open');
     });
   }
+
+  // Close mobile drawer when clicking any link inside it
+  const mobileLinks = document.querySelectorAll('.mobile-nav-link');
+  mobileLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      if (mobileDrawer) {
+        mobileDrawer.classList.remove('drawer-open');
+        mobileDrawer.classList.remove('is-open');
+      }
+    });
+  });
 
   // Megamenu search filter
   const colSearchInput = document.getElementById('collectionsSearchInput');

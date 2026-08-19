@@ -16,6 +16,7 @@
 
   <div class="section-container help-main-layout">
     <!-- Contact Concierge Cards Row -->
+    {%- assign support_email = settings.contact_email | default: shop.email -%}
     <div class="concierge-cards-grid">
       <!-- 1. Telephone -->
       {%- if settings.contact_phone != blank -%}
@@ -27,9 +28,18 @@
           <p class="concierge-card-val">{{ settings.contact_phone }}</p>
           <span class="concierge-card-sub">{{ settings.business_hours | default: "Mon – Sat: 10am – 7pm IST" }}</span>
         </a>
+      {%- else -%}
+        <a href="#ContactForm" class="concierge-card" title="Send Client Note">
+          <div class="concierge-card-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+          </div>
+          <h3 class="concierge-card-title">Client Advisory Desk</h3>
+          <p class="concierge-card-val">Send an Inquiry</p>
+          <span class="concierge-card-sub">Online advisory & garment assistance</span>
+        </a>
       {%- endif -%}
 
-      <!-- 2. WhatsApp -->
+      <!-- 2. WhatsApp or Bespoke Alterations -->
       {%- if settings.contact_whatsapp != blank -%}
         <a href="{{ settings.contact_whatsapp_url | default: '#' }}" target="_blank" rel="noopener noreferrer" class="concierge-card" title="Chat on WhatsApp">
           <div class="concierge-card-icon contact-icon-whatsapp">
@@ -39,16 +49,25 @@
           <p class="concierge-card-val">{{ settings.contact_whatsapp }}</p>
           <span class="concierge-card-sub">Instant styling & sizing support</span>
         </a>
+      {%- else -%}
+        <a href="#faqAccordion" class="concierge-card" title="Frequently Asked Questions">
+          <div class="concierge-card-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+          </div>
+          <h3 class="concierge-card-title">Client Knowledge Base</h3>
+          <p class="concierge-card-val">FAQs & Care Guide</p>
+          <span class="concierge-card-sub">Shipping, returns & natural fiber care</span>
+        </a>
       {%- endif -%}
 
       <!-- 3. Email -->
-      {%- if settings.contact_email != blank -%}
-        <a href="mailto:{{ settings.contact_email }}" class="concierge-card" title="Email Concierge">
+      {%- if support_email != blank -%}
+        <a href="mailto:{{ support_email }}" class="concierge-card" title="Email Concierge">
           <div class="concierge-card-icon">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
           </div>
           <h3 class="concierge-card-title">Email Correspondence</h3>
-          <p class="concierge-card-val">{{ settings.contact_email }}</p>
+          <p class="concierge-card-val">{{ support_email }}</p>
           <span class="concierge-card-sub">Response within 24 business hours</span>
         </a>
       {%- endif -%}

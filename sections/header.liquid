@@ -179,6 +179,65 @@
       <span>Bag</span>
       <span class="nav-cart-count" id="cartCountBadge">{{ cart.item_count }}</span>
     </button>
+
+    <!-- Mobile Hamburger Trigger -->
+    <button class="nav-mobile-toggle" id="mobileMenuToggle" aria-label="Toggle Navigation Menu">
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+    </button>
+  </div>
+
+  <!-- Mobile Slide-out Drawer Navigation -->
+  <div class="mobile-drawer" id="mobileDrawer">
+    <div class="mobile-drawer-inner">
+      <div class="mobile-drawer-header">
+        <span class="mobile-drawer-brand">{{ section.settings.brand_text | default: settings.brand_name | default: 'Shugroves' }}</span>
+        <button class="mobile-drawer-close" id="mobileDrawerClose" aria-label="Close Menu">&times;</button>
+      </div>
+
+      <nav class="mobile-nav-list">
+        <!-- Collections -->
+        <div class="mobile-nav-section">
+          <span class="mobile-section-label">Collections</span>
+          <a href="{{ routes.collections_url }}" class="mobile-nav-link">All Collections</a>
+          {%- for col in collections limit: 5 -%}
+            <a href="{{ col.url }}" class="mobile-nav-link">{{ col.title }}</a>
+          {%- endfor -%}
+        </div>
+
+        <!-- Curations -->
+        <div class="mobile-nav-section">
+          <span class="mobile-section-label">Curations</span>
+          <a href="{{ routes.all_products_collection_url }}?sort_by=best-selling" class="mobile-nav-link">Popular Pieces</a>
+          <a href="/pages/offers" class="mobile-nav-link">Seasonal Offers</a>
+          <a href="/pages/lookbook" class="mobile-nav-link">Seasonal Lookbook</a>
+        </div>
+
+        <!-- Atelier & Care -->
+        <div class="mobile-nav-section">
+          <span class="mobile-section-label">Atelier & Care</span>
+          <a href="/pages/about-us" class="mobile-nav-link">About Us & Atelier Story</a>
+          <a href="/pages/help" class="mobile-nav-link">Help & Customer Support</a>
+          {%- if settings.contact_phone != blank -%}
+            <a href="tel:{{ settings.contact_phone_tel | default: settings.contact_phone }}" class="mobile-nav-link">Call: {{ settings.contact_phone }}</a>
+          {%- endif -%}
+          {%- if settings.contact_whatsapp != blank -%}
+            <a href="{{ settings.contact_whatsapp_url | default: '#' }}" target="_blank" rel="noopener noreferrer" class="mobile-nav-link">WhatsApp: {{ settings.contact_whatsapp }}</a>
+          {%- endif -%}
+        </div>
+
+        <!-- Client Portal -->
+        <div class="mobile-nav-section">
+          <span class="mobile-section-label">Client Account</span>
+          <a href="{% if customer %}{{ routes.account_url }}{% else %}{{ routes.account_login_url }}{% endif %}" class="mobile-nav-link">{% if customer %}My Account ({{ customer.first_name }}){% else %}Sign In / Register{% endif %}</a>
+          <a href="/pages/wishlist" class="mobile-nav-link">Saved Wishlist</a>
+        </div>
+      </nav>
+
+      <div class="mobile-drawer-footer">
+        <p>Handcrafted Slow Fashion &bull; Est. 2026</p>
+      </div>
+    </div>
   </div>
 </header>
 
