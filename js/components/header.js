@@ -110,7 +110,7 @@ export function renderHeader(container) {
                   </div>
                   <div class="contact-card-details">
                     <span class="contact-card-label">Contact Us:</span>
-                    <span class="contact-card-val">${contactInfo.phone}</span>
+                    <span class="contact-card-val" style="text-transform:none; font-size:0.86rem;">${contactInfo.phone}</span>
                   </div>
                 </a>
               ` : ''}
@@ -125,7 +125,7 @@ export function renderHeader(container) {
                   </div>
                   <div class="contact-card-details">
                     <span class="contact-card-label">WhatsApp Us:</span>
-                    <span class="contact-card-val">${contactInfo.whatsapp}</span>
+                    <span class="contact-card-val" style="text-transform:none; font-size:0.86rem;">${contactInfo.whatsapp}</span>
                   </div>
                 </a>
               ` : ''}
@@ -141,7 +141,7 @@ export function renderHeader(container) {
                   </div>
                   <div class="contact-card-details">
                     <span class="contact-card-label">Email Us:</span>
-                    <span class="contact-card-val">${contactInfo.email}</span>
+                    <span class="contact-card-val" style="text-transform:none; font-size:0.82rem; word-break:break-all;">${contactInfo.email}</span>
                   </div>
                 </a>
               ` : ''}
