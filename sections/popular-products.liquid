@@ -27,20 +27,11 @@
         {% render 'product-card', product: product %}
       {%- endfor -%}
     {%- else -%}
-      {%- for i in (1..4) -%}
-        <div class="product-card">
-          <div class="product-card-media">
-            {{ 'product-' | append: i | placeholder_svg_tag: 'product-img product-img-primary' }}
-          </div>
-          <div class="product-card-body">
-            <span class="product-card-material">Vegetal Dyed Silk</span>
-            <h3 class="product-card-title">Popular Atelier Creation {{ i }}</h3>
-            <div class="product-card-price-row">
-              <span class="product-price-current">{{ 6400 | money }}</span>
-            </div>
-          </div>
-        </div>
-      {%- endfor -%}
+      <div class="empty-state-card" style="grid-column: 1 / -1; text-align: center; padding: 4rem 2rem; background: var(--bg-cream-tint); border: 1px solid var(--border-subtle); border-radius: 16px;">
+        <h3 class="empty-state-title" style="font-family: var(--font-serif); font-size: 1.6rem; color: var(--text-charcoal); margin-bottom: 0.5rem;">No popular creations available</h3>
+        <p class="empty-state-desc" style="color: var(--text-charcoal-muted); max-width: 480px; margin: 0 auto 1.5rem; font-size: 0.9rem;">Bestselling pieces from your store will automatically be curated here.</p>
+        <a href="{{ routes.all_products_collection_url }}" class="btn-primary" style="display: inline-block; padding: 0.8rem 1.8rem; border-radius: 24px;">Explore Core Archive</a>
+      </div>
     {%- endif -%}
   </div>
 </div>

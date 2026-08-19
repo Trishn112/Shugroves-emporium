@@ -81,14 +81,13 @@ export function renderTheEdit(container) {
               <div class="edit-card-overlay">
                 <span class="edit-card-category">${curation.category}</span>
                 <h3 class="edit-card-title">${curation.title}</h3>
-                <p class="edit-card-desc">${curation.description}</p>
-                <button class="btn-shop-look" data-curation-id="${curation.id}">
-                  <span>Shop The Look (${curation.linkedProductIds.length} Pieces)</span>
+                <a href="#collections" class="btn-shop-look" style="text-decoration:none;">
+                  <span>Explore Curation</span>
                   <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
                     <line x1="5" y1="12" x2="19" y2="12"></line>
                     <polyline points="12 5 19 12 12 19"></polyline>
                   </svg>
-                </button>
+                </a>
               </div>
             </div>
           </div>

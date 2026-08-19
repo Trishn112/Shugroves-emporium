@@ -77,33 +77,39 @@
       
       <!-- Frame 1: Left Model -->
       {%- assign link_1 = section.settings.frame_link_1 | default: routes.all_products_collection_url -%}
-      <a href="{{ link_1 }}" class="editorial-frame frame-model-left" title="{{ section.settings.frame_label_1 | default: 'Look 01 • Sage Knit' }}">
+      <a href="{{ link_1 }}" class="editorial-frame frame-model-left" title="{{ section.settings.frame_label_1 | default: 'Featured Look 01' }}">
         {%- if section.settings.frame_image_1 != blank -%}
-          <img src="{{ section.settings.frame_image_1 | image_url: width: 800 }}" alt="Editorial look 1" loading="eager" width="400" height="550">
+          <img src="{{ section.settings.frame_image_1 | image_url: width: 800 }}" alt="{{ section.settings.frame_label_1 | escape }}" loading="eager" width="400" height="550">
+        {%- elsif collections.all.products.first.featured_image != blank -%}
+          <img src="{{ collections.all.products.first.featured_image | image_url: width: 800 }}" alt="{{ collections.all.products.first.title | escape }}" loading="eager" width="400" height="550">
         {%- else -%}
-          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=85" alt="Fashion model wearing Sage Meadow Knit" loading="eager" width="400" height="550">
+          {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}
         {%- endif -%}
-        <div class="frame-label">{{ section.settings.frame_label_1 | default: "Look 01 • Sage Knit" }}</div>
+        <div class="frame-label">{{ section.settings.frame_label_1 | default: "Featured Curation" }}</div>
       </a>
 
       <!-- Frame 2: Center-Right Arch Model -->
       {%- assign link_2 = section.settings.frame_link_2 | default: routes.all_products_collection_url -%}
-      <a href="{{ link_2 }}" class="editorial-frame frame-model-center" title="{{ section.settings.frame_label_2 | default: 'Look 02 • Sienna Coat' }}">
+      <a href="{{ link_2 }}" class="editorial-frame frame-model-center" title="{{ section.settings.frame_label_2 | default: 'Featured Look 02' }}">
         {%- if section.settings.frame_image_2 != blank -%}
-          <img src="{{ section.settings.frame_image_2 | image_url: width: 800 }}" alt="Editorial look 2" loading="eager" width="400" height="550">
+          <img src="{{ section.settings.frame_image_2 | image_url: width: 800 }}" alt="{{ section.settings.frame_label_2 | escape }}" loading="eager" width="400" height="550">
+        {%- elsif collections.all.products[1].featured_image != blank -%}
+          <img src="{{ collections.all.products[1].featured_image | image_url: width: 800 }}" alt="{{ collections.all.products[1].title | escape }}" loading="eager" width="400" height="550">
         {%- else -%}
-          <img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=800&q=85" alt="Editorial model wearing Sienna Raw Linen Coat" loading="eager" width="400" height="550">
+          {{ 'lifestyle-2' | placeholder_svg_tag: 'placeholder-svg' }}
         {%- endif -%}
-        <div class="frame-label">{{ section.settings.frame_label_2 | default: "Look 02 • Sienna Coat" }}</div>
+        <div class="frame-label">{{ section.settings.frame_label_2 | default: "Seasonal Silhouette" }}</div>
       </a>
 
       <!-- Frame 3: Accent Circular Frame -->
       {%- assign link_3 = section.settings.frame_link_3 | default: routes.all_products_collection_url -%}
-      <a href="{{ link_3 }}" class="editorial-frame frame-model-accent" title="{{ section.settings.frame_label_3 | default: 'Artisanal Knitwear' }}">
+      <a href="{{ link_3 }}" class="editorial-frame frame-model-accent" title="{{ section.settings.frame_label_3 | default: 'Artisanal Creation' }}">
         {%- if section.settings.frame_image_3 != blank -%}
-          <img src="{{ section.settings.frame_image_3 | image_url: width: 400 }}" alt="Editorial look 3" loading="eager" width="200" height="200">
+          <img src="{{ section.settings.frame_image_3 | image_url: width: 400 }}" alt="{{ section.settings.frame_label_3 | escape }}" loading="eager" width="200" height="200">
+        {%- elsif collections.all.products[2].featured_image != blank -%}
+          <img src="{{ collections.all.products[2].featured_image | image_url: width: 400 }}" alt="{{ collections.all.products[2].title | escape }}" loading="eager" width="200" height="200">
         {%- else -%}
-          <img src="https://images.unsplash.com/photo-1558769132-cb1aea458c5e?auto=format&fit=crop&w=500&q=85" alt="Artisanal knitwear texture on rack" loading="eager" width="200" height="200">
+          {{ 'collection-1' | placeholder_svg_tag: 'placeholder-svg' }}
         {%- endif -%}
       </a>
     </section>

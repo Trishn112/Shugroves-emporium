@@ -19,11 +19,13 @@
     <div class="section-container about-story-grid">
       <div class="about-story-media">
         {%- if section.settings.image_1 != blank -%}
-          <img src="{{ section.settings.image_1 | image_url: width: 900 }}" alt="Craftsmanship process" class="about-story-img" loading="lazy">
+          <img src="{{ section.settings.image_1 | image_url: width: 900 }}" alt="{{ section.settings.heading | escape }}" class="about-story-img" loading="lazy">
+        {%- elsif collections.all.products.first.featured_image != blank -%}
+          <img src="{{ collections.all.products.first.featured_image | image_url: width: 900 }}" alt="{{ collections.all.products.first.title | escape }}" class="about-story-img" loading="lazy">
         {%- else -%}
-          <img src="https://images.unsplash.com/photo-1544441893-675973e31985?auto=format&fit=crop&w=900&q=85" alt="Hand-weaving Belgian flax" class="about-story-img" loading="lazy">
+          {{ 'lifestyle-1' | placeholder_svg_tag: 'about-story-img placeholder-svg' }}
         {%- endif -%}
-        <div class="about-img-tag">Belgian Flax Harvest &bull; Natural Retting</div>
+        <div class="about-img-tag">Artisanal Craftsmanship &bull; Natural Fibers</div>
       </div>
 
       <div class="about-story-content">
@@ -37,29 +39,31 @@
         </p>
 
         <!-- Social Media Channels -->
-        <div class="about-social-block">
-          <span class="social-block-label">Follow Our Atelier Journal:</span>
-          <div class="about-social-links">
-            {%- if settings.social_instagram != blank -%}
-              <a href="{{ settings.social_instagram }}" target="_blank" rel="noopener noreferrer" class="social-pill-btn" title="Instagram">
-                <span>Instagram</span>
-                <span class="social-pill-arrow">&nearr;</span>
-              </a>
-            {%- endif -%}
-            {%- if settings.social_facebook != blank -%}
-              <a href="{{ settings.social_facebook }}" target="_blank" rel="noopener noreferrer" class="social-pill-btn" title="Facebook">
-                <span>Facebook</span>
-                <span class="social-pill-arrow">&nearr;</span>
-              </a>
-            {%- endif -%}
-            {%- if settings.social_twitter != blank -%}
-              <a href="{{ settings.social_twitter }}" target="_blank" rel="noopener noreferrer" class="social-pill-btn" title="Twitter / X">
-                <span>Twitter / X</span>
-                <span class="social-pill-arrow">&nearr;</span>
-              </a>
-            {%- endif -%}
+        {%- if settings.social_instagram != blank or settings.social_facebook != blank or settings.social_twitter != blank -%}
+          <div class="about-social-block">
+            <span class="social-block-label">Follow Our Atelier Journal:</span>
+            <div class="about-social-links">
+              {%- if settings.social_instagram != blank -%}
+                <a href="{{ settings.social_instagram }}" target="_blank" rel="noopener noreferrer" class="social-pill-btn" title="Instagram">
+                  <span>Instagram</span>
+                  <span class="social-pill-arrow">&nearr;</span>
+                </a>
+              {%- endif -%}
+              {%- if settings.social_facebook != blank -%}
+                <a href="{{ settings.social_facebook }}" target="_blank" rel="noopener noreferrer" class="social-pill-btn" title="Facebook">
+                  <span>Facebook</span>
+                  <span class="social-pill-arrow">&nearr;</span>
+                </a>
+              {%- endif -%}
+              {%- if settings.social_twitter != blank -%}
+                <a href="{{ settings.social_twitter }}" target="_blank" rel="noopener noreferrer" class="social-pill-btn" title="Twitter / X">
+                  <span>Twitter / X</span>
+                  <span class="social-pill-arrow">&nearr;</span>
+                </a>
+              {%- endif -%}
+            </div>
           </div>
-        </div>
+        {%- endif -%}
       </div>
     </div>
   </section>

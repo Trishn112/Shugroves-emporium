@@ -341,7 +341,7 @@ function initSearchOverlay() {
                   </a>
                 </div>
                 <div class="product-card-body">
-                  <span class="product-card-material">${p.vendor || 'Atelier Collection'}</span>
+                  ${p.vendor ? `<span class="product-card-material">${p.vendor}</span>` : ''}
                   <h3 class="product-card-title"><a href="${p.url}">${p.title}</a></h3>
                   <div class="product-card-price-row">
                     <span class="product-price-current">${p.price}</span>

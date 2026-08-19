@@ -21,7 +21,7 @@ export const INITIAL_JOURNAL = [
       "When we tailor a garment like our Sienna Raw Linen Coat, we strip away rigid interlinings and stiff plastic buttons. Instead, we allow the natural drape of the flax to dictate the movement. The result is clothing that doesn't restrict or impose, but yields to the body's natural posture — elegant, timeless, and effortlessly at ease."
     ],
     pullQuote: "A garment should not be a cage of trend; it should be an enduring companion of daily life.",
-    relatedProductIds: ["shu-001", "shu-003"]
+    relatedProductIds: []
   },
   {
     id: "art-002",
@@ -40,7 +40,7 @@ export const INITIAL_JOURNAL = [
       "The finishing stroke is a single tonal accent in dusty terracotta — such as the Sculptural Saddle Bag. When working with organic dyes, allow the slight tonal shifts in the weave to celebrate the hand of the maker rather than demanding sterile uniformity."
     ],
     pullQuote: "Color in nature is never flat. Vegetal dyes capture sunlight and shadow with living nuance.",
-    relatedProductIds: ["shu-002", "shu-004", "shu-008"]
+    relatedProductIds: []
   },
   {
     id: "art-003",
@@ -59,6 +59,6 @@ export const INITIAL_JOURNAL = [
       "These pieces interlock across thirty distinct outfits, carrying you seamlessly through morning meetings, gallery walks, travel, and quiet weekend dinners."
     ],
     pullQuote: "Own fewer things, but make them pieces that stir your sense of beauty every time you wear them.",
-    relatedProductIds: ["shu-001", "shu-005", "shu-006", "shu-007"]
+    relatedProductIds: []
   }
 ];

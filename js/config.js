@@ -32,18 +32,18 @@ export const DEFAULT_FIREBASE_CONFIG = {
  */
 export const BRAND_CONFIG = {
   socialLinks: {
-    instagram: "https://instagram.com/shugroves_emporium", // INSTAGRAM_URL placeholder
-    facebook: "https://facebook.com/shugrovesemporium",    // FACEBOOK_URL placeholder
-    twitter: "https://x.com/shugroves"                     // TWITTER_URL placeholder
+    instagram: "",
+    facebook: "",
+    twitter: ""
   },
   contactInfo: {
-    phone: "+91 98201 45678",                              // CONTACT_PHONE placeholder
-    phoneTel: "+919820145678",                             // tel: link action
-    whatsapp: "+91 98201 45678",                           // WHATSAPP_NUMBER placeholder
-    whatsappUrl: "https://wa.me/919820145678",             // Direct WhatsApp action
-    email: "concierge@shugroves.com",                      // CONTACT_EMAIL placeholder
-    businessHours: "Mon – Sat: 10:00 AM – 7:00 PM IST",    // BUSINESS_HOURS placeholder
-    atelierAddress: "42 Altamount Road, Cumballa Hill, Mumbai, Maharashtra 400026, India"
+    phone: "",
+    phoneTel: "",
+    whatsapp: "",
+    whatsappUrl: "",
+    email: "",
+    businessHours: "",
+    atelierAddress: ""
   }
 };
 

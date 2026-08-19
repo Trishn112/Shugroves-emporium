@@ -16,7 +16,7 @@ export const INITIAL_LOOKBOOK = [
       "https://images.unsplash.com/photo-1469334031218-e382a71b716b?auto=format&fit=crop&w=800&q=85",
       "https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=800&q=85"
     ],
-    productIds: ["shu-001", "shu-003", "shu-004"],
+    productIds: [],
     quote: "Fashion should not constrain the body; it should frame its natural momentum."
   },
   {
@@ -31,7 +31,7 @@ export const INITIAL_LOOKBOOK = [
       "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=800&q=85",
       "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&w=800&q=85"
     ],
-    productIds: ["shu-002", "shu-003", "shu-008"],
+    productIds: [],
     quote: "Tactility is the truest luxury of slow clothing."
   },
   {
@@ -46,7 +46,7 @@ export const INITIAL_LOOKBOOK = [
       "https://images.unsplash.com/photo-1590874103328-eac38a683ce7?auto=format&fit=crop&w=800&q=85",
       "https://images.unsplash.com/photo-1543163521-1bf539c55dd2?auto=format&fit=crop&w=800&q=85"
     ],
-    productIds: ["shu-005", "shu-006", "shu-007"],
+    productIds: [],
     quote: "Organic vegetal colors change softly with the light of the day."
   }
 ];

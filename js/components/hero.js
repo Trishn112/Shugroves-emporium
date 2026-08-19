@@ -76,31 +76,31 @@ export function renderHero(container) {
 
       <!-- Layered Frames (Interactive Editorial Models) -->
       
-      <!-- Frame 1: Left Model (Sage Linen Knit) -->
-      <a href="#product/sage-meadow-oversized-knit" class="editorial-frame frame-model-left" title="Sage Meadow Oversized Knit">
+      <!-- Frame 1: Left Model -->
+      <a href="#collections" class="editorial-frame frame-model-left" title="Seasonal Knitwear">
         <img 
           src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=85" 
-          alt="Fashion model wearing Sage Meadow Knit"
+          alt="Artisanal knitwear showcase"
           loading="eager"
         >
-        <div class="frame-label">Look 01 • Sage Knit</div>
+        <div class="frame-label">Look 01 • Knitwear</div>
       </a>
 
-      <!-- Frame 2: Center-Right Arch Model (Sienna Coat) -->
-      <a href="#product/sienna-raw-linen-coat" class="editorial-frame frame-model-center" title="Sienna Raw Linen Coat">
+      <!-- Frame 2: Center-Right Arch Model -->
+      <a href="#collections" class="editorial-frame frame-model-center" title="Linen Outerwear">
         <img 
           src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=800&q=85" 
-          alt="Editorial model wearing Sienna Raw Linen Coat"
+          alt="Artisanal linen coat showcase"
           loading="eager"
         >
-        <div class="frame-label">Look 02 • Sienna Coat</div>
+        <div class="frame-label">Look 02 • Linen Tailoring</div>
       </a>
 
-      <!-- Frame 3: Accent Circular Frame (Mustard/Brass Detail) -->
-      <a href="#product/hammered-brass-choker-earrings" class="editorial-frame frame-model-accent" title="Hammered Brass Jewellery">
+      <!-- Frame 3: Accent Circular Frame -->
+      <a href="#collections" class="editorial-frame frame-model-accent" title="Sculptural Jewellery">
         <img 
           src="https://images.unsplash.com/photo-1558769132-cb1aea458c5e?auto=format&fit=crop&w=500&q=85" 
-          alt="Detail texture of golden mustard weave"
+          alt="Artisanal craft detail"
           loading="eager"
         >
       </a>

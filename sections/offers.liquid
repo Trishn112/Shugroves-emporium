@@ -40,10 +40,11 @@
       {%- endfor -%}
 
       {%- if count == 0 -%}
-        <!-- Fallback if no products currently have compare_at_price -->
-        {%- for product in collections.all.products limit: 3 -%}
-          {% render 'product-card', product: product %}
-        {%- endfor -%}
+        <div class="empty-state-card" style="grid-column: 1 / -1; text-align: center; padding: 4rem 2rem; background: var(--bg-cream-tint); border: 1px solid var(--border-subtle); border-radius: 16px;">
+          <h3 class="empty-state-title" style="font-family: var(--font-serif); font-size: 1.6rem; color: var(--text-charcoal); margin-bottom: 0.5rem;">No seasonal privileges currently active</h3>
+          <p class="empty-state-desc" style="color: var(--text-charcoal-muted); max-width: 480px; margin: 0 auto 1.5rem; font-size: 0.9rem;">Special pricing and promotional archive releases will appear here automatically when configured in your store.</p>
+          <a href="{{ routes.all_products_collection_url }}" class="btn-primary" style="display: inline-block; padding: 0.8rem 1.8rem; border-radius: 24px;">Explore Core Collections</a>
+        </div>
       {%- endif -%}
     </div>
   </div>

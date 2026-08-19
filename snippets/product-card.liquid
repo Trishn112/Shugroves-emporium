@@ -12,7 +12,7 @@
   if product.compare_at_price > product.price
     assign on_sale = true
   endif
-  assign material_tag = product.metafields.custom.material | default: product.type | default: '100% Pure Natural Fiber'
+  assign material_tag = product.metafields.custom.material | default: product.type | default: product.vendor
 -%}
 
 <article class="product-card" data-product-id="{{ product.id }}" data-product-handle="{{ product.handle }}">

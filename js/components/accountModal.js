@@ -166,11 +166,11 @@ export function renderAccountView(container, params = {}) {
               <div class="form-row-2">
                 <div class="form-group">
                   <label for="newAddrName">Recipient Full Name *</label>
-                  <input type="text" id="newAddrName" required placeholder="e.g. Sonia Kapoor">
+                  <input type="text" id="newAddrName" required placeholder="Full Name">
                 </div>
                 <div class="form-group">
                   <label for="newAddrPhone">Contact Phone *</label>
-                  <input type="tel" id="newAddrPhone" required placeholder="e.g. +91 98201 45678">
+                  <input type="tel" id="newAddrPhone" required placeholder="Phone Number">
                 </div>
               </div>
 
@@ -247,16 +247,16 @@ export function renderAccountView(container, params = {}) {
           <div class="form-row-2">
             <div class="form-group">
               <label for="profName">Full Name</label>
-              <input type="text" id="profName" value="${user.name || ''}" placeholder="e.g. Sonia Kapoor">
+              <input type="text" id="profName" value="${user.name || ''}" placeholder="Full Name">
             </div>
             <div class="form-group">
               <label for="profEmail">Email Address</label>
-              <input type="email" id="profEmail" value="${user.email || ''}" placeholder="e.g. sonia@example.com">
+              <input type="email" id="profEmail" value="${user.email || ''}" placeholder="Email Address">
             </div>
           </div>
           <div class="form-group">
             <label for="profPhone">Mobile Phone</label>
-            <input type="tel" id="profPhone" value="${user.phone || ''}" placeholder="e.g. +91 98201 45678">
+            <input type="tel" id="profPhone" value="${user.phone || ''}" placeholder="Phone Number">
           </div>
           <button type="submit" class="btn-primary" style="margin-top: 1.5rem; padding:0.85rem 2rem; border-radius:24px; font-size:0.82rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase;">
             Save Profile Changes &rarr;

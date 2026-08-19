@@ -44,12 +44,10 @@
                     </a>
                   {%- endfor -%}
                 {%- else -%}
-                  <a href="{{ routes.collections_url }}" class="megamenu-link-item"><span>Women</span><span class="megamenu-link-arrow">&rarr;</span></a>
-                  <a href="{{ routes.collections_url }}" class="megamenu-link-item"><span>Men</span><span class="megamenu-link-arrow">&rarr;</span></a>
-                  <a href="{{ routes.collections_url }}" class="megamenu-link-item"><span>Dresses</span><span class="megamenu-link-arrow">&rarr;</span></a>
-                  <a href="{{ routes.collections_url }}" class="megamenu-link-item"><span>Coats & Outerwear</span><span class="megamenu-link-arrow">&rarr;</span></a>
-                  <a href="{{ routes.collections_url }}" class="megamenu-link-item"><span>Merino Knitwear</span><span class="megamenu-link-arrow">&rarr;</span></a>
-                  <a href="{{ routes.collections_url }}" class="megamenu-link-item"><span>Tops & Blouses</span><span class="megamenu-link-arrow">&rarr;</span></a>
+                  <a href="{{ routes.collections_url }}" class="megamenu-link-item">
+                    <span>All Collections</span>
+                    <span class="megamenu-link-arrow">&rarr;</span>
+                  </a>
                 {%- endif -%}
               </div>
             </div>
@@ -66,12 +64,14 @@
                     </a>
                   {%- endfor -%}
                 {%- else -%}
-                  <a href="{{ routes.collections_url }}" class="megamenu-link-item"><span>Bottoms & Trousers</span><span class="megamenu-link-arrow">&rarr;</span></a>
-                  <a href="{{ routes.collections_url }}" class="megamenu-link-item"><span>Handcrafted Bags</span><span class="megamenu-link-arrow">&rarr;</span></a>
-                  <a href="{{ routes.collections_url }}" class="megamenu-link-item"><span>Woven Mules & Shoes</span><span class="megamenu-link-arrow">&rarr;</span></a>
-                  <a href="{{ routes.collections_url }}" class="megamenu-link-item"><span>Sculptural Jewellery</span><span class="megamenu-link-arrow">&rarr;</span></a>
-                  <a href="{{ routes.collections_url }}" class="megamenu-link-item"><span>New Arrivals</span><span class="megamenu-link-arrow">&rarr;</span></a>
-                  <a href="/pages/offers" class="megamenu-link-item"><span>Offers & Sale</span><span class="megamenu-link-arrow">&rarr;</span></a>
+                  <a href="{{ routes.all_products_collection_url }}?sort_by=created-descending" class="megamenu-link-item">
+                    <span>New Arrivals</span>
+                    <span class="megamenu-link-arrow">&rarr;</span>
+                  </a>
+                  <a href="/pages/offers" class="megamenu-link-item">
+                    <span>Seasonal Offers</span>
+                    <span class="megamenu-link-arrow">&rarr;</span>
+                  </a>
                 {%- endif -%}
               </div>
               <a href="{{ routes.collections_url }}" class="megamenu-view-all">View All Collections &rarr;</a>
@@ -80,20 +80,24 @@
             <!-- Column 3: Featured Editorial Card -->
             <div class="megamenu-col megamenu-featured-card-col">
               {%- assign featured_col = collections[section.settings.featured_collection] | default: collections.first -%}
-              <a href="{{ featured_col.url | default: '/pages/lookbook' }}" class="megamenu-card-preview">
-                <div class="megamenu-card-img-wrap">
-                  {%- if featured_col.image != blank -%}
-                    <img src="{{ featured_col.image | image_url: width: 600 }}" alt="{{ featured_col.title | escape }}">
-                  {%- else -%}
-                    <img src="https://images.unsplash.com/photo-1509967419530-da38b4704bc6?auto=format&fit=crop&w=600&q=85" alt="Seasonal Lookbook">
-                  {%- endif -%}
-                  <div class="megamenu-card-overlay">
-                    <span class="megamenu-card-badge">Seasonal Curation</span>
-                    <h4 class="megamenu-card-title">{{ featured_col.title | default: "Autumn / Winter '26" }}</h4>
-                    <span class="megamenu-card-link">Explore Lookbook &rarr;</span>
+              {%- if featured_col != blank -%}
+                <a href="{{ featured_col.url }}" class="megamenu-card-preview">
+                  <div class="megamenu-card-img-wrap">
+                    {%- if featured_col.image != blank -%}
+                      <img src="{{ featured_col.image | image_url: width: 600 }}" alt="{{ featured_col.title | escape }}">
+                    {%- elsif featured_col.products.first.featured_image != blank -%}
+                      <img src="{{ featured_col.products.first.featured_image | image_url: width: 600 }}" alt="{{ featured_col.title | escape }}">
+                    {%- else -%}
+                      {{ 'collection-1' | placeholder_svg_tag: 'placeholder-svg' }}
+                    {%- endif -%}
+                    <div class="megamenu-card-overlay">
+                      <span class="megamenu-card-badge">Featured Curation</span>
+                      <h4 class="megamenu-card-title">{{ featured_col.title }}</h4>
+                      <span class="megamenu-card-link">Explore Collection &rarr;</span>
+                    </div>
                   </div>
-                </div>
-              </a>
+                </a>
+              {%- endif -%}
             </div>
           </div>
         </div>
@@ -117,27 +121,29 @@
       <!-- 5. HELP -->
       <li class="nav-dropdown-parent">
         <a href="/pages/help" class="nav-item-link">Help</a>
-        <div class="nav-dropdown-menu nav-help-dropdown">
-          <div class="dropdown-header-tag" style="font-size:0.7rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--accent-sage-dark); font-weight:700; margin-bottom:0.6rem;">Atelier Concierge</div>
-          <div class="dropdown-contacts-list">
-            {%- if settings.contact_phone != blank -%}
-              <a href="tel:{{ settings.contact_phone }}" class="dropdown-contact-card" title="Call Atelier">
-                <div class="contact-card-details">
-                  <span class="contact-card-label">Client Services</span>
-                  <span class="contact-card-val">{{ settings.contact_phone }}</span>
-                </div>
-              </a>
-            {%- endif -%}
-            {%- if settings.contact_email != blank -%}
-              <a href="mailto:{{ settings.contact_email }}" class="dropdown-contact-card" title="Email Atelier">
-                <div class="contact-card-details">
-                  <span class="contact-card-label">Email Concierge</span>
-                  <span class="contact-card-val">{{ settings.contact_email }}</span>
-                </div>
-              </a>
-            {%- endif -%}
+        {%- if settings.contact_phone != blank or settings.contact_email != blank -%}
+          <div class="nav-dropdown-menu nav-help-dropdown">
+            <div class="dropdown-header-tag" style="font-size:0.7rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--accent-sage-dark); font-weight:700; margin-bottom:0.6rem;">Atelier Concierge</div>
+            <div class="dropdown-contacts-list">
+              {%- if settings.contact_phone != blank -%}
+                <a href="tel:{{ settings.contact_phone }}" class="dropdown-contact-card" title="Call Atelier">
+                  <div class="contact-card-details">
+                    <span class="contact-card-label">Client Services</span>
+                    <span class="contact-card-val">{{ settings.contact_phone }}</span>
+                  </div>
+                </a>
+              {%- endif -%}
+              {%- if settings.contact_email != blank -%}
+                <a href="mailto:{{ settings.contact_email }}" class="dropdown-contact-card" title="Email Atelier">
+                  <div class="contact-card-details">
+                    <span class="contact-card-label">Email Concierge</span>
+                    <span class="contact-card-val">{{ settings.contact_email }}</span>
+                  </div>
+                </a>
+              {%- endif -%}
+            </div>
           </div>
-        </div>
+        {%- endif -%}
       </li>
     </ul>
   </nav>

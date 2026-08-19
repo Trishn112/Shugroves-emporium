@@ -16,100 +16,86 @@
 
   <!-- Masonry Editorial Grid -->
   <div class="edit-masonry-grid">
-    <!-- Card 1: Tall -->
-    <div class="edit-card edit-card-tall">
-      <div class="edit-card-inner">
-        <img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?auto=format&fit=crop&w=900&q=85" alt="The Autumn Layering Formula" class="edit-card-img" loading="lazy" width="450" height="600">
-        <div class="edit-card-overlay">
-          <span class="edit-card-category">Styling Inspiration</span>
-          <h3 class="edit-card-title">The Autumn Layering Formula</h3>
-          <p class="edit-card-desc">Pairing fluid Belgian linen outerwear with structural leather accessories in tonal earthy hues.</p>
-          <a href="{{ routes.all_products_collection_url }}" class="btn-shop-look">
-            <span>Shop The Look (2 Pieces)</span>
-            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
-              <line x1="5" y1="12" x2="19" y2="12"></line>
-              <polyline points="12 5 19 12 12 19"></polyline>
-            </svg>
-          </a>
-        </div>
-      </div>
-    </div>
+    {%- if section.blocks.size > 0 -%}
+      {%- for block in section.blocks -%}
+        {%- assign card_size_class = block.settings.card_size | default: 'tall' -%}
+        <div class="edit-card edit-card-{{ card_size_class }}" {{ block.shopify_attributes }}>
+          <div class="edit-card-inner">
+            {%- if block.settings.image != blank -%}
+              <img 
+                src="{{ block.settings.image | image_url: width: 900 }}" 
+                alt="{{ block.settings.title | escape }}" 
+                class="edit-card-img" 
+                loading="lazy" 
+                width="450" 
+                height="600"
+              >
+            {%- else -%}
+              {{ 'lifestyle-1' | placeholder_svg_tag: 'edit-card-img placeholder-svg' }}
+            {%- endif -%}
 
-    <!-- Card 2: Wide -->
-    <div class="edit-card edit-card-wide">
-      <div class="edit-card-inner">
-        <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=900&q=85" alt="Tactile Sage & Raw Flax" class="edit-card-img" loading="lazy" width="450" height="300">
-        <div class="edit-card-overlay">
-          <span class="edit-card-category">Material Focus</span>
-          <h3 class="edit-card-title">Tactile Sage & Raw Flax</h3>
-          <p class="edit-card-desc">The interplay of open-knit merino wool against double-pleated Belgian linen trousers.</p>
-          <a href="{{ routes.all_products_collection_url }}" class="btn-shop-look">
-            <span>Shop The Look (2 Pieces)</span>
-            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
-              <line x1="5" y1="12" x2="19" y2="12"></line>
-              <polyline points="12 5 19 12 12 19"></polyline>
-            </svg>
-          </a>
-        </div>
-      </div>
-    </div>
+            <div class="edit-card-overlay">
+              {%- if block.settings.category != blank -%}
+                <span class="edit-card-category">{{ block.settings.category }}</span>
+              {%- endif -%}
 
-    <!-- Card 3: Tall -->
-    <div class="edit-card edit-card-tall">
-      <div class="edit-card-inner">
-        <img src="https://images.unsplash.com/photo-1509967419530-da38b4704bc6?auto=format&fit=crop&w=900&q=85" alt="Vegetal Silk in Afternoon Sun" class="edit-card-img" loading="lazy" width="450" height="600">
-        <div class="edit-card-overlay">
-          <span class="edit-card-category">Color Study</span>
-          <h3 class="edit-card-title">Vegetal Silk in Afternoon Sun</h3>
-          <p class="edit-card-desc">Marigold-dyed Ahimsa peace silk reflecting warm amber light.</p>
-          <a href="{{ routes.all_products_collection_url }}" class="btn-shop-look">
-            <span>Shop The Look (2 Pieces)</span>
-            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
-              <line x1="5" y1="12" x2="19" y2="12"></line>
-              <polyline points="12 5 19 12 12 19"></polyline>
-            </svg>
-          </a>
-        </div>
-      </div>
-    </div>
+              {%- if block.settings.title != blank -%}
+                <h3 class="edit-card-title">{{ block.settings.title }}</h3>
+              {%- endif -%}
 
-    <!-- Card 4: Square -->
-    <div class="edit-card edit-card-square">
-      <div class="edit-card-inner">
-        <img src="https://images.unsplash.com/photo-1590874103328-eac38a683ce7?auto=format&fit=crop&w=900&q=85" alt="Unstructured Everyday Carry" class="edit-card-img" loading="lazy" width="450" height="450">
-        <div class="edit-card-overlay">
-          <span class="edit-card-category">Object Curation</span>
-          <h3 class="edit-card-title">Unstructured Everyday Carry</h3>
-          <p class="edit-card-desc">Velvety olive-sage suede tote with artisan hand-finished details.</p>
-          <a href="{{ routes.all_products_collection_url }}" class="btn-shop-look">
-            <span>Shop The Look (2 Pieces)</span>
-            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
-              <line x1="5" y1="12" x2="19" y2="12"></line>
-              <polyline points="12 5 19 12 12 19"></polyline>
-            </svg>
-          </a>
-        </div>
-      </div>
-    </div>
+              {%- if block.settings.description != blank -%}
+                <p class="edit-card-desc">{{ block.settings.description }}</p>
+              {%- endif -%}
 
-    <!-- Card 5: Wide -->
-    <div class="edit-card edit-card-wide">
-      <div class="edit-card-inner">
-        <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=900&q=85" alt="Sculptural Brass & Warm Skin" class="edit-card-img" loading="lazy" width="450" height="300">
-        <div class="edit-card-overlay">
-          <span class="edit-card-category">Jewellery Study</span>
-          <h3 class="edit-card-title">Sculptural Brass & Warm Skin</h3>
-          <p class="edit-card-desc">Hand-hammered gold vermeil jewelry catching soft ambient shadows.</p>
-          <a href="{{ routes.all_products_collection_url }}" class="btn-shop-look">
-            <span>Shop The Look (1 Piece)</span>
-            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
-              <line x1="5" y1="12" x2="19" y2="12"></line>
-              <polyline points="12 5 19 12 12 19"></polyline>
-            </svg>
-          </a>
+              {%- if block.settings.link_url != blank or block.settings.link_text != blank -%}
+                <a href="{{ block.settings.link_url | default: routes.all_products_collection_url }}" class="btn-shop-look">
+                  <span>{{ block.settings.link_text | default: "Explore Curation" }}</span>
+                  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                  </svg>
+                </a>
+              {%- endif -%}
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
+      {%- endfor -%}
+    {%- else -%}
+      <!-- Default Masonry Structure using Store Collections & Theme Palette -->
+      {%- for col in collections limit: 5 -%}
+        {%- assign idx = forloop.index -%}
+        {%- case idx -%}
+          {%- when 1 -%}{%- assign size = 'tall' -%}
+          {%- when 2 -%}{%- assign size = 'wide' -%}
+          {%- when 3 -%}{%- assign size = 'tall' -%}
+          {%- when 4 -%}{%- assign size = 'square' -%}
+          {%- when 5 -%}{%- assign size = 'wide' -%}
+        {%- endcase -%}
+        <div class="edit-card edit-card-{{ size }}">
+          <div class="edit-card-inner">
+            {%- if col.image != blank -%}
+              <img src="{{ col.image | image_url: width: 900 }}" alt="{{ col.title | escape }}" class="edit-card-img" loading="lazy" width="450" height="600">
+            {%- elsif col.products.first.featured_image != blank -%}
+              <img src="{{ col.products.first.featured_image | image_url: width: 900 }}" alt="{{ col.title | escape }}" class="edit-card-img" loading="lazy" width="450" height="600">
+            {%- else -%}
+              {{ 'collection-' | append: idx | placeholder_svg_tag: 'edit-card-img placeholder-svg' }}
+            {%- endif -%}
+            <div class="edit-card-overlay">
+              <span class="edit-card-category">Collection Curation</span>
+              <h3 class="edit-card-title">{{ col.title }}</h3>
+              <p class="edit-card-desc">{{ col.description | default: "Explore conscious silhouettes and everyday luxury in this curation." }}</p>
+              <a href="{{ col.url }}" class="btn-shop-look">
+                <span>Shop Collection ({{ col.products_count }} {{ col.products_count | pluralize: 'Piece', 'Pieces' }})</span>
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      {%- endfor -%}
+    {%- endif -%}
   </div>
 </div>
 
@@ -134,6 +120,64 @@
       "id": "subtitle",
       "label": "Section Subtitle",
       "default": "Visual outfit studies, tonal harmonies & curated seasonal styling."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "editorial_look",
+      "name": "Editorial Card",
+      "settings": [
+        {
+          "type": "select",
+          "id": "card_size",
+          "label": "Card Proportions",
+          "options": [
+            { "value": "tall", "label": "Tall (2x Height)" },
+            { "value": "wide", "label": "Wide (2x Width)" },
+            { "value": "square", "label": "Square (1x1)" }
+          ],
+          "default": "tall"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Card Image"
+        },
+        {
+          "type": "text",
+          "id": "category",
+          "label": "Category / Tag",
+          "default": "Styling Inspiration"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Look Title",
+          "default": "Seasonal Styling Study"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Look Description",
+          "default": "Curated tonal harmonies and natural fiber pairings."
+        },
+        {
+          "type": "text",
+          "id": "link_text",
+          "label": "Button Link Text",
+          "default": "Shop The Look"
+        },
+        {
+          "type": "url",
+          "id": "link_url",
+          "label": "Link Destination"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "The Edit"
     }
   ]
 }

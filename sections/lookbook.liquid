@@ -24,21 +24,27 @@
     <article class="lookbook-spread" style="display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:center;">
       <div class="spread-visuals">
         <div class="spread-hero-img-wrap" style="position:relative; aspect-ratio:3/4; border-radius:18px; overflow:hidden; box-shadow:0 16px 40px rgba(43,38,32,0.1);">
-          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=900&q=85" alt="Sage Meadow Knit Look" style="width:100%; height:100%; object-fit:cover;" loading="lazy" width="600" height="800">
+          {%- if section.settings.look_image_1 != blank -%}
+            <img src="{{ section.settings.look_image_1 | image_url: width: 900 }}" alt="{{ section.settings.look_title_1 | escape }}" style="width:100%; height:100%; object-fit:cover;" loading="lazy" width="600" height="800">
+          {%- elsif collections.all.products.first.featured_image != blank -%}
+            <img src="{{ collections.all.products.first.featured_image | image_url: width: 900 }}" alt="{{ collections.all.products.first.title | escape }}" style="width:100%; height:100%; object-fit:cover;" loading="lazy" width="600" height="800">
+          {%- else -%}
+            {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}
+          {%- endif -%}
           <span class="spread-badge" style="position:absolute; top:18px; left:18px; background:rgba(246,244,238,0.92); padding:0.4rem 0.9rem; border-radius:20px; font-size:0.75rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--text-charcoal);">Look 01</span>
         </div>
       </div>
       <div class="spread-story">
-        <span class="spread-eyebrow" style="font-size:0.75rem; letter-spacing:0.2em; text-transform:uppercase; font-weight:700; color:var(--accent-sage-dark); display:block; margin-bottom:0.6rem;">Autumn / Winter '26 &bull; Look 01</span>
-        <h2 class="spread-heading" style="font-family:var(--font-serif); font-size:2.6rem; font-weight:400; color:var(--text-charcoal); line-height:1.15; margin-bottom:0.4rem;">The Tactile Minimalist</h2>
-        <h3 class="spread-subtitle" style="font-size:1rem; color:var(--accent-terracotta-dark); font-weight:600; margin-bottom:1.5rem;">Sage Merino & Pleated Belgian Flax</h3>
+        <span class="spread-eyebrow" style="font-size:0.75rem; letter-spacing:0.2em; text-transform:uppercase; font-weight:700; color:var(--accent-sage-dark); display:block; margin-bottom:0.6rem;">{{ section.settings.season | default: "Autumn / Winter '26" }} &bull; Look 01</span>
+        <h2 class="spread-heading" style="font-family:var(--font-serif); font-size:2.6rem; font-weight:400; color:var(--text-charcoal); line-height:1.15; margin-bottom:0.4rem;">{{ section.settings.look_title_1 | default: "The Tactile Minimalist" }}</h2>
+        <h3 class="spread-subtitle" style="font-size:1rem; color:var(--accent-terracotta-dark); font-weight:600; margin-bottom:1.5rem;">{{ section.settings.look_subtitle_1 | default: "Sage Merino & Pleated Belgian Flax" }}</h3>
         <blockquote class="spread-quote" style="font-family:var(--font-serif); font-size:1.3rem; font-style:italic; line-height:1.5; color:var(--text-charcoal); border-left:2px solid var(--accent-terracotta); padding-left:1.2rem; margin-bottom:1.5rem;">
-          &ldquo;There is a quiet strength in garments that do not demand attention, but hold it effortlessly.&rdquo;
+          &ldquo;{{ section.settings.look_quote_1 | default: "There is a quiet strength in garments that do not demand attention, but hold it effortlessly." }}&rdquo;
         </blockquote>
         <p class="spread-description" style="font-size:0.95rem; line-height:1.8; color:var(--text-charcoal-muted); margin-bottom:2rem;">
-          Designed for crisp transitional mornings. The oversized Sage Meadow Knit is spun from cruelty-free merino wool, draping naturally over high-waisted pleated flax trousers.
+          {{ section.settings.look_desc_1 | default: "Designed for crisp transitional mornings. Spun from cruelty-free merino wool, draping naturally over tailored high-waisted flax trousers." }}
         </p>
-        <a href="{{ routes.all_products_collection_url }}" class="btn-primary" style="display:inline-flex; align-items:center; gap:0.6rem; padding:0.9rem 2rem; border-radius:30px;">
+        <a href="{{ section.settings.look_link_1 | default: routes.all_products_collection_url }}" class="btn-primary" style="display:inline-flex; align-items:center; gap:0.6rem; padding:0.9rem 2rem; border-radius:30px;">
           <span>Explore Look 01 Pieces &rarr;</span>
         </a>
       </div>
@@ -47,22 +53,28 @@
     <!-- Spread 2: Look 02 -->
     <article class="lookbook-spread spread-reversed" style="display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:center;">
       <div class="spread-story" style="order:1;">
-        <span class="spread-eyebrow" style="font-size:0.75rem; letter-spacing:0.2em; text-transform:uppercase; font-weight:700; color:var(--accent-sage-dark); display:block; margin-bottom:0.6rem;">Autumn / Winter '26 &bull; Look 02</span>
-        <h2 class="spread-heading" style="font-family:var(--font-serif); font-size:2.6rem; font-weight:400; color:var(--text-charcoal); line-height:1.15; margin-bottom:0.4rem;">The Coastal Nomad</h2>
-        <h3 class="spread-subtitle" style="font-size:1rem; color:var(--accent-terracotta-dark); font-weight:600; margin-bottom:1.5rem;">Sienna Raw Flax & Sculpted Leather</h3>
+        <span class="spread-eyebrow" style="font-size:0.75rem; letter-spacing:0.2em; text-transform:uppercase; font-weight:700; color:var(--accent-sage-dark); display:block; margin-bottom:0.6rem;">{{ section.settings.season | default: "Autumn / Winter '26" }} &bull; Look 02</span>
+        <h2 class="spread-heading" style="font-family:var(--font-serif); font-size:2.6rem; font-weight:400; color:var(--text-charcoal); line-height:1.15; margin-bottom:0.4rem;">{{ section.settings.look_title_2 | default: "The Coastal Nomad" }}</h2>
+        <h3 class="spread-subtitle" style="font-size:1rem; color:var(--accent-terracotta-dark); font-weight:600; margin-bottom:1.5rem;">{{ section.settings.look_subtitle_2 | default: "Sienna Raw Flax & Sculpted Leather" }}</h3>
         <blockquote class="spread-quote" style="font-family:var(--font-serif); font-size:1.3rem; font-style:italic; line-height:1.5; color:var(--text-charcoal); border-left:2px solid var(--accent-terracotta); padding-left:1.2rem; margin-bottom:1.5rem;">
-          &ldquo;Form follows movement. Every seam is placed to celebrate the drape of raw unbleached fibers.&rdquo;
+          &ldquo;{{ section.settings.look_quote_2 | default: "Form follows movement. Every seam is placed to celebrate the drape of raw unbleached fibers." }}&rdquo;
         </blockquote>
         <p class="spread-description" style="font-size:0.95rem; line-height:1.8; color:var(--text-charcoal-muted); margin-bottom:2rem;">
-          Constructed with heavy unbleached Belgian linen dyed with Madder root botanicals. Paired seamlessly with our Ochre Sculpted Suede Saddle Bag.
+          {{ section.settings.look_desc_2 | default: "Constructed with heavy unbleached Belgian linen dyed with Madder root botanicals. Paired seamlessly with our hand-finished leather accessories." }}
         </p>
-        <a href="{{ routes.all_products_collection_url }}" class="btn-primary" style="display:inline-flex; align-items:center; gap:0.6rem; padding:0.9rem 2rem; border-radius:30px;">
+        <a href="{{ section.settings.look_link_2 | default: routes.all_products_collection_url }}" class="btn-primary" style="display:inline-flex; align-items:center; gap:0.6rem; padding:0.9rem 2rem; border-radius:30px;">
           <span>Explore Look 02 Pieces &rarr;</span>
         </a>
       </div>
       <div class="spread-visuals" style="order:2;">
         <div class="spread-hero-img-wrap" style="position:relative; aspect-ratio:3/4; border-radius:18px; overflow:hidden; box-shadow:0 16px 40px rgba(43,38,32,0.1);">
-          <img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=900&q=85" alt="Sienna Coat Look" style="width:100%; height:100%; object-fit:cover;" loading="lazy" width="600" height="800">
+          {%- if section.settings.look_image_2 != blank -%}
+            <img src="{{ section.settings.look_image_2 | image_url: width: 900 }}" alt="{{ section.settings.look_title_2 | escape }}" style="width:100%; height:100%; object-fit:cover;" loading="lazy" width="600" height="800">
+          {%- elsif collections.all.products[1].featured_image != blank -%}
+            <img src="{{ collections.all.products[1].featured_image | image_url: width: 900 }}" alt="{{ collections.all.products[1].title | escape }}" style="width:100%; height:100%; object-fit:cover;" loading="lazy" width="600" height="800">
+          {%- else -%}
+            {{ 'lifestyle-2' | placeholder_svg_tag: 'placeholder-svg' }}
+          {%- endif -%}
           <span class="spread-badge" style="position:absolute; top:18px; left:18px; background:rgba(246,244,238,0.92); padding:0.4rem 0.9rem; border-radius:20px; font-size:0.75rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--text-charcoal);">Look 02</span>
         </div>
       </div>
@@ -91,6 +103,87 @@
       "id": "intro",
       "label": "Intro Text",
       "default": "A study in architectural volume, raw Belgian flax, vegetal earth dyes, and the quiet dignity of slow tailoring."
+    },
+    {
+      "type": "header",
+      "content": "Look 01 Settings"
+    },
+    {
+      "type": "image_picker",
+      "id": "look_image_1",
+      "label": "Look 01 Image"
+    },
+    {
+      "type": "text",
+      "id": "look_title_1",
+      "label": "Look 01 Title",
+      "default": "The Tactile Minimalist"
+    },
+    {
+      "type": "text",
+      "id": "look_subtitle_1",
+      "label": "Look 01 Subtitle",
+      "default": "Sage Merino & Pleated Belgian Flax"
+    },
+    {
+      "type": "textarea",
+      "id": "look_quote_1",
+      "label": "Look 01 Quote",
+      "default": "There is a quiet strength in garments that do not demand attention, but hold it effortlessly."
+    },
+    {
+      "type": "textarea",
+      "id": "look_desc_1",
+      "label": "Look 01 Description",
+      "default": "Designed for crisp transitional mornings. Spun from cruelty-free merino wool, draping naturally over tailored high-waisted flax trousers."
+    },
+    {
+      "type": "url",
+      "id": "look_link_1",
+      "label": "Look 01 Link"
+    },
+    {
+      "type": "header",
+      "content": "Look 02 Settings"
+    },
+    {
+      "type": "image_picker",
+      "id": "look_image_2",
+      "label": "Look 02 Image"
+    },
+    {
+      "type": "text",
+      "id": "look_title_2",
+      "label": "Look 02 Title",
+      "default": "The Coastal Nomad"
+    },
+    {
+      "type": "text",
+      "id": "look_subtitle_2",
+      "label": "Look 02 Subtitle",
+      "default": "Sienna Raw Flax & Sculpted Leather"
+    },
+    {
+      "type": "textarea",
+      "id": "look_quote_2",
+      "label": "Look 02 Quote",
+      "default": "Form follows movement. Every seam is placed to celebrate the drape of raw unbleached fibers."
+    },
+    {
+      "type": "textarea",
+      "id": "look_desc_2",
+      "label": "Look 02 Description",
+      "default": "Constructed with heavy unbleached Belgian linen dyed with Madder root botanicals. Paired seamlessly with our hand-finished leather accessories."
+    },
+    {
+      "type": "url",
+      "id": "look_link_2",
+      "label": "Look 02 Link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Lookbook"
     }
   ]
 }

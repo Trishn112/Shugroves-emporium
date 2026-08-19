@@ -56,7 +56,10 @@
         {%- assign current_variant = product.selected_or_first_available_variant -%}
 
         <div class="product-meta-header">
-          <span class="product-eyebrow-material">{{ product.metafields.custom.material | default: product.type | default: '100% Pure Botanical Fiber' }}</span>
+          {%- assign pdp_material = product.metafields.custom.material | default: product.type | default: product.vendor -%}
+          {%- if pdp_material != blank -%}
+            <span class="product-eyebrow-material">{{ pdp_material }}</span>
+          {%- endif -%}
           <h1 class="product-pdp-title">{{ product.title }}</h1>
 
           <div class="product-pdp-price-row">

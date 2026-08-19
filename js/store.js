@@ -64,7 +64,7 @@ class Store {
 
     // 3. Wishlist Setup
     const savedWishlist = storage.get('shugroves_wishlist');
-    this.wishlist = savedWishlist ? JSON.parse(savedWishlist) : ["shu-001", "shu-004"];
+    this.wishlist = savedWishlist ? JSON.parse(savedWishlist) : [];
 
     // 4. User Profile
     const savedUser = storage.get('shugroves_user');
@@ -82,84 +82,15 @@ class Store {
 
     // 6. Collections
     const savedCollections = storage.get('shugroves_collections');
-    this.collections = savedCollections ? JSON.parse(savedCollections) : [
-      { id: "col-women", title: "Women", handle: "women", productCount: 18 },
-      { id: "col-men", title: "Men", handle: "men", productCount: 12 },
-      { id: "col-dresses", title: "Dresses", handle: "dresses", productCount: 9 },
-      { id: "col-coats", title: "Coats & Outerwear", handle: "coats", productCount: 7 },
-      { id: "col-knitwear", title: "Merino Knitwear", handle: "knitwear", productCount: 8 },
-      { id: "col-tops", title: "Tops & Blouses", handle: "tops", productCount: 10 },
-      { id: "col-bottoms", title: "Bottoms & Trousers", handle: "bottoms", productCount: 6 },
-      { id: "col-bags", title: "Handcrafted Bags", handle: "bags", productCount: 5 },
-      { id: "col-shoes", title: "Woven Mules & Shoes", handle: "shoes", productCount: 4 },
-      { id: "col-accessories", title: "Sculptural Jewellery", handle: "accessories", productCount: 6 },
-      { id: "col-new", title: "New Arrivals", handle: "new-arrivals", productCount: 12 },
-      { id: "col-sale", title: "Offers & Sale", handle: "sale", productCount: 8 }
-    ];
+    this.collections = savedCollections ? JSON.parse(savedCollections) : [];
 
     // 7. Media Library
     const savedMedia = storage.get('shugroves_media');
-    this.mediaLibrary = savedMedia ? JSON.parse(savedMedia) : [
-      {
-        id: "med-001",
-        url: "https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=800&q=85",
-        title: "Sienna Coat Editorial Look",
-        category: "Clothing",
-        source: "Unsplash Commercial License",
-        licenseStatus: "Royalty-Free / Permitted",
-        productAssoc: "Sienna Raw Linen Coat"
-      },
-      {
-        id: "med-002",
-        url: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=85",
-        title: "Sage Meadow Knitwear Studio",
-        category: "Clothing",
-        source: "Unsplash Commercial License",
-        licenseStatus: "Royalty-Free / Permitted",
-        productAssoc: "Sage Meadow Oversized Knit"
-      },
-      {
-        id: "med-003",
-        url: "https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=800&q=85",
-        title: "Sculptural Saddle Bag Detail",
-        category: "Bags",
-        source: "Unsplash Commercial License",
-        licenseStatus: "Royalty-Free / Permitted",
-        productAssoc: "The Sculptural Saddle Bag"
-      }
-    ];
+    this.mediaLibrary = savedMedia ? JSON.parse(savedMedia) : [];
 
-    // 7. Orders Setup
+    // 8. Orders Setup
     const savedOrders = storage.get('shugroves_orders');
-    this.orders = savedOrders ? JSON.parse(savedOrders) : [
-      {
-        id: "SHU-9402",
-        date: "14 Oct 2026",
-        total: 18500,
-        status: "In Transit",
-        paymentMethod: "Shopify Hosted Payments",
-        trackingNumber: "IND-8849102-EXP",
-        carrier: "BlueDart Express Courier",
-        shippingAddress: {
-          name: "Sonia Kapoor",
-          street: "42 Altamount Road, Cumballa Hill",
-          city: "Mumbai",
-          postalCode: "400026"
-        },
-        items: [
-          {
-            id: "shu-001",
-            variantSku: "shu-001-S",
-            name: "Sienna Raw Linen Trench Coat",
-            size: "S",
-            color: "Dusty Terracotta",
-            price: 18500,
-            quantity: 1,
-            image: "https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=800&q=85"
-          }
-        ]
-      }
-    ];
+    this.orders = savedOrders ? JSON.parse(savedOrders) : [];
 
     // 8. Promo Codes Configuration
     this.appliedPromo = null;
@@ -284,17 +215,11 @@ class Store {
   }
 
   getOfferProducts() {
-    const offers = this.products.filter(p => 
+    return this.products.filter(p => 
       (p.salePrice && p.salePrice < p.price) || 
       (p.compareAtPrice && p.compareAtPrice > p.price) || 
       (p.tags && p.tags.some(t => t.toLowerCase() === 'sale' || t.toLowerCase() === 'offer' || t.toLowerCase() === 'offers'))
     );
-    // If no products explicitly discounted, provide promotional curated set
-    return offers.length > 0 ? offers : this.products.map(p => ({
-      ...p,
-      salePrice: p.salePrice || Math.round(p.price * 0.85),
-      compareAtPrice: p.compareAtPrice || p.price
-    }));
   }
 
   // --- Products API ---
