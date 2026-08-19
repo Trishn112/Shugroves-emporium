@@ -9,15 +9,17 @@
  */
 {
   "sections": {
-    "contact_help": {
+    "contact_help_knw79F": {
       "type": "contact-help",
+      "name": "Help & Contact Us",
       "settings": {
         "eyebrow": "Client Care & Inquiries",
-        "heading": "How May We Assist You?"
+        "heading": "How May We Assist You?",
+        "subtitle": "Our dedicated concierge team is available to assist with bespoke sizing, styling advice, orders, and delivery logistics."
       }
     }
   },
   "order": [
-    "contact_help"
+    "contact_help_knw79F"
   ]
 }

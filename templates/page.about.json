@@ -9,15 +9,17 @@
  */
 {
   "sections": {
-    "about": {
+    "about_MHDxcM": {
       "type": "about",
+      "name": "About Us",
       "settings": {
         "eyebrow": "The Atelier Story",
-        "heading": "Conscious Craftsmanship,<br><em>Seasonless Silhouettes.</em>"
+        "heading": "Conscious Craftsmanship,<br><em>Seasonless Silhouettes.</em>",
+        "subheading": "Founded on the radical premise that fashion should honor the earth, the artisan, and the wearer with equal devotion."
       }
     }
   },
   "order": [
-    "about"
+    "about_MHDxcM"
   ]
 }

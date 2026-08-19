@@ -14,18 +14,18 @@
       "disabled": true,
       "settings": {}
     },
-    "about_J3QfBz": {
-      "type": "about",
-      "name": "About Us",
+    "contact_help_wVBpCM": {
+      "type": "contact-help",
+      "name": "Help & Contact Us",
       "settings": {
-        "eyebrow": "About Us",
-        "heading": "Shugroves Emporium",
-        "subheading": "<br>Shugroves Emporium is a thoughtfully curated destination for distinctive goods chosen to bring beauty, character, and everyday delight into your life.\nWe discover and offer quality pieces from makers and brands we believe in, combining timeless appeal with practical purpose.\nOur mission is to make considered shopping feel personal, inspiring, and accessible—while building a store rooted in care, craftsmanship, and lasting value."
+        "eyebrow": "Client Care & Inquiries",
+        "heading": "How May We Assist You?",
+        "subtitle": "Our dedicated concierge team is available to assist with bespoke sizing, styling advice, orders, and delivery logistics."
       }
     }
   },
   "order": [
     "main",
-    "about_J3QfBz"
+    "contact_help_wVBpCM"
   ]
 }
