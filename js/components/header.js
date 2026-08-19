@@ -87,8 +87,8 @@ export function renderHeader(container) {
         <!-- 2. POPULAR -->
         <li><a href="#collections?sort=bestseller" class="nav-item-link">Popular</a></li>
 
-        <!-- 3. LOOKBOOK -->
-        <li><a href="#lookbook" class="nav-item-link">Lookbook</a></li>
+        <!-- 3. OFFERS -->
+        <li><a href="#offers" class="nav-item-link">Offers</a></li>
 
         <!-- 4. ABOUT US -->
         <li><a href="#about" class="nav-item-link">About Us</a></li>

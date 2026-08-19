@@ -101,7 +101,22 @@ export function initApp() {
       renderAboutView(appMain);
     },
 
+    'about-us': () => {
+      if (replayBtn) replayBtn.style.display = 'none';
+      renderAboutView(appMain);
+    },
+
     'help': () => {
+      if (replayBtn) replayBtn.style.display = 'none';
+      renderHelpView(appMain);
+    },
+
+    'contact': () => {
+      if (replayBtn) replayBtn.style.display = 'none';
+      renderHelpView(appMain);
+    },
+
+    'contact-us': () => {
       if (replayBtn) replayBtn.style.display = 'none';
       renderHelpView(appMain);
     },
