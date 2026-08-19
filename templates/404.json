@@ -11,10 +11,58 @@
   "sections": {
     "main": {
       "type": "main-404",
+      "disabled": true,
+      "settings": {}
+    },
+    "17871437845d657980": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_b1c7e74_y3RENC": {
+          "type": "ai_gen_block_b1c7e74",
+          "settings": {
+            "title": "My Wishlist",
+            "description": "Save your favorite items for later",
+            "text_alignment": "left",
+            "add_to_cart_text": "Add to cart",
+            "empty_title": "Your wishlist is empty",
+            "empty_description": "Start adding products you love to your wishlist",
+            "empty_button_text": "Continue shopping",
+            "empty_button_link": "",
+            "columns_desktop": 6,
+            "columns_tablet": 3,
+            "columns_mobile": "2",
+            "grid_gap": 20,
+            "section_padding": 100,
+            "max_width": 1200,
+            "background_color": "#F6F4EE",
+            "card_background": "#FFFFFF",
+            "title_color": "#2B2620",
+            "description_color": "#6E685E",
+            "product_title_color": "#2B2620",
+            "price_color": "#2B2620",
+            "button_bg": "#D89C94",
+            "button_text": "#FFFFFF",
+            "button_hover": "#A66359",
+            "remove_button_bg": "#FFFFFF",
+            "remove_button_hover": "#F0EDE4",
+            "remove_button_icon": "#2B2620",
+            "title_size": 30,
+            "description_size": 16,
+            "card_border_radius": 6,
+            "button_border_radius": 30,
+            "show_sample_products": false
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_b1c7e74_y3RENC"
+      ],
       "settings": {}
     }
   },
   "order": [
-    "main"
+    "main",
+    "17871437845d657980"
   ]
 }
