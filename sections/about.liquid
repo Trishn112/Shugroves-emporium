@@ -38,6 +38,12 @@
           We reject synthetic polyesters and petroleum blends entirely. When an atelier piece touches your skin, it breathes with the tactile ease of pure botanical fibers.
         </p>
 
+        {%- if page.content != blank -%}
+          <div class="about-page-custom-content rte" style="margin-top: 1.5rem; margin-bottom: 1.5rem; line-height: 1.8; color: var(--text-charcoal-muted);">
+            {{ page.content }}
+          </div>
+        {%- endif -%}
+
         <!-- Social Media Channels -->
         {%- if settings.social_instagram != blank or settings.social_facebook != blank or settings.social_twitter != blank -%}
           <div class="about-social-block">

@@ -12,6 +12,12 @@
         {{ section.settings.description | default: "Conscious slow-fashion creations and atelier archive silhouettes presented with seasonal privileges. All pieces are crafted in limited quantities with pure natural fibers." }}
       </p>
 
+      {%- if page.content != blank -%}
+        <div class="offers-page-custom-content rte" style="max-width: 680px; margin: 1rem auto 0; line-height: 1.7; color: var(--text-charcoal-muted); font-size: 0.95rem;">
+          {{ page.content }}
+        </div>
+      {%- endif -%}
+
       <!-- Category Filter Tabs -->
       <div class="category-tabs">
         <a href="{{ routes.all_products_collection_url }}?filter.p.m.custom.sale=1" class="category-tab-btn tab-active">

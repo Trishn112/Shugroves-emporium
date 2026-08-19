@@ -81,6 +81,12 @@
         <h2 class="help-section-heading">Send a Message to the Atelier</h2>
         <p class="help-section-desc">Leave your note below and our client advisory team will respond promptly.</p>
 
+        {%- if page.content != blank -%}
+          <div class="help-page-custom-content rte" style="margin-bottom: 1.5rem; line-height: 1.7; color: var(--text-charcoal-muted);">
+            {{ page.content }}
+          </div>
+        {%- endif -%}
+
         {%- form 'contact', id: 'ContactForm', class: 'shopify-contact-form' -%}
           {%- if form.posted_successfully? -%}
             <div class="form-status form-status-success" style="background:#EBF3E8; color:#3F5A36; padding:1.2rem; border-radius:10px; margin-bottom:1.5rem;">
