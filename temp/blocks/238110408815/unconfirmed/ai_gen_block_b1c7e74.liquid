@@ -1,6 +1,667 @@
+{% doc %}
+  @prompt
+    make a wishlish section 
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-wishlist-{{ ai_gen_id }} {
+    display: block;
+    width: 100%;
+    padding: {{ block.settings.section_padding }}px 20px;
+    background-color: {{ block.settings.background_color }};
+  }
+
+  .ai-wishlist-container-{{ ai_gen_id }} {
+    max-width: {{ block.settings.max_width }}px;
+    margin: 0 auto;
+  }
+
+  .ai-wishlist-header-{{ ai_gen_id }} {
+    text-align: {{ block.settings.text_alignment }};
+    margin-bottom: 40px;
+  }
+
+  .ai-wishlist-title-{{ ai_gen_id }} {
+    font-size: {{ block.settings.title_size }}px;
+    color: {{ block.settings.title_color }};
+    margin: 0 0 12px;
+    font-weight: 600;
+  }
+
+  .ai-wishlist-description-{{ ai_gen_id }} {
+    font-size: {{ block.settings.description_size }}px;
+    color: {{ block.settings.description_color }};
+    margin: 0;
+  }
+
+  .ai-wishlist-grid-{{ ai_gen_id }} {
+    display: grid;
+    grid-template-columns: repeat({{ block.settings.columns_desktop }}, 1fr);
+    gap: {{ block.settings.grid_gap }}px;
+    margin-bottom: 30px;
+  }
+
+  .ai-wishlist-item-{{ ai_gen_id }} {
+    background-color: {{ block.settings.card_background }};
+    border-radius: {{ block.settings.card_border_radius }}px;
+    overflow: hidden;
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .ai-wishlist-item-{{ ai_gen_id }}:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  }
+
+  .ai-wishlist-image-wrapper-{{ ai_gen_id }} {
+    position: relative;
+    width: 100%;
+    padding-bottom: 100%;
+    overflow: hidden;
+    background-color: #f4f4f4;
+  }
+
+  .ai-wishlist-image-{{ ai_gen_id }} {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .ai-wishlist-image-wrapper-{{ ai_gen_id }} svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .ai-wishlist-remove-{{ ai_gen_id }} {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: {{ block.settings.remove_button_bg }};
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    transition: background-color 0.3s ease;
+  }
+
+  .ai-wishlist-remove-{{ ai_gen_id }}:hover {
+    background-color: {{ block.settings.remove_button_hover }};
+  }
+
+  .ai-wishlist-remove-{{ ai_gen_id }} svg {
+    width: 16px;
+    height: 16px;
+    stroke: {{ block.settings.remove_button_icon }};
+  }
+
+  .ai-wishlist-content-{{ ai_gen_id }} {
+    padding: 16px;
+  }
+
+  .ai-wishlist-product-title-{{ ai_gen_id }} {
+    font-size: 16px;
+    color: {{ block.settings.product_title_color }};
+    margin: 0 0 8px;
+    font-weight: 500;
+  }
+
+  .ai-wishlist-product-title-{{ ai_gen_id }} a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .ai-wishlist-product-title-{{ ai_gen_id }} a:hover {
+    text-decoration: underline;
+  }
+
+  .ai-wishlist-product-price-{{ ai_gen_id }} {
+    font-size: 18px;
+    color: {{ block.settings.price_color }};
+    margin-bottom: 12px;
+    font-weight: 600;
+  }
+
+  .ai-wishlist-add-to-cart-{{ ai_gen_id }} {
+    width: 100%;
+    padding: 12px 20px;
+    background-color: {{ block.settings.button_bg }};
+    color: {{ block.settings.button_text }};
+    border: none;
+    border-radius: {{ block.settings.button_border_radius }}px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+  }
+
+  .ai-wishlist-add-to-cart-{{ ai_gen_id }}:hover {
+    background-color: {{ block.settings.button_hover }};
+  }
+
+  .ai-wishlist-empty-{{ ai_gen_id }} {
+    text-align: center;
+    padding: 60px 20px;
+  }
+
+  .ai-wishlist-empty-icon-{{ ai_gen_id }} {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 20px;
+    opacity: 0.3;
+  }
+
+  .ai-wishlist-empty-icon-{{ ai_gen_id }} svg {
+    width: 100%;
+    height: 100%;
+    stroke: {{ block.settings.title_color }};
+  }
+
+  .ai-wishlist-empty-title-{{ ai_gen_id }} {
+    font-size: 24px;
+    color: {{ block.settings.title_color }};
+    margin: 0 0 12px;
+  }
+
+  .ai-wishlist-empty-text-{{ ai_gen_id }} {
+    font-size: 16px;
+    color: {{ block.settings.description_color }};
+    margin: 0 0 24px;
+  }
+
+  .ai-wishlist-empty-button-{{ ai_gen_id }} {
+    display: inline-block;
+    padding: 14px 28px;
+    background-color: {{ block.settings.button_bg }};
+    color: {{ block.settings.button_text }};
+    text-decoration: none;
+    border-radius: {{ block.settings.button_border_radius }}px;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+  }
+
+  .ai-wishlist-empty-button-{{ ai_gen_id }}:hover {
+    background-color: {{ block.settings.button_hover }};
+  }
+
+  @media screen and (max-width: 989px) {
+    .ai-wishlist-grid-{{ ai_gen_id }} {
+      grid-template-columns: repeat({{ block.settings.columns_tablet }}, 1fr);
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-wishlist-grid-{{ ai_gen_id }} {
+      grid-template-columns: repeat({{ block.settings.columns_mobile }}, 1fr);
+    }
+
+    .ai-wishlist-title-{{ ai_gen_id }} {
+      font-size: calc({{ block.settings.title_size }}px * 0.8);
+    }
+  }
+{% endstyle %}
+
+<wishlist-section-{{ ai_gen_id }} class="ai-wishlist-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="ai-wishlist-container-{{ ai_gen_id }}">
+    <div class="ai-wishlist-header-{{ ai_gen_id }}">
+      {% if block.settings.title != blank %}
+        <h2 class="ai-wishlist-title-{{ ai_gen_id }}">{{ block.settings.title }}</h2>
+      {% endif %}
+      {% if block.settings.description != blank %}
+        <p class="ai-wishlist-description-{{ ai_gen_id }}">{{ block.settings.description }}</p>
+      {% endif %}
+    </div>
+
+    <div class="ai-wishlist-items-{{ ai_gen_id }}" data-wishlist-container>
+      {% if block.settings.show_sample_products %}
+        <div class="ai-wishlist-grid-{{ ai_gen_id }}">
+          {% for i in (1..6) %}
+            <div class="ai-wishlist-item-{{ ai_gen_id }}" data-wishlist-item>
+              <div class="ai-wishlist-image-wrapper-{{ ai_gen_id }}">
+                {{ 'product-1' | placeholder_svg_tag }}
+                <button class="ai-wishlist-remove-{{ ai_gen_id }}" aria-label="Remove from wishlist">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                  </svg>
+                </button>
+              </div>
+              <div class="ai-wishlist-content-{{ ai_gen_id }}">
+                <h3 class="ai-wishlist-product-title-{{ ai_gen_id }}">
+                  <a href="#">Sample Product {{ i }}</a>
+                </h3>
+                <div class="ai-wishlist-product-price-{{ ai_gen_id }}">₹1,999</div>
+                <button class="ai-wishlist-add-to-cart-{{ ai_gen_id }}">
+                  {{ block.settings.add_to_cart_text }}
+                </button>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      {% else %}
+        <div class="ai-wishlist-empty-{{ ai_gen_id }}" data-empty-state>
+          <div class="ai-wishlist-empty-icon-{{ ai_gen_id }}">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+            </svg>
+          </div>
+          <h3 class="ai-wishlist-empty-title-{{ ai_gen_id }}">{{ block.settings.empty_title }}</h3>
+          <p class="ai-wishlist-empty-text-{{ ai_gen_id }}">{{ block.settings.empty_description }}</p>
+          {% if block.settings.empty_button_link != blank %}
+            <a href="{{ block.settings.empty_button_link }}" class="ai-wishlist-empty-button-{{ ai_gen_id }}">
+              {{ block.settings.empty_button_text }}
+            </a>
+          {% endif %}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</wishlist-section-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    class WishlistSection{{ ai_gen_id }} extends HTMLElement {
+      constructor() {
+        super();
+        this.storageKey = 'shopify_wishlist';
+      }
+
+      connectedCallback() {
+        this.container = this.querySelector('[data-wishlist-container]');
+        this.emptyState = this.querySelector('[data-empty-state]');
+        this.setupEventListeners();
+        this.loadWishlist();
+      }
+
+      setupEventListeners() {
+        this.addEventListener('click', (e) => {
+          if (e.target.closest('.ai-wishlist-remove-{{ ai_gen_id }}')) {
+            const item = e.target.closest('[data-wishlist-item]');
+            const productId = item.dataset.productId;
+            if (productId) {
+              this.removeFromWishlist(productId);
+            }
+          }
+
+          if (e.target.closest('.ai-wishlist-add-to-cart-{{ ai_gen_id }}')) {
+            const item = e.target.closest('[data-wishlist-item]');
+            const variantId = item.dataset.variantId;
+            if (variantId) {
+              this.addToCart(variantId);
+            }
+          }
+        });
+      }
+
+      loadWishlist() {
+        const wishlist = this.getWishlist();
+        if (wishlist.length === 0 && !{{ block.settings.show_sample_products | json }}) {
+          this.showEmptyState();
+        }
+      }
+
+      getWishlist() {
+        try {
+          const data = localStorage.getItem(this.storageKey);
+          return data ? JSON.parse(data) : [];
+        } catch (e) {
+          return [];
+        }
+      }
+
+      saveWishlist(wishlist) {
+        try {
+          localStorage.setItem(this.storageKey, JSON.stringify(wishlist));
+        } catch (e) {
+          console.error('Failed to save wishlist:', e);
+        }
+      }
+
+      removeFromWishlist(productId) {
+        let wishlist = this.getWishlist();
+        wishlist = wishlist.filter(id => id !== productId);
+        this.saveWishlist(wishlist);
+        
+        const item = this.querySelector(`[data-product-id="${productId}"]`);
+        if (item) {
+          item.remove();
+        }
+
+        if (wishlist.length === 0) {
+          this.showEmptyState();
+        }
+      }
+
+      addToCart(variantId) {
+        fetch('/cart/add.js', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            id: variantId,
+            quantity: 1
+          })
+        })
+        .then(response => response.json())
+        .then(data => {
+          window.dispatchEvent(new CustomEvent('cart:updated'));
+        })
+        .catch(error => {
+          console.error('Error adding to cart:', error);
+        });
+      }
+
+      showEmptyState() {
+        const grid = this.querySelector('.ai-wishlist-grid-{{ ai_gen_id }}');
+        if (grid) {
+          grid.style.display = 'none';
+        }
+        if (this.emptyState) {
+          this.emptyState.style.display = 'block';
+        }
+      }
+    }
+
+    customElements.define('wishlist-section-{{ ai_gen_id }}', WishlistSection{{ ai_gen_id }});
+  })();
+</script>
+
 {% schema %}
- {
-   "name": "AI_Block",
-   "tag": "shopify-ai-generated-block"
- }
+{
+  "name": "Wishlist",
+  "tag": null,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "My Wishlist"
+    },
+    {
+      "type": "text",
+      "id": "description",
+      "label": "Description",
+      "default": "Save your favorite items for later"
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "Text alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "text",
+      "id": "add_to_cart_text",
+      "label": "Add to cart button text",
+      "default": "Add to cart"
+    },
+    {
+      "type": "header",
+      "content": "Empty state"
+    },
+    {
+      "type": "text",
+      "id": "empty_title",
+      "label": "Empty title",
+      "default": "Your wishlist is empty"
+    },
+    {
+      "type": "text",
+      "id": "empty_description",
+      "label": "Empty description",
+      "default": "Start adding products you love to your wishlist"
+    },
+    {
+      "type": "text",
+      "id": "empty_button_text",
+      "label": "Empty button text",
+      "default": "Continue shopping"
+    },
+    {
+      "type": "url",
+      "id": "empty_button_link",
+      "label": "Empty button link"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "columns_desktop",
+      "label": "Columns on desktop",
+      "min": 2,
+      "max": 6,
+      "step": 1,
+      "default": 4
+    },
+    {
+      "type": "range",
+      "id": "columns_tablet",
+      "label": "Columns on tablet",
+      "min": 2,
+      "max": 4,
+      "step": 1,
+      "default": 3
+    },
+    {
+      "type": "select",
+      "id": "columns_mobile",
+      "label": "Columns on mobile",
+      "options": [
+        {
+          "value": "1",
+          "label": "1"
+        },
+        {
+          "value": "2",
+          "label": "2"
+        }
+      ],
+      "default": "2"
+    },
+    {
+      "type": "range",
+      "id": "grid_gap",
+      "label": "Grid gap",
+      "min": 10,
+      "max": 50,
+      "step": 5,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "section_padding",
+      "label": "Section padding",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "max_width",
+      "label": "Maximum width",
+      "min": 800,
+      "max": 1600,
+      "step": 50,
+      "unit": "px",
+      "default": 1200
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background",
+      "default": "#F6F4EE"
+    },
+    {
+      "type": "color",
+      "id": "card_background",
+      "label": "Card background",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Title",
+      "default": "#2B2620"
+    },
+    {
+      "type": "color",
+      "id": "description_color",
+      "label": "Description",
+      "default": "#6E685E"
+    },
+    {
+      "type": "color",
+      "id": "product_title_color",
+      "label": "Product title",
+      "default": "#2B2620"
+    },
+    {
+      "type": "color",
+      "id": "price_color",
+      "label": "Price",
+      "default": "#2B2620"
+    },
+    {
+      "type": "color",
+      "id": "button_bg",
+      "label": "Button background",
+      "default": "#D89C94"
+    },
+    {
+      "type": "color",
+      "id": "button_text",
+      "label": "Button text",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "button_hover",
+      "label": "Button hover",
+      "default": "#A66359"
+    },
+    {
+      "type": "color",
+      "id": "remove_button_bg",
+      "label": "Remove button background",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "remove_button_hover",
+      "label": "Remove button hover",
+      "default": "#F0EDE4"
+    },
+    {
+      "type": "color",
+      "id": "remove_button_icon",
+      "label": "Remove button icon",
+      "default": "#2B2620"
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "range",
+      "id": "title_size",
+      "label": "Title size",
+      "min": 20,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "description_size",
+      "label": "Description size",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "header",
+      "content": "Style"
+    },
+    {
+      "type": "range",
+      "id": "card_border_radius",
+      "label": "Card border radius",
+      "min": 0,
+      "max": 30,
+      "step": 2,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "button_border_radius",
+      "label": "Button border radius",
+      "min": 0,
+      "max": 30,
+      "step": 2,
+      "unit": "px",
+      "default": 4
+    },
+    {
+      "type": "header",
+      "content": "Preview"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_sample_products",
+      "label": "Show sample products",
+      "default": true,
+      "info": "Enable to preview the layout with sample products"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Wishlist"
+    }
+  ]
+}
 {% endschema %}
