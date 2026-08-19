@@ -1,658 +1,1067 @@
+```liquid
 {% comment %}
-  Shugroves Emporium - Help & Customer Support Section with Real Shopify Contact Form
+  Shugroves Emporium - Help & Customer Support
+  Improved spacing + alignment
+  Existing design preserved
 {% endcomment %}
 
+<style>
+  /* =========================================================
+     SHUGROVES EMPORIUM — HELP PAGE
+     SPACING & ALIGNMENT ONLY
+     ========================================================= */
+
+  .help-page-wrapper,
+  .help-page-wrapper *,
+  .help-page-wrapper *::before,
+  .help-page-wrapper *::after {
+    box-sizing: border-box;
+  }
+
+  .help-page-wrapper {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  .help-page-wrapper .section-container {
+    width: min(calc(100% - 40px), 1200px);
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* =========================
+     HEADER
+     ========================= */
+
+  .help-page-wrapper .help-header {
+    padding-top: 70px;
+    padding-bottom: 55px;
+  }
+
+  .help-page-wrapper .help-header-inner {
+    text-align: center;
+  }
+
+  .help-page-wrapper .help-eyebrow {
+    display: block;
+    margin: 0 0 12px;
+    line-height: 1.4;
+  }
+
+  .help-page-wrapper .help-title {
+    margin: 0 auto 16px;
+    max-width: 850px;
+    line-height: 1.15;
+  }
+
+  .help-page-wrapper .help-subtitle {
+    max-width: 720px;
+    margin: 0 auto;
+    line-height: 1.7;
+  }
+
+  /* =========================
+     MAIN
+     ========================= */
+
+  .help-page-wrapper .help-main-layout {
+    padding-top: 10px;
+    padding-bottom: 80px;
+  }
+
+  /* =========================
+     CONTACT CARDS
+     ========================= */
+
+  .help-page-wrapper .concierge-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+    width: 100%;
+    margin: 0 0 55px;
+    align-items: stretch;
+  }
+
+  .help-page-wrapper .concierge-card {
+    min-width: 0;
+    min-height: 175px;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    padding: 28px 22px;
+
+    overflow: hidden;
+
+    text-decoration: none;
+  }
+
+  .help-page-wrapper .concierge-card-icon {
+    flex: 0 0 auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 13px;
+  }
+
+  .help-page-wrapper .concierge-card-title {
+    margin: 0 0 8px;
+    line-height: 1.3;
+  }
+
+  .help-page-wrapper .concierge-card-val {
+    max-width: 100%;
+    margin: 0 0 6px;
+
+    line-height: 1.45;
+
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  .help-page-wrapper .concierge-card-sub {
+    display: block;
+    max-width: 100%;
+
+    line-height: 1.45;
+
+    overflow-wrap: anywhere;
+  }
+
+  /* =========================
+     FORM + FAQ
+     ========================= */
+
+  .help-page-wrapper .help-split-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+
+    gap: 50px;
+
+    width: 100%;
+
+    align-items: start;
+  }
+
+  .help-page-wrapper .help-form-container,
+  .help-page-wrapper .help-faq-container {
+    min-width: 0;
+    width: 100%;
+  }
+
+  /* =========================
+     HEADINGS
+     ========================= */
+
+  .help-page-wrapper .help-section-heading {
+    margin: 0 0 10px;
+    line-height: 1.25;
+  }
+
+  .help-page-wrapper .help-section-desc {
+    margin: 0 0 28px;
+    line-height: 1.65;
+  }
+
+  /* =========================
+     CONTACT FORM
+     ========================= */
+
+  .help-page-wrapper .shopify-contact-form {
+    width: 100%;
+  }
+
+  .help-page-wrapper .form-group {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .help-page-wrapper .form-label {
+    display: block;
+    margin-bottom: 8px;
+    line-height: 1.4;
+  }
+
+  .help-page-wrapper .form-input,
+  .help-page-wrapper .form-textarea {
+    display: block;
+
+    width: 100%;
+    max-width: 100%;
+
+    padding: 13px 15px;
+
+    line-height: 1.5;
+
+    box-sizing: border-box;
+  }
+
+  .help-page-wrapper .form-textarea {
+    min-height: 135px;
+    resize: vertical;
+  }
+
+  .help-page-wrapper .form-row-2 {
+    display: grid;
+
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    gap: 18px;
+
+    width: 100%;
+  }
+
+  .help-page-wrapper .form-row-2 .form-group {
+    min-width: 0;
+  }
+
+  .help-page-wrapper .btn-primary {
+    width: 100%;
+    min-height: 50px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-top: 5px;
+  }
+
+  /* =========================
+     FORM STATUS
+     ========================= */
+
+  .help-page-wrapper .form-status {
+    width: 100%;
+    margin-bottom: 24px;
+  }
+
+  .help-page-wrapper .form-status p {
+    margin-bottom: 0;
+  }
+
+  /* =========================
+     FAQ
+     ========================= */
+
+  .help-page-wrapper .faq-accordion {
+    width: 100%;
+    margin-top: 2px;
+  }
+
+  .help-page-wrapper .faq-item {
+    width: 100%;
+    margin: 0;
+    overflow: hidden;
+  }
+
+  .help-page-wrapper .faq-question {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 20px;
+
+    padding: 20px 0;
+
+    line-height: 1.45;
+
+    cursor: pointer;
+  }
+
+  .help-page-wrapper .faq-answer {
+    width: 100%;
+    padding: 0 0 20px;
+  }
+
+  .help-page-wrapper .faq-answer p {
+    margin: 0;
+    line-height: 1.7;
+  }
+
+  /* =========================
+     PAGE CONTENT
+     ========================= */
+
+  .help-page-wrapper .help-page-custom-content {
+    width: 100%;
+    max-width: 100%;
+
+    overflow-wrap: anywhere;
+  }
+
+  .help-page-wrapper .help-page-custom-content img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* =========================
+     TABLET
+     ========================= */
+
+  @media screen and (max-width: 900px) {
+
+    .help-page-wrapper .section-container {
+      width: min(calc(100% - 32px), 760px);
+    }
+
+    .help-page-wrapper .concierge-cards-grid {
+      gap: 16px;
+      margin-bottom: 45px;
+    }
+
+    .help-page-wrapper .concierge-card {
+      min-height: 165px;
+      padding: 24px 16px;
+    }
+
+    .help-page-wrapper .help-split-grid {
+      gap: 35px;
+    }
+  }
+
+  /* =========================
+     MOBILE
+     ========================= */
+
+  @media screen and (max-width: 749px) {
+
+    .help-page-wrapper .section-container {
+      width: calc(100% - 30px);
+      max-width: none;
+    }
+
+    .help-page-wrapper .help-header {
+      padding-top: 45px;
+      padding-bottom: 38px;
+    }
+
+    .help-page-wrapper .help-title {
+      max-width: 100%;
+      margin-bottom: 12px;
+    }
+
+    .help-page-wrapper .help-subtitle {
+      max-width: 100%;
+      line-height: 1.6;
+    }
+
+    .help-page-wrapper .help-main-layout {
+      padding-top: 5px;
+      padding-bottom: 55px;
+    }
+
+    /* Keep same cards, stack them cleanly */
+    .help-page-wrapper .concierge-cards-grid {
+      grid-template-columns: 1fr;
+      gap: 14px;
+      margin-bottom: 40px;
+    }
+
+    .help-page-wrapper .concierge-card {
+      min-height: 145px;
+      padding: 24px 20px;
+    }
+
+    /* Stack form and FAQ */
+    .help-page-wrapper .help-split-grid {
+      grid-template-columns: 1fr;
+      gap: 45px;
+    }
+
+    .help-page-wrapper .help-section-desc {
+      margin-bottom: 22px;
+    }
+
+    /* Stack name/email/phone fields */
+    .help-page-wrapper .form-row-2 {
+      grid-template-columns: 1fr;
+      gap: 0;
+    }
+
+    .help-page-wrapper .form-group {
+      margin-bottom: 18px;
+    }
+
+    .help-page-wrapper .form-input,
+    .help-page-wrapper .form-textarea {
+      font-size: 16px;
+    }
+
+    .help-page-wrapper .faq-question {
+      padding: 18px 0;
+      gap: 15px;
+    }
+
+    .help-page-wrapper .faq-answer {
+      padding-bottom: 18px;
+    }
+  }
+
+  /* =========================
+     SMALL PHONES
+     ========================= */
+
+  @media screen and (max-width: 480px) {
+
+    .help-page-wrapper .section-container {
+      width: calc(100% - 24px);
+    }
+
+    .help-page-wrapper .help-header {
+      padding-top: 35px;
+      padding-bottom: 30px;
+    }
+
+    .help-page-wrapper .help-main-layout {
+      padding-bottom: 40px;
+    }
+
+    .help-page-wrapper .concierge-card {
+      min-height: 140px;
+      padding: 22px 16px;
+    }
+
+    .help-page-wrapper .concierge-card-icon {
+      margin-bottom: 10px;
+    }
+
+    .help-page-wrapper .help-split-grid {
+      gap: 38px;
+    }
+
+    .help-page-wrapper .form-input,
+    .help-page-wrapper .form-textarea {
+      padding: 12px 13px;
+    }
+  }
+
+  /* =========================
+     OVERFLOW PROTECTION
+     ========================= */
+
+  .help-page-wrapper input,
+  .help-page-wrapper textarea,
+  .help-page-wrapper select {
+    max-width: 100%;
+  }
+
+  .help-page-wrapper a,
+  .help-page-wrapper p,
+  .help-page-wrapper span,
+  .help-page-wrapper h1,
+  .help-page-wrapper h2,
+  .help-page-wrapper h3 {
+    overflow-wrap: break-word;
+  }
+</style>
+
+
 <div class="help-page-wrapper">
-  <!-- Header -->
+
+  <!-- =========================
+       HEADER
+       ========================= -->
+
   <header class="help-header">
     <div class="section-container help-header-inner">
-      <span class="help-eyebrow">{{ section.settings.eyebrow | default: "Client Care & Inquiries" }}</span>
-      <h1 class="help-title">{{ section.settings.heading | default: "How May We Assist You?" }}</h1>
+
+      <span class="help-eyebrow">
+        {{ section.settings.eyebrow | default: "Client Care & Inquiries" }}
+      </span>
+
+      <h1 class="help-title">
+        {{ section.settings.heading | default: "How May We Assist You?" }}
+      </h1>
+
       <p class="help-subtitle">
         {{ section.settings.subtitle | default: "Our dedicated concierge team is available to assist with bespoke sizing, styling advice, orders, and delivery logistics." }}
       </p>
+
     </div>
   </header>
 
+
+  <!-- =========================
+       MAIN CONTENT
+       ========================= -->
+
   <div class="section-container help-main-layout">
-    <!-- Contact Concierge Cards Row -->
+
+    <!-- =========================
+         CONTACT CARDS
+         ========================= -->
+
     {%- assign support_email = settings.contact_email | default: shop.email -%}
+
     <div class="concierge-cards-grid">
-      <!-- 1. Telephone -->
+
+      <!-- TELEPHONE -->
+
       {%- if settings.contact_phone != blank -%}
-        <a href="tel:{{ settings.contact_phone_tel | default: settings.contact_phone }}" class="concierge-card" title="Call Concierge">
+
+        <a
+          href="tel:{{ settings.contact_phone_tel | default: settings.contact_phone }}"
+          class="concierge-card"
+          title="Call Concierge"
+        >
+
           <div class="concierge-card-icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+            <svg
+              width="22"
+              height="22"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              aria-hidden="true"
+            >
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+              </path>
+            </svg>
           </div>
-          <h3 class="concierge-card-title">Telephone Inquiries</h3>
-          <p class="concierge-card-val">{{ settings.contact_phone }}</p>
-          <span class="concierge-card-sub">{{ settings.business_hours | default: "Mon – Sat: 10am – 7pm IST" }}</span>
+
+          <h3 class="concierge-card-title">
+            Telephone Inquiries
+          </h3>
+
+          <p class="concierge-card-val">
+            {{ settings.contact_phone }}
+          </p>
+
+          <span class="concierge-card-sub">
+            {{ settings.business_hours | default: "Mon – Sat: 10am – 7pm IST" }}
+          </span>
+
         </a>
+
       {%- else -%}
-        <a href="#ContactForm" class="concierge-card" title="Send Client Note">
+
+        <a
+          href="#ContactForm"
+          class="concierge-card"
+          title="Send Client Note"
+        >
+
           <div class="concierge-card-icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+            <svg
+              width="22"
+              height="22"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              aria-hidden="true"
+            >
+              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z">
+              </path>
+            </svg>
           </div>
-          <h3 class="concierge-card-title">Client Advisory Desk</h3>
-          <p class="concierge-card-val">Send an Inquiry</p>
-          <span class="concierge-card-sub">Online advisory & garment assistance</span>
+
+          <h3 class="concierge-card-title">
+            Client Advisory Desk
+          </h3>
+
+          <p class="concierge-card-val">
+            Send an Inquiry
+          </p>
+
+          <span class="concierge-card-sub">
+            Online advisory & garment assistance
+          </span>
+
         </a>
+
       {%- endif -%}
 
-      <!-- 2. WhatsApp or Bespoke Alterations -->
+
+      <!-- WHATSAPP -->
+
       {%- if settings.contact_whatsapp != blank -%}
-        <a href="{{ settings.contact_whatsapp_url | default: '#' }}" target="_blank" rel="noopener noreferrer" class="concierge-card" title="Chat on WhatsApp">
+
+        <a
+          href="{{ settings.contact_whatsapp_url | default: '#' }}"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="concierge-card"
+          title="Chat on WhatsApp"
+        >
+
           <div class="concierge-card-icon contact-icon-whatsapp">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+
+            <svg
+              width="22"
+              height="22"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              aria-hidden="true"
+            >
+              <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z">
+              </path>
+            </svg>
+
           </div>
-          <h3 class="concierge-card-title">WhatsApp Concierge</h3>
-          <p class="concierge-card-val">{{ settings.contact_whatsapp }}</p>
-          <span class="concierge-card-sub">Instant styling & sizing support</span>
+
+          <h3 class="concierge-card-title">
+            WhatsApp Concierge
+          </h3>
+
+          <p class="concierge-card-val">
+            {{ settings.contact_whatsapp }}
+          </p>
+
+          <span class="concierge-card-sub">
+            Instant styling & sizing support
+          </span>
+
         </a>
+
       {%- else -%}
-        <a href="#faqAccordion" class="concierge-card" title="Frequently Asked Questions">
+
+        <a
+          href="#faqAccordion"
+          class="concierge-card"
+          title="Frequently Asked Questions"
+        >
+
           <div class="concierge-card-icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+
+            <svg
+              width="22"
+              height="22"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              aria-hidden="true"
+            >
+              <circle cx="12" cy="12" r="10"></circle>
+              <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+              <line x1="12" y1="17" x2="12.01" y2="17"></line>
+            </svg>
+
           </div>
-          <h3 class="concierge-card-title">Client Knowledge Base</h3>
-          <p class="concierge-card-val">FAQs & Care Guide</p>
-          <span class="concierge-card-sub">Shipping, returns & natural fiber care</span>
+
+          <h3 class="concierge-card-title">
+            Client Knowledge Base
+          </h3>
+
+          <p class="concierge-card-val">
+            FAQs & Care Guide
+          </p>
+
+          <span class="concierge-card-sub">
+            Shipping, returns & natural fiber care
+          </span>
+
         </a>
+
       {%- endif -%}
 
-      <!-- 3. Email -->
+
+      <!-- EMAIL -->
+
       {%- if support_email != blank -%}
-        <a href="mailto:{{ support_email }}" class="concierge-card" title="Email Concierge">
+
+        <a
+          href="mailto:{{ support_email }}"
+          class="concierge-card"
+          title="Email Concierge"
+        >
+
           <div class="concierge-card-icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+
+            <svg
+              width="22"
+              height="22"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              aria-hidden="true"
+            >
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2-2-2z"></path>
+              <polyline points="22,6 12,13 2,6"></polyline>
+            </svg>
+
           </div>
-          <h3 class="concierge-card-title">Email Correspondence</h3>
-          <p class="concierge-card-val">{{ support_email }}</p>
-          <span class="concierge-card-sub">Response within 24 business hours</span>
+
+          <h3 class="concierge-card-title">
+            Email Correspondence
+          </h3>
+
+          <p class="concierge-card-val">
+            {{ support_email }}
+          </p>
+
+          <span class="concierge-card-sub">
+            Response within 24 business hours
+          </span>
+
         </a>
+
       {%- endif -%}
+
     </div>
 
-    <!-- Split Grid: Real Shopify Contact Form & FAQ Accordion -->
+
+    <!-- =========================
+         FORM + FAQ
+         ========================= -->
+
     <div class="help-split-grid">
-      
-      <!-- Left: Real Shopify Contact Form -->
+
+
+      <!-- =========================
+           CONTACT FORM
+           ========================= -->
+
       <div class="help-form-container">
-        <h2 class="help-section-heading">Send a Message to the Atelier</h2>
-        <p class="help-section-desc">Leave your note below and our client advisory team will respond promptly.</p>
+
+        <h2 class="help-section-heading">
+          Send a Message to the Atelier
+        </h2>
+
+        <p class="help-section-desc">
+          Leave your note below and our client advisory team will respond promptly.
+        </p>
+
 
         {%- if page.content != blank -%}
-          <div class="help-page-custom-content rte" style="margin-bottom: 1.5rem; line-height: 1.7; color: var(--text-charcoal-muted);">
+
+          <div
+            class="help-page-custom-content rte"
+            style="margin-bottom:1.5rem;line-height:1.7;color:var(--text-charcoal-muted);"
+          >
             {{ page.content }}
           </div>
+
         {%- endif -%}
 
+
         {%- form 'contact', id: 'ContactForm', class: 'shopify-contact-form' -%}
+
+
+          <!-- SUCCESS -->
+
           {%- if form.posted_successfully? -%}
-            <div class="form-status form-status-success" style="background:#EBF3E8; color:#3F5A36; padding:1.2rem; border-radius:10px; margin-bottom:1.5rem;">
-              <strong>Thank you for contacting Shugroves Atelier.</strong>
-              <p style="margin-top:0.4rem; font-size:0.9rem;">Your inquiry has been received. Our concierge team will reach out to you shortly.</p>
+
+            <div
+              class="form-status form-status-success"
+              style="background:#EBF3E8;color:#3F5A36;padding:1.2rem;border-radius:10px;margin-bottom:1.5rem;"
+            >
+
+              <strong>
+                Thank you for contacting Shugroves Atelier.
+              </strong>
+
+              <p style="margin-top:.4rem;font-size:.9rem;">
+                Your inquiry has been received. Our concierge team will reach out to you shortly.
+              </p>
+
             </div>
+
           {%- endif -%}
+
+
+          <!-- ERRORS -->
 
           {%- if form.errors -%}
-            <div class="form-status form-status-error" style="background:#FDE8E8; color:#9B1C1C; padding:1.2rem; border-radius:10px; margin-bottom:1.5rem;">
-              <strong>Please check the following errors:</strong>
-              <p style="margin-top:0.4rem; font-size:0.9rem;">{{ form.errors | default_errors }}</p>
+
+            <div
+              class="form-status form-status-error"
+              style="background:#FDE8E8;color:#9B1C1C;padding:1.2rem;border-radius:10px;margin-bottom:1.5rem;"
+            >
+
+              <strong>
+                Please check the following errors:
+              </strong>
+
+              <p style="margin-top:.4rem;font-size:.9rem;">
+                {{ form.errors | default_errors }}
+              </p>
+
             </div>
+
           {%- endif -%}
 
+
+          <!-- NAME -->
+
           <div class="form-group">
-            <label for="ContactFormName" class="form-label">Full Name</label>
-            <input type="text" name="contact[name]" id="ContactFormName" class="form-input" placeholder="Your full name" value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}" required>
+
+            <label
+              for="ContactFormName"
+              class="form-label"
+            >
+              Full Name
+            </label>
+
+            <input
+              type="text"
+              name="contact[name]"
+              id="ContactFormName"
+              class="form-input"
+              placeholder="Your full name"
+              value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}"
+              autocomplete="name"
+              required
+            >
+
           </div>
+
+
+          <!-- EMAIL + PHONE -->
 
           <div class="form-row form-row-2">
+
             <div class="form-group">
-              <label for="ContactFormEmail" class="form-label">Email Address</label>
-              <input type="email" name="contact[email]" id="ContactFormEmail" class="form-input" placeholder="your.email@example.com" value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}" required>
+
+              <label
+                for="ContactFormEmail"
+                class="form-label"
+              >
+                Email Address
+              </label>
+
+              <input
+                type="email"
+                name="contact[email]"
+                id="ContactFormEmail"
+                class="form-input"
+                placeholder="your.email@example.com"
+                value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
+                autocomplete="email"
+                required
+              >
+
             </div>
+
+
             <div class="form-group">
-              <label for="ContactFormPhone" class="form-label">Phone Number (Optional)</label>
-              <input type="tel" name="contact[phone]" id="ContactFormPhone" class="form-input" placeholder="Your phone number" value="{% if form.phone %}{{ form.phone }}{% elsif customer %}{{ customer.phone }}{% endif %}">
+
+              <label
+                for="ContactFormPhone"
+                class="form-label"
+              >
+                Phone Number (Optional)
+              </label>
+
+              <input
+                type="tel"
+                name="contact[phone]"
+                id="ContactFormPhone"
+                class="form-input"
+                placeholder="Your phone number"
+                value="{% if form.phone %}{{ form.phone }}{% elsif customer %}{{ customer.phone }}{% endif %}"
+                autocomplete="tel"
+              >
+
             </div>
+
           </div>
+
+
+          <!-- MESSAGE -->
 
           <div class="form-group">
-            <label for="ContactFormBody" class="form-label">Message / Inquiry Details</label>
-            <textarea rows="5" name="contact[body]" id="ContactFormBody" class="form-textarea" placeholder="How may we assist you with our garments, sizing, or orders?" required>{{ form.body }}</textarea>
+
+            <label
+              for="ContactFormBody"
+              class="form-label"
+            >
+              Message / Inquiry Details
+            </label>
+
+            <textarea
+              rows="5"
+              name="contact[body]"
+              id="ContactFormBody"
+              class="form-textarea"
+              placeholder="How may we assist you with our garments, sizing, or orders?"
+              required
+            >{{ form.body }}</textarea>
+
           </div>
 
-          <button type="submit" class="btn-primary" style="width:100%; justify-content:center; padding:1rem;">
-            <span>Submit Message &rarr;</span>
+
+          <!-- SUBMIT -->
+
+          <button
+            type="submit"
+            class="btn-primary"
+          >
+            <span>
+              Submit Message &rarr;
+            </span>
           </button>
+
+
         {%- endform -%}
+
       </div>
 
-      <!-- Right: Frequently Asked Questions Accordion -->
+
+      <!-- =========================
+           FAQ
+           ========================= -->
+
       <div class="help-faq-container">
-        <h2 class="help-section-heading">Frequently Asked Questions</h2>
-        
-        <div class="faq-accordion">
-          <details class="faq-item">
-            <summary class="faq-question">What is your shipping timeline and policy?</summary>
-            <div class="faq-answer">
-              <p>We provide complimentary express courier shipping across India on orders over {{ settings.free_shipping_threshold | default: 5000 | money }}. Orders are hand-packed at our Mumbai atelier and dispatched within 24–48 hours, arriving within 3–5 business days.</p>
-            </div>
-          </details>
+
+        <h2 class="help-section-heading">
+          Frequently Asked Questions
+        </h2>
+
+
+        <div
+          class="faq-accordion"
+          id="faqAccordion"
+        >
+
+
+          <!-- FAQ 1 -->
 
           <details class="faq-item">
-            <summary class="faq-question">How do I care for pure Belgian linen and organic silks?</summary>
+
+            <summary class="faq-question">
+              What is your shipping timeline and policy?
+            </summary>
+
             <div class="faq-answer">
-              <p>We recommend gentle hand washing in cool water with pH-neutral organic detergent, or eco-dry cleaning. Always dry in the shade to preserve living botanical dye hues. Iron damp on medium heat or embrace linen's natural textured wrinkles.</p>
+
+              <p>
+                We provide complimentary express courier shipping across India on orders over
+                {{ settings.free_shipping_threshold | default: 5000 | money }}.
+                Orders are hand-packed at our Mumbai atelier and dispatched within 24–48 hours,
+                arriving within 3–5 business days.
+              </p>
+
             </div>
+
           </details>
 
-          <details class="faq-item">
-            <summary class="faq-question">What is your return and exchange policy?</summary>
-            <div class="faq-answer">
-              <p>We offer complimentary 30-day returns and exchanges for all unworn pieces in their original packaging with atelier hangtags intact. Simply reach out to our concierge or initiate through your account ledger.</p>
-            </div>
-          </details>
+
+          <!-- FAQ 2 -->
 
           <details class="faq-item">
-            <summary class="faq-question">Do you offer custom tailoring and bespoke alterations?</summary>
+
+            <summary class="faq-question">
+              How do I care for pure Belgian linen and organic silks?
+            </summary>
+
             <div class="faq-answer">
-              <p>Yes. For select outerwear and linen trousers, our master tailors can adjust hem lengths and sleeves upon request prior to dispatch. Contact concierge with your measurements after placing your order.</p>
+
+              <p>
+                We recommend gentle hand washing in cool water with pH-neutral organic detergent,
+                or eco-dry cleaning. Always dry in the shade to preserve living botanical dye hues.
+                Iron damp on medium heat or embrace linen's natural textured wrinkles.
+              </p>
+
             </div>
+
           </details>
+
+
+          <!-- FAQ 3 -->
+
+          <details class="faq-item">
+
+            <summary class="faq-question">
+              What is your return and exchange policy?
+            </summary>
+
+            <div class="faq-answer">
+
+              <p>
+                We offer complimentary 30-day returns and exchanges for all unworn pieces in their
+                original packaging with atelier hangtags intact. Simply reach out to our concierge
+                or initiate through your account ledger.
+              </p>
+
+            </div>
+
+          </details>
+
+
+          <!-- FAQ 4 -->
+
+          <details class="faq-item">
+
+            <summary class="faq-question">
+              Do you offer custom tailoring and bespoke alterations?
+            </summary>
+
+            <div class="faq-answer">
+
+              <p>
+                Yes. For select outerwear and linen trousers, our master tailors can adjust hem
+                lengths and sleeves upon request prior to dispatch. Contact concierge with your
+                measurements after placing your order.
+              </p>
+
+            </div>
+
+          </details>
+
+
         </div>
+
       </div>
+
     </div>
+
   </div>
+
 </div>
 
+
 {% schema %}
+
 {
   "name": "Help & Contact Us",
+
   "settings": [
+
     {
       "type": "text",
       "id": "eyebrow",
       "label": "Eyebrow Text",
       "default": "Client Care & Inquiries"
     },
+
     {
       "type": "text",
       "id": "heading",
       "label": "Heading",
       "default": "How May We Assist You?"
     },
+
     {
       "type": "textarea",
       "id": "subtitle",
       "label": "Subtitle",
       "default": "Our dedicated concierge team is available to assist with bespoke sizing, styling advice, orders, and delivery logistics."
     }
+
   ],
+
   "presets": [
     {
       "name": "Help & Contact Us"
     }
   ]
 }
+
 {% endschema %}
-```css
-/* =========================================================
-   SHUGROVES EMPORIUM — HELP PAGE
-   SPACING & ALIGNMENT IMPROVEMENTS
-   Design intentionally unchanged
-   ========================================================= */
-
-/* Global sizing protection */
-.help-page-wrapper,
-.help-page-wrapper *,
-.help-page-wrapper *::before,
-.help-page-wrapper *::after {
-  box-sizing: border-box;
-}
-
-/* Main container */
-.help-page-wrapper .section-container {
-  width: min(100% - 40px, 1200px);
-  margin-left: auto;
-  margin-right: auto;
-}
-
-/* =========================================================
-   HEADER
-   ========================================================= */
-
-.help-page-wrapper .help-header {
-  padding-top: 70px;
-  padding-bottom: 55px;
-}
-
-.help-page-wrapper .help-header-inner {
-  text-align: center;
-}
-
-.help-page-wrapper .help-eyebrow {
-  display: block;
-  margin-bottom: 12px;
-  line-height: 1.4;
-}
-
-.help-page-wrapper .help-title {
-  margin: 0 auto 16px;
-  line-height: 1.15;
-  max-width: 850px;
-}
-
-.help-page-wrapper .help-subtitle {
-  max-width: 720px;
-  margin: 0 auto;
-  line-height: 1.7;
-}
-
-/* =========================================================
-   MAIN CONTENT
-   ========================================================= */
-
-.help-page-wrapper .help-main-layout {
-  padding-top: 10px;
-  padding-bottom: 80px;
-}
-
-/* =========================================================
-   CONTACT CARDS
-   ========================================================= */
-
-.help-page-wrapper .concierge-cards-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 20px;
-  width: 100%;
-  margin-bottom: 55px;
-  align-items: stretch;
-}
-
-.help-page-wrapper .concierge-card {
-  min-width: 0;
-  min-height: 175px;
-  height: 100%;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-
-  text-align: center;
-
-  padding: 28px 22px;
-
-  overflow: hidden;
-}
-
-.help-page-wrapper .concierge-card-icon {
-  flex: 0 0 auto;
-  margin-bottom: 13px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.help-page-wrapper .concierge-card-title {
-  margin: 0 0 8px;
-  line-height: 1.3;
-}
-
-.help-page-wrapper .concierge-card-val {
-  margin: 0 0 6px;
-
-  max-width: 100%;
-
-  line-height: 1.45;
-
-  overflow-wrap: anywhere;
-  word-break: break-word;
-}
-
-.help-page-wrapper .concierge-card-sub {
-  display: block;
-
-  max-width: 100%;
-
-  line-height: 1.45;
-  overflow-wrap: anywhere;
-}
-
-/* =========================================================
-   FORM + FAQ SPLIT
-   ========================================================= */
-
-.help-page-wrapper .help-split-grid {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-
-  gap: 50px;
-
-  width: 100%;
-
-  align-items: start;
-}
-
-/* Prevent either column from causing overflow */
-.help-page-wrapper .help-form-container,
-.help-page-wrapper .help-faq-container {
-  min-width: 0;
-  width: 100%;
-}
-
-/* =========================================================
-   SECTION HEADINGS
-   ========================================================= */
-
-.help-page-wrapper .help-section-heading {
-  margin: 0 0 10px;
-  line-height: 1.25;
-}
-
-.help-page-wrapper .help-section-desc {
-  margin: 0 0 28px;
-  line-height: 1.65;
-}
-
-/* =========================================================
-   CONTACT FORM
-   ========================================================= */
-
-.help-page-wrapper .shopify-contact-form {
-  width: 100%;
-}
-
-.help-page-wrapper .form-group {
-  width: 100%;
-  margin-bottom: 20px;
-}
-
-.help-page-wrapper .form-label {
-  display: block;
-  margin-bottom: 8px;
-  line-height: 1.4;
-}
-
-.help-page-wrapper .form-input,
-.help-page-wrapper .form-textarea {
-  width: 100%;
-  max-width: 100%;
-
-  display: block;
-
-  padding: 13px 15px;
-
-  line-height: 1.5;
-
-  box-sizing: border-box;
-}
-
-.help-page-wrapper .form-textarea {
-  min-height: 135px;
-  resize: vertical;
-}
-
-.help-page-wrapper .form-row-2 {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-
-  gap: 18px;
-
-  width: 100%;
-}
-
-.help-page-wrapper .form-row-2 .form-group {
-  min-width: 0;
-}
-
-/* Button alignment */
-.help-page-wrapper .btn-primary {
-  width: 100%;
-  min-height: 50px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  margin-top: 5px;
-}
-
-/* =========================================================
-   FAQ
-   ========================================================= */
-
-.help-page-wrapper .faq-accordion {
-  width: 100%;
-  margin-top: 2px;
-}
-
-.help-page-wrapper .faq-item {
-  width: 100%;
-  margin: 0;
-
-  overflow: hidden;
-}
-
-.help-page-wrapper .faq-question {
-  width: 100%;
-
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  gap: 20px;
-
-  padding: 20px 0;
-
-  line-height: 1.45;
-
-  cursor: pointer;
-}
-
-.help-page-wrapper .faq-answer {
-  width: 100%;
-  padding: 0 0 20px;
-}
-
-.help-page-wrapper .faq-answer p {
-  margin: 0;
-  line-height: 1.7;
-}
-
-/* =========================================================
-   CUSTOM PAGE CONTENT
-   ========================================================= */
-
-.help-page-wrapper .help-page-custom-content {
-  width: 100%;
-  max-width: 100%;
-  overflow-wrap: anywhere;
-}
-
-.help-page-wrapper .help-page-custom-content img {
-  max-width: 100%;
-  height: auto;
-}
-
-/* =========================================================
-   TABLET
-   ========================================================= */
-
-@media screen and (max-width: 900px) {
-
-  .help-page-wrapper .section-container {
-    width: min(100% - 32px, 760px);
-  }
-
-  .help-page-wrapper .concierge-cards-grid {
-    gap: 16px;
-    margin-bottom: 45px;
-  }
-
-  .help-page-wrapper .concierge-card {
-    min-height: 165px;
-    padding: 24px 16px;
-  }
-
-  .help-page-wrapper .help-split-grid {
-    gap: 35px;
-  }
-
-}
-
-/* =========================================================
-   MOBILE
-   ========================================================= */
-
-@media screen and (max-width: 749px) {
-
-  .help-page-wrapper .section-container {
-    width: calc(100% - 30px);
-    max-width: none;
-  }
-
-  /* Header */
-  .help-page-wrapper .help-header {
-    padding-top: 45px;
-    padding-bottom: 38px;
-  }
-
-  .help-page-wrapper .help-title {
-    max-width: 100%;
-    margin-bottom: 12px;
-  }
-
-  .help-page-wrapper .help-subtitle {
-    max-width: 100%;
-    line-height: 1.6;
-  }
-
-  /* Main */
-  .help-page-wrapper .help-main-layout {
-    padding-top: 5px;
-    padding-bottom: 55px;
-  }
-
-  /* Contact cards become one column */
-  .help-page-wrapper .concierge-cards-grid {
-    grid-template-columns: 1fr;
-
-    gap: 14px;
-
-    margin-bottom: 40px;
-  }
-
-  .help-page-wrapper .concierge-card {
-    min-height: 145px;
-    padding: 24px 20px;
-  }
-
-  /* Form + FAQ become one column */
-  .help-page-wrapper .help-split-grid {
-    grid-template-columns: 1fr;
-
-    gap: 45px;
-  }
-
-  /* Form */
-  .help-page-wrapper .help-section-desc {
-    margin-bottom: 22px;
-  }
-
-  .help-page-wrapper .form-row-2 {
-    grid-template-columns: 1fr;
-    gap: 0;
-  }
-
-  .help-page-wrapper .form-group {
-    margin-bottom: 18px;
-  }
-
-  .help-page-wrapper .form-input,
-  .help-page-wrapper .form-textarea {
-    font-size: 16px;
-  }
-
-  /* FAQ */
-  .help-page-wrapper .faq-question {
-    padding: 18px 0;
-
-    gap: 15px;
-  }
-
-  .help-page-wrapper .faq-answer {
-    padding-bottom: 18px;
-  }
-
-}
-
-/* =========================================================
-   SMALL PHONES
-   ========================================================= */
-
-@media screen and (max-width: 480px) {
-
-  .help-page-wrapper .section-container {
-    width: calc(100% - 24px);
-  }
-
-  .help-page-wrapper .help-header {
-    padding-top: 35px;
-    padding-bottom: 30px;
-  }
-
-  .help-page-wrapper .help-main-layout {
-    padding-bottom: 40px;
-  }
-
-  .help-page-wrapper .concierge-card {
-    min-height: 140px;
-    padding: 22px 16px;
-  }
-
-  .help-page-wrapper .concierge-card-icon {
-    margin-bottom: 10px;
-  }
-
-  .help-page-wrapper .help-split-grid {
-    gap: 38px;
-  }
-
-  .help-page-wrapper .form-input,
-  .help-page-wrapper .form-textarea {
-    padding: 12px 13px;
-  }
-
-}
-
-/* =========================================================
-   VERY LONG TEXT / SHOPIFY CONTENT PROTECTION
-   ========================================================= */
-
-.help-page-wrapper input,
-.help-page-wrapper textarea,
-.help-page-wrapper select {
-  max-width: 100%;
-}
-
-.help-page-wrapper a,
-.help-page-wrapper p,
-.help-page-wrapper span,
-.help-page-wrapper h1,
-.help-page-wrapper h2,
-.help-page-wrapper h3 {
-  overflow-wrap: break-word;
-}
-
-/* Avoid accidental horizontal scrolling */
-.help-page-wrapper {
-  width: 100%;
-  max-width: 100%;
-  overflow-x: hidden;
-}
 ```
