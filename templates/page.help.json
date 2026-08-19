@@ -13,7 +13,8 @@
       "type": "contact-help",
       "settings": {
         "eyebrow": "Client Care & Inquiries",
-        "heading": "How May We Assist You?"
+        "heading": "How May We Assist You?",
+        "subtitle": "Our dedicated concierge team is available to assist with bespoke sizing, styling advice,\norders, and delivery logistics."
       }
     }
   },

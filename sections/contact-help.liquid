@@ -197,3 +197,462 @@
   ]
 }
 {% endschema %}
+```css
+/* =========================================================
+   SHUGROVES EMPORIUM — HELP PAGE
+   SPACING & ALIGNMENT IMPROVEMENTS
+   Design intentionally unchanged
+   ========================================================= */
+
+/* Global sizing protection */
+.help-page-wrapper,
+.help-page-wrapper *,
+.help-page-wrapper *::before,
+.help-page-wrapper *::after {
+  box-sizing: border-box;
+}
+
+/* Main container */
+.help-page-wrapper .section-container {
+  width: min(100% - 40px, 1200px);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.help-page-wrapper .help-header {
+  padding-top: 70px;
+  padding-bottom: 55px;
+}
+
+.help-page-wrapper .help-header-inner {
+  text-align: center;
+}
+
+.help-page-wrapper .help-eyebrow {
+  display: block;
+  margin-bottom: 12px;
+  line-height: 1.4;
+}
+
+.help-page-wrapper .help-title {
+  margin: 0 auto 16px;
+  line-height: 1.15;
+  max-width: 850px;
+}
+
+.help-page-wrapper .help-subtitle {
+  max-width: 720px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+/* =========================================================
+   MAIN CONTENT
+   ========================================================= */
+
+.help-page-wrapper .help-main-layout {
+  padding-top: 10px;
+  padding-bottom: 80px;
+}
+
+/* =========================================================
+   CONTACT CARDS
+   ========================================================= */
+
+.help-page-wrapper .concierge-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+  width: 100%;
+  margin-bottom: 55px;
+  align-items: stretch;
+}
+
+.help-page-wrapper .concierge-card {
+  min-width: 0;
+  min-height: 175px;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+
+  padding: 28px 22px;
+
+  overflow: hidden;
+}
+
+.help-page-wrapper .concierge-card-icon {
+  flex: 0 0 auto;
+  margin-bottom: 13px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.help-page-wrapper .concierge-card-title {
+  margin: 0 0 8px;
+  line-height: 1.3;
+}
+
+.help-page-wrapper .concierge-card-val {
+  margin: 0 0 6px;
+
+  max-width: 100%;
+
+  line-height: 1.45;
+
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.help-page-wrapper .concierge-card-sub {
+  display: block;
+
+  max-width: 100%;
+
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+}
+
+/* =========================================================
+   FORM + FAQ SPLIT
+   ========================================================= */
+
+.help-page-wrapper .help-split-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+
+  gap: 50px;
+
+  width: 100%;
+
+  align-items: start;
+}
+
+/* Prevent either column from causing overflow */
+.help-page-wrapper .help-form-container,
+.help-page-wrapper .help-faq-container {
+  min-width: 0;
+  width: 100%;
+}
+
+/* =========================================================
+   SECTION HEADINGS
+   ========================================================= */
+
+.help-page-wrapper .help-section-heading {
+  margin: 0 0 10px;
+  line-height: 1.25;
+}
+
+.help-page-wrapper .help-section-desc {
+  margin: 0 0 28px;
+  line-height: 1.65;
+}
+
+/* =========================================================
+   CONTACT FORM
+   ========================================================= */
+
+.help-page-wrapper .shopify-contact-form {
+  width: 100%;
+}
+
+.help-page-wrapper .form-group {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.help-page-wrapper .form-label {
+  display: block;
+  margin-bottom: 8px;
+  line-height: 1.4;
+}
+
+.help-page-wrapper .form-input,
+.help-page-wrapper .form-textarea {
+  width: 100%;
+  max-width: 100%;
+
+  display: block;
+
+  padding: 13px 15px;
+
+  line-height: 1.5;
+
+  box-sizing: border-box;
+}
+
+.help-page-wrapper .form-textarea {
+  min-height: 135px;
+  resize: vertical;
+}
+
+.help-page-wrapper .form-row-2 {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  gap: 18px;
+
+  width: 100%;
+}
+
+.help-page-wrapper .form-row-2 .form-group {
+  min-width: 0;
+}
+
+/* Button alignment */
+.help-page-wrapper .btn-primary {
+  width: 100%;
+  min-height: 50px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-top: 5px;
+}
+
+/* =========================================================
+   FAQ
+   ========================================================= */
+
+.help-page-wrapper .faq-accordion {
+  width: 100%;
+  margin-top: 2px;
+}
+
+.help-page-wrapper .faq-item {
+  width: 100%;
+  margin: 0;
+
+  overflow: hidden;
+}
+
+.help-page-wrapper .faq-question {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 20px;
+
+  padding: 20px 0;
+
+  line-height: 1.45;
+
+  cursor: pointer;
+}
+
+.help-page-wrapper .faq-answer {
+  width: 100%;
+  padding: 0 0 20px;
+}
+
+.help-page-wrapper .faq-answer p {
+  margin: 0;
+  line-height: 1.7;
+}
+
+/* =========================================================
+   CUSTOM PAGE CONTENT
+   ========================================================= */
+
+.help-page-wrapper .help-page-custom-content {
+  width: 100%;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+
+.help-page-wrapper .help-page-custom-content img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media screen and (max-width: 900px) {
+
+  .help-page-wrapper .section-container {
+    width: min(100% - 32px, 760px);
+  }
+
+  .help-page-wrapper .concierge-cards-grid {
+    gap: 16px;
+    margin-bottom: 45px;
+  }
+
+  .help-page-wrapper .concierge-card {
+    min-height: 165px;
+    padding: 24px 16px;
+  }
+
+  .help-page-wrapper .help-split-grid {
+    gap: 35px;
+  }
+
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media screen and (max-width: 749px) {
+
+  .help-page-wrapper .section-container {
+    width: calc(100% - 30px);
+    max-width: none;
+  }
+
+  /* Header */
+  .help-page-wrapper .help-header {
+    padding-top: 45px;
+    padding-bottom: 38px;
+  }
+
+  .help-page-wrapper .help-title {
+    max-width: 100%;
+    margin-bottom: 12px;
+  }
+
+  .help-page-wrapper .help-subtitle {
+    max-width: 100%;
+    line-height: 1.6;
+  }
+
+  /* Main */
+  .help-page-wrapper .help-main-layout {
+    padding-top: 5px;
+    padding-bottom: 55px;
+  }
+
+  /* Contact cards become one column */
+  .help-page-wrapper .concierge-cards-grid {
+    grid-template-columns: 1fr;
+
+    gap: 14px;
+
+    margin-bottom: 40px;
+  }
+
+  .help-page-wrapper .concierge-card {
+    min-height: 145px;
+    padding: 24px 20px;
+  }
+
+  /* Form + FAQ become one column */
+  .help-page-wrapper .help-split-grid {
+    grid-template-columns: 1fr;
+
+    gap: 45px;
+  }
+
+  /* Form */
+  .help-page-wrapper .help-section-desc {
+    margin-bottom: 22px;
+  }
+
+  .help-page-wrapper .form-row-2 {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .help-page-wrapper .form-group {
+    margin-bottom: 18px;
+  }
+
+  .help-page-wrapper .form-input,
+  .help-page-wrapper .form-textarea {
+    font-size: 16px;
+  }
+
+  /* FAQ */
+  .help-page-wrapper .faq-question {
+    padding: 18px 0;
+
+    gap: 15px;
+  }
+
+  .help-page-wrapper .faq-answer {
+    padding-bottom: 18px;
+  }
+
+}
+
+/* =========================================================
+   SMALL PHONES
+   ========================================================= */
+
+@media screen and (max-width: 480px) {
+
+  .help-page-wrapper .section-container {
+    width: calc(100% - 24px);
+  }
+
+  .help-page-wrapper .help-header {
+    padding-top: 35px;
+    padding-bottom: 30px;
+  }
+
+  .help-page-wrapper .help-main-layout {
+    padding-bottom: 40px;
+  }
+
+  .help-page-wrapper .concierge-card {
+    min-height: 140px;
+    padding: 22px 16px;
+  }
+
+  .help-page-wrapper .concierge-card-icon {
+    margin-bottom: 10px;
+  }
+
+  .help-page-wrapper .help-split-grid {
+    gap: 38px;
+  }
+
+  .help-page-wrapper .form-input,
+  .help-page-wrapper .form-textarea {
+    padding: 12px 13px;
+  }
+
+}
+
+/* =========================================================
+   VERY LONG TEXT / SHOPIFY CONTENT PROTECTION
+   ========================================================= */
+
+.help-page-wrapper input,
+.help-page-wrapper textarea,
+.help-page-wrapper select {
+  max-width: 100%;
+}
+
+.help-page-wrapper a,
+.help-page-wrapper p,
+.help-page-wrapper span,
+.help-page-wrapper h1,
+.help-page-wrapper h2,
+.help-page-wrapper h3 {
+  overflow-wrap: break-word;
+}
+
+/* Avoid accidental horizontal scrolling */
+.help-page-wrapper {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+```
